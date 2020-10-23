@@ -1,0 +1,76 @@
+SELECT dbo.Int_StyleProduction.MproductionNo, SUM(dbo.Int_StyleProduction.ProductionQty) AS Quantity, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.INQTransferIN, 0) ELSE 0 END) AS C_OpeningBalance, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.INQTransferIN, 0) ELSE 0 END) AS C_CutComplete, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS B_OpeningInput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS B_OpeningOutput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPTransferIN, 0) ELSE 0 END) AS B_OpeningWIPTransferIN, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPTransferOUT, 0) ELSE 0 END) AS B_OpeningWIPTransferOUT, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPSeconds, 0) ELSE 0 END) AS B_OpeningWIPSeconds, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPSamples, 0) ELSE 0 END) AS B_OpeningWIPSamples, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPAdjustments, 0) ELSE 0 END) AS B_OpeningWIPAdjustments, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS B_Input, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS B_BundlingComplete, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPAdjustments, 0) ELSE 0 END) AS B_NetAdjustments, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPTransferOUT, 0) ELSE 0 END) AS B_TransferredOut, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS S_OpeningInput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS S_OpeningOutput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPTransferIN, 0) ELSE 0 END) AS S_OpeningWIPTransferIN, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN
+                                            ISNULL(dbo.RptProductSummary.WIPTransferOUT, 0) ELSE 0 END) AS S_OpeningWIPTransferOUT, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPSamples, 0) ELSE 0 END) AS S_OpeningWIPSamples, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPSeconds, 0) ELSE 0 END) AS S_OpeningWIPSeconds, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.WIPAdjustments, 0) ELSE 0 END) AS S_OpeningWIPAdjustments, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS S_TotalInput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPTransferIN, 0) - 
+                                            ISNULL(dbo.RptProductSummary.WIPTransferOUT, 0) ELSE 0 END) AS S_NetTransfers, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPSamples, 0) ELSE 0 END) AS S_Samples, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPSeconds, 0) ELSE 0 END) AS S_Seconds, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPAdjustments, 0) ELSE 0 END) AS S_NetAdjustments, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 1 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS S_TotalOutput, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS F_OpeningReceivedAtPacking, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS F_OpeningPackingCompleted, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) < 0 THEN 
+                                            ISNULL(dbo.RptProductSummary.OUTQTransferOUT, 0) ELSE 0 END) AS F_OpeningPackingOut, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Input, 0) ELSE 0 END) AS F_ReceivedAtPacking, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.Output, 0) ELSE 0 END) AS F_PackingCompleted, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 3 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.OUTQTransferOUT, 0) ELSE 0 END) AS F_PackingOut, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPSamples, 0) ELSE 0 END) AS B_Samples, 
+                                            SUM(CASE WHEN dbo.Teams.TeamTypeId = 2 AND DATEDIFF(day, '2018-11-13', dbo.RptProductSummary.EffectiveDate) >= 0 AND 
+                                            DATEDIFF(day, '2018-11-16', dbo.RptProductSummary.EffectiveDate) <= 0 THEN ISNULL(dbo.RptProductSummary.WIPSeconds, 0) ELSE 0 END) AS B_Seconds 
+                                            FROM dbo.RptProductSummary INNER JOIN 
+                                                              dbo.ProdOrders ON dbo.RptProductSummary.ProdOrderID = dbo.ProdOrders.Id INNER JOIN 
+                                                              dbo.Teams ON dbo.RptProductSummary.TeamID = dbo.Teams.Id INNER JOIN 
+                                                              dbo.Int_StyleProduction ON dbo.ProdOrders.Code = dbo.Int_StyleProduction.MproductionNo 
+                                            WHERE(dbo.Int_StyleProduction.MproductionNo BETWEEN '303558 001' AND '303564 001') 
+                                            GROUP BY dbo.Int_StyleProduction.MproductionNo

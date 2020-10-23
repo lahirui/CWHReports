@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DailyScannedRFIDTagsDS" targetNamespace="http://tempuri.org/DailyScannedRFIDTagsDS.xsd" xmlns:mstns="http://tempuri.org/DailyScannedRFIDTagsDS.xsd" xmlns="http://tempuri.org/DailyScannedRFIDTagsDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DailyScannedRFIDTagsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DailyScannedRFIDTagsDS" msprop:Generator_UserDSName="DailyScannedRFIDTagsDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DailyScannedRFIDTagsDS" msprop:Generator_TableClassName="DailyScannedRFIDTagsDSDataTable" msprop:Generator_TableVarName="tableDailyScannedRFIDTagsDS" msprop:Generator_RowChangedName="DailyScannedRFIDTagsDSRowChanged" msprop:Generator_TablePropName="_DailyScannedRFIDTagsDS" msprop:Generator_RowDeletingName="DailyScannedRFIDTagsDSRowDeleting" msprop:Generator_RowChangingName="DailyScannedRFIDTagsDSRowChanging" msprop:Generator_RowEvHandlerName="DailyScannedRFIDTagsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="DailyScannedRFIDTagsDSRowDeleted" msprop:Generator_RowClassName="DailyScannedRFIDTagsDSRow" msprop:Generator_UserTableName="DailyScannedRFIDTagsDS" msprop:Generator_RowEvArgName="DailyScannedRFIDTagsDSRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PDCSStyle" msprop:Generator_ColumnVarNameInTable="columnPDCSStyle" msprop:Generator_ColumnPropNameInRow="PDCSStyle" msprop:Generator_ColumnPropNameInTable="PDCSStyleColumn" msprop:Generator_UserColumnName="PDCSStyle" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerStyle" msprop:Generator_ColumnVarNameInTable="columnCustomerStyle" msprop:Generator_ColumnPropNameInRow="CustomerStyle" msprop:Generator_ColumnPropNameInTable="CustomerStyleColumn" msprop:Generator_UserColumnName="CustomerStyle" type="xs:string" minOccurs="0" />
+              <xs:element name="Colour" msprop:Generator_ColumnVarNameInTable="columnColour" msprop:Generator_ColumnPropNameInRow="Colour" msprop:Generator_ColumnPropNameInTable="ColourColumn" msprop:Generator_UserColumnName="Colour" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
+              <xs:element name="RFIDCount" msprop:Generator_ColumnVarNameInTable="columnRFIDCount" msprop:Generator_ColumnPropNameInRow="RFIDCount" msprop:Generator_ColumnPropNameInTable="RFIDCountColumn" msprop:Generator_UserColumnName="RFIDCount" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,119 @@
+﻿<%@ Master  Language="C#" AutoEventWireup="true" CodeBehind="WarehouseMaster.master.cs" Inherits="PDCSReporting.MasterPages.WarehouseMaster" %>
+
+<%--<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>--%>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="icon" type="image/ico" href="~/Images/Report.ico" sizes="16x16" />
+    <title>PDCS - Production Reports</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <%-- Link to Bootstrap 3--%>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/utils.js"></script>
+
+    <%-- Link to W3.css --%>
+    <link rel="stylesheet" href="~/Content/W3.css" />
+    <link rel="stylesheet" href="~/Content/W3-2019-Fashion.css" />
+
+    <%-- Link to Font Awesome 5.5.0--%>
+    <link rel="stylesheet" href="~/fontawesome/css/all.css" />
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>
+
+    <style>
+        .btn-success {
+            background-color: #da532c;
+            border-color: #da532c;
+            color: white;
+        }
+
+            .btn-success:hover,
+            .btn-success:focus,
+            .btn-success:active,
+            .btn-success.active,
+            .open .dropdown-toggle.btn-success {
+                color: #ffffff;
+                background-color: #da532c;
+                border-color: #da532c;
+            }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body style="background-color: #EBF7E3;">
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #da532c; padding-top: 15px; padding-bottom: 20px;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../WarehouseStartPage.aspx" style="font-family: Georgia; color: whitesmoke"> Central Warehouse R e p o r t s</a>
+                </div>
+                <ul class="nav navbar-nav" style="color: whitesmoke; font-family: Georgia">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown" style="font-family: Georgia;" tabindex="-1" href="#">Central Warehouse Reports<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a tabindex="-1" href="../DailyScannedBoxes.aspx">Daily Scanned Boxes Detailes</a></li>
+                            <li><a tabindex="-1" href="../DailyScannedBoxesOldStock.aspx">Daily Scanned Boxes Detailes - Free Stock</a></li>
+                            <li><a tabindex="-1" href="ScannedReportCPOWise.aspx">Scanned Details - CPO Wise</a></li>
+                           <%-- <li> <hr /></li>
+                            <li><a tabindex="-1" href="../DailyScannedRFIDTags.aspx">Daily Scanned RFID Tags - Trim Stores</a></li>--%>
+                        </ul>
+                    </li>
+
+                    <%-- <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown" style="font-family: Georgia;" tabindex="-1" href="#">Warehouse Reports<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a tabindex="-1" href="../BSScannedBoxDetails.aspx">Box Stock Scanned Boxes Detailes</a></li>
+                        </ul>
+                    </li>--%>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="navbar" style="background-color: #da532c;">
+            <div class="container-fluid">
+                <h6 class="text-center" style="font-family: Georgia; color: whitesmoke; font-weight: 600; padding-top: 10px; padding-bottom: 10px;">
+                    <asp:Label ID="YearLabel" runat="server" Text=""></asp:Label></h6>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
+
