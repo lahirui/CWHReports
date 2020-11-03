@@ -317,7 +317,6 @@ namespace PDCSReporting
                 }
             }
         }
-
        
         public DataTable getCutListForMPO(string fromStyle, string toStyle, string fromMPO, string toMpo)
         {
@@ -466,8 +465,42 @@ namespace PDCSReporting
             return dt;
         }
 
-      
-     
+
+        public PalletDetailsDS getPalletDetails(int PalletId)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT  dbo.Boxes.BoxCode AS BoxBarCode, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour,dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, (CAST(dbo.BoxCPOAllocationDetails.AllocatedDate AS DATE)) AS ScannedDate, " +
+                                                              "SUM(dbo.FGWips.Quantity) AS Quantity " +
+                                            "FROM     dbo.FGWips INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.FGWips.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.Products ON dbo.FGWips.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.ProdOrders ON dbo.FGWips.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                              "dbo.WarehouseWips ON dbo.Boxes.Id = dbo.WarehouseWips.BoxId " +
+                                            "WHERE(dbo.FGWips.WIPArea = 2)  AND(dbo.WarehouseWips.WIPArea = 2) AND (dbo.WarehouseWips.PalletId = " + PalletId + ") " +
+                                            "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code, (CAST(dbo.BoxCPOAllocationDetails.AllocatedDate AS DATE)) " +
+                                            "HAVING SUM(dbo.FGWips.Quantity) <> 0 " +
+                                            "ORDER BY BoxBarCode, Style, Colour, dbo.BoxCPOAllocationDetails.CPO, Size, (CAST(dbo.BoxCPOAllocationDetails.AllocatedDate AS DATE))");
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (PalletDetailsDS Customer = new PalletDetailsDS())
+                {
+                    sda.Fill(Customer, "PalletDetailsDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
 
 
     }

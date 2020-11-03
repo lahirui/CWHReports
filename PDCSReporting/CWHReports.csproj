@@ -157,6 +157,7 @@
     <Content Include="DailyScannedRFIDTags.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="PalletDetails.aspx" />
     <Content Include="Project_Readme.html" />
     <Content Include="ScannedReportCPOWise.aspx" />
     <Content Include="Scripts\i18n\af.js" />
@@ -1776,6 +1777,17 @@
     <Content Include="fontawesome\scss\_variables.scss" />
     <Content Include="MasterPages\WarehouseMaster.Master" />
     <Content Include="packages.config" />
+    <Content Include="PalletDetailsDS.xsc">
+      <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+    </Content>
+    <None Include="PalletDetailsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PalletDetailsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PalletDetailsDS.xss">
+      <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -1909,6 +1921,18 @@
     <Compile Include="MasterPages\WarehouseMaster.Master.designer.cs">
       <DependentUpon>WarehouseMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="PalletDetails.aspx.cs">
+      <DependentUpon>PalletDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PalletDetails.aspx.designer.cs">
+      <DependentUpon>PalletDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PalletDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1949,6 +1973,7 @@
     <EmbeddedResource Include="ReportDesigns\DailyScannedBoxesOldStockDS.rdlc" />
     <EmbeddedResource Include="ReportDesigns\DailyScannedBoxesDS.rdlc" />
     <EmbeddedResource Include="ReportDesigns\DailyScannedRFIDTagsDS.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\PalletDetails.rdlc" />
     <EmbeddedResource Include="ReportDesigns\ScannedDetailsCPOWiseReportDesign.rdlc" />
   </ItemGroup>
   <PropertyGroup>
