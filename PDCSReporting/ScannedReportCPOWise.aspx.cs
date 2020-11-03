@@ -12,7 +12,7 @@ namespace PDCSReporting
     public partial class ScannedReportCPOWise : System.Web.UI.Page
     {
         DBAccess dba = new DBAccess();
-        DataTable details;
+        //DataTable details;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)

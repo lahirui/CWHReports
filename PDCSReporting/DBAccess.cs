@@ -14,7 +14,7 @@ namespace PDCSReporting
     {
 
         SqlConnectionStringBuilder SSB = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["ConString"].ConnectionString);
-        String Server, Catalog;
+       // String Server, Catalog;
         
         
         SqlConnection conn;
