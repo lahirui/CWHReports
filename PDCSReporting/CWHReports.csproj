@@ -1680,15 +1680,18 @@
     <Content Include="Scripts\utils.js" />
     <Content Include="BSScannedBoxDetailsDS.xsc">
       <DependentUpon>BSScannedBoxDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ApplicationInsights.config" />
-    <None Include="BSScannedBoxDetailsDS.xsd">
+    <Content Include="BSScannedBoxDetailsDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BSScannedBoxDetailsDS.Designer.cs</LastGenOutput>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="BSScannedBoxDetailsDS.xss">
       <DependentUpon>BSScannedBoxDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1700,26 +1703,32 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="DailyScannedBoxesDS.xsc">
       <DependentUpon>DailyScannedBoxesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Bundle.config" />
-    <None Include="DailyScannedBoxesDS.xsd">
+    <Content Include="DailyScannedBoxesDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DailyScannedBoxesDS.Designer.cs</LastGenOutput>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DailyScannedBoxesDS.xss">
       <DependentUpon>DailyScannedBoxesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DailyScannedRFIDTagsDS.xsc">
       <DependentUpon>DailyScannedRFIDTagsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DailyScannedRFIDTagsDS.xsd">
+    <Content Include="DailyScannedRFIDTagsDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DailyScannedRFIDTagsDS.Designer.cs</LastGenOutput>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DailyScannedRFIDTagsDS.xss">
       <DependentUpon>DailyScannedRFIDTagsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fontawesome\webfonts\fa-brands-400.eot" />
     <Content Include="fontawesome\webfonts\fa-brands-400.ttf" />
@@ -1779,27 +1788,33 @@
     <Content Include="packages.config" />
     <Content Include="PalletDetailsDS.xsc">
       <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="PalletDetailsDS.xsd">
+    <Content Include="PalletDetailsDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>PalletDetailsDS.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="PalletDetailsDS.xss">
       <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
       <DependentUpon>ScannedDetailsCPOWiseDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="ScannedDetailsCPOWiseDS.xsd">
+    <Content Include="ScannedDetailsCPOWiseDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ScannedDetailsCPOWiseDS.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ScannedDetailsCPOWiseDS.xss">
       <DependentUpon>ScannedDetailsCPOWiseDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\LoginBackground.jpg" />
@@ -1867,6 +1882,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BSScannedBoxDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Codes\Common.cs" />
     <Compile Include="Codes\GlobalVars.cs" />
@@ -1882,6 +1898,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyScannedBoxesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DailyScannedBoxesOldStock.aspx.cs">
       <DependentUpon>DailyScannedBoxesOldStock.aspx</DependentUpon>
@@ -1901,6 +1918,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DailyScannedRFIDTagsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DBAccess.cs" />
     <Compile Include="DBConnect.cs" />
@@ -1932,11 +1950,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ScannedDetailsCPOWiseDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ScannedReportCPOWise.aspx.cs">
       <DependentUpon>ScannedReportCPOWise.aspx</DependentUpon>
@@ -1969,12 +1989,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReportDesigns\BSScannedBoxDetailsDS.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\DailyScannedBoxesOldStockDS.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\DailyScannedBoxesDS.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\DailyScannedRFIDTagsDS.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\PalletDetails.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\ScannedDetailsCPOWiseReportDesign.rdlc" />
+    <Content Include="ReportDesigns\BSScannedBoxDetailsDS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\DailyScannedBoxesOldStockDS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\DailyScannedBoxesDS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\DailyScannedRFIDTagsDS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\PalletDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\ScannedDetailsCPOWiseReportDesign.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
