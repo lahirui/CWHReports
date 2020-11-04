@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPages/WarehouseMaster.Master" AutoEventWireup="true" CodeBehind="PalletDetails.aspx.cs" Inherits="PDCSReporting.PalletDetails" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPages/WarehouseMaster.Master" AutoEventWireup="true" CodeBehind="LocationDetails.aspx.cs" Inherits="PDCSReporting.LocationDetails" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -19,8 +19,15 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#<%=ddlPallets.ClientID%>").select2({
-                placeholder: "Select Pallet",
+            $("#<%=ddlFromLocation.ClientID%>").select2({
+                placeholder: "Select Location",
+                allowClear: true
+            });
+        });
+
+         $(document).ready(function () {
+            $("#<%=ddlToLocation.ClientID%>").select2({
+                placeholder: "Select Location",
                 allowClear: true
             });
         });
@@ -56,19 +63,23 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <div class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cpo" style="font-family: Georgia">Pallet:</label>
-                                    <div class="col-sm-6 col-md-6 col-lg-6">
-                                        <asp:DropDownList ID="ddlPallets" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control" ></asp:DropDownList><%--OnSelectedIndexChanged="CPODropDownList_SelectedIndexChanged"--%>
-                                        <%--<asp:SqlDataSource runat="server" ID="CPODetailsDataSource" ConnectionString='<%$ ConnectionStrings:ConString %>' SelectCommand="SELECT DISTINCT [CPO] FROM [BoxCPOAllocationDetails] ORDER BY [CPO]"></asp:SqlDataSource>--%>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">From Location:</label>
+                                            <div class="col-md-5">
+                                                <asp:DropDownList ID="ddlFromLocation" Style="width: 150px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4" for="so" style="font-family: Georgia">To Location:</label>
+                                            <div class="col-md-5">
+                                                <asp:DropDownList ID="ddlToLocation" Style="width: 150px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToLocation_DataBound"></asp:DropDownList>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-<%--                                <div class="form-group">
-                                    <label class="control-label col-sm-1 col-md-1 col-lg-1" for="so" style="font-family: Georgia">SO:</label>
-                                    <div class="col-sm-6 col-md-6 col-lg-6">
-                                        <asp:DropDownList ID="SODropDownList" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
-                                    </div>
-                                </div>--%>
+
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -78,3 +89,4 @@
         </div>
     </div>
 </asp:Content>
+

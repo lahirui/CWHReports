@@ -157,6 +157,7 @@
     <Content Include="DailyScannedRFIDTags.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="LocationDetails.aspx" />
     <Content Include="PalletDetails.aspx" />
     <Content Include="Project_Readme.html" />
     <Content Include="ScannedReportCPOWise.aspx" />
@@ -1800,6 +1801,20 @@
       <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LocationDetailsDS.xsc">
+      <DependentUpon>LocationDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationDetailsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LocationDetailsDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationDetailsDS.xss">
+      <DependentUpon>LocationDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -1932,6 +1947,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LocationDetails.aspx.cs">
+      <DependentUpon>LocationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LocationDetails.aspx.designer.cs">
+      <DependentUpon>LocationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LocationDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocationDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="MasterPages\WarehouseMaster.Master.cs">
       <DependentUpon>WarehouseMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2005,6 +2033,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReportDesigns\ScannedDetailsCPOWiseReportDesign.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\LocationDetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

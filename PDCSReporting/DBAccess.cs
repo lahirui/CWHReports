@@ -354,6 +354,44 @@ namespace PDCSReporting
             }
         }
 
+        public LocationDetailsDS getLocationDetails(string fromLocation, string toLocation)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.Boxes.BoxCode AS BoxBarCode, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.ProdOrders.Code AS MPO, " +
+                                                              "dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, (CAST(dbo.Boxes.CreatedDate AS DATE)) AS BoxCreatedDate, (CAST(dbo.WarehouseWips.EffectiveDate AS DATE)) AS PalletAllocatedDate, SUM(dbo.FGWips.Quantity) AS Quantity " +
+                                            "FROM     dbo.FGWips INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.FGWips.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.Products ON dbo.FGWips.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id FULL OUTER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.ProdOrders ON dbo.FGWips.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                              "dbo.WarehouseWips ON dbo.Boxes.Id = dbo.WarehouseWips.BoxId FULL OUTER JOIN " +
+                                                              "dbo.Locations ON dbo.WarehouseWips.LocationId = dbo.Locations.Id FULL OUTER JOIN " +
+                                                              "dbo.Pallets ON dbo.WarehouseWips.PalletId = dbo.Pallets.Id " +
+                                            "WHERE(dbo.FGWips.WIPArea = 2) AND(dbo.WarehouseWips.WIPArea = 2) AND(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
+                                            "GROUP BY dbo.Locations.Code, dbo.Pallets.Code, dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code, (CAST(dbo.Boxes.CreatedDate AS DATE)), (CAST(dbo.WarehouseWips.EffectiveDate AS DATE)) " +
+                                            "HAVING(SUM(dbo.FGWips.Quantity) <> 0) " +
+                                            "ORDER BY Location, Pallet, BoxBarCode, Style, Colour, MPO, dbo.BoxCPOAllocationDetails.CPO, Size, BoxCreatedDate, PalletAllocatedDate");
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (LocationDetailsDS Customer = new LocationDetailsDS())
+                {
+                    sda.Fill(Customer, "LocationDetailsDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
+
 
     }
 }
