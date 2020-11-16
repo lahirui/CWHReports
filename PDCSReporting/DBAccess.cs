@@ -392,6 +392,39 @@ namespace PDCSReporting
             }
         }
 
+        public AODUnavailableQuantitiesDS getAODReceiveDetails(int AODId)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.AODs.AODNumber AS AOD, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode AS BarCode, dbo.CartonHeaders.WIPArea, dbo.CartonDetails.Quantity " +
+                                            "FROM     dbo.Styles INNER JOIN " +
+                                                              "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.AODBoxDetails INNER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id ON dbo.CartonDetails.BoxId = dbo.AODBoxDetails.BoxId CROSS JOIN " +
+                                                              "dbo.Boxes INNER JOIN " +
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId " +
+                                            "WHERE(dbo.AODs.Id = " + AODId + ") AND (dbo.CartonHeaders.WIPArea IN (1,2)) " +
+                                            "ORDER BY AOD, Style, Colour, Size, BarCode, dbo.CartonHeaders.WIPArea");
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (AODUnavailableQuantitiesDS Customer = new AODUnavailableQuantitiesDS())
+                {
+                    sda.Fill(Customer, "AODUnavailableQuantitiesDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
+
 
     }
 }

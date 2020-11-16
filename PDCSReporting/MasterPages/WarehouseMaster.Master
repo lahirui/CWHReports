@@ -1,24 +1,5 @@
 ﻿<%@ Master  Language="C#" AutoEventWireup="true" CodeBehind="WarehouseMaster.master.cs" Inherits="PDCSReporting.MasterPages.WarehouseMaster" %>
 
-<%--<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
-</body>
-</html>--%>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -89,8 +70,8 @@
                             <li><a tabindex="-1" href="ScannedReportCPOWise.aspx">Scanned Details - CPO Wise</a></li>
                             <li><a tabindex="-1" href="../PalletDetails.aspx">Pallet Details</a></li>
                             <li><a tabindex="-1" href="../LocationDetails.aspx">Location Details</a></li>
-                           <%-- <li> <hr /></li>
-                            <li><a tabindex="-1" href="../DailyScannedRFIDTags.aspx">Daily Scanned RFID Tags - Trim Stores</a></li>--%>
+                            <li><a tabindex="-1" href="../AODUnavailableQuantities.aspx">AOD Unavailable Quantities</a></li>
+                          
                         </ul>
                     </li>
 

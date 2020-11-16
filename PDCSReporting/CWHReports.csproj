@@ -138,6 +138,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1815,6 +1816,17 @@
       <DependentUpon>LocationDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="AODUnavailableQuantitiesDS.xsc">
+      <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+    </Content>
+    <None Include="AODUnavailableQuantitiesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AODUnavailableQuantitiesDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="AODUnavailableQuantitiesDS.xss">
+      <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -1884,6 +1896,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AODUnavailableQuantities.aspx.cs">
+      <DependentUpon>AODUnavailableQuantities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AODUnavailableQuantities.aspx.designer.cs">
+      <DependentUpon>AODUnavailableQuantities.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AODUnavailableQuantitiesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BSScannedBoxDetails.aspx.cs">
@@ -2040,6 +2064,9 @@
     <Content Include="ReportDesigns\LocationDetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\AODUnavailableQuantities.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
