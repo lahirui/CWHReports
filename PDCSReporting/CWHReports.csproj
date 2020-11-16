@@ -1818,14 +1818,17 @@
     </Content>
     <Content Include="AODUnavailableQuantitiesDS.xsc">
       <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="AODUnavailableQuantitiesDS.xsd">
+    <Content Include="AODUnavailableQuantitiesDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>AODUnavailableQuantitiesDS.Designer.cs</LastGenOutput>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="AODUnavailableQuantitiesDS.xss">
       <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
@@ -1907,6 +1910,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -2066,7 +2070,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReportDesigns\AODUnavailableQuantities.rdlc" />
+    <Content Include="ReportDesigns\AODUnavailableQuantities.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
