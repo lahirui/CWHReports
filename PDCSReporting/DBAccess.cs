@@ -459,6 +459,44 @@ namespace PDCSReporting
             }
         }
 
+        public StockDetailedReportDS getStockDetailedReport(string fromStyle, string toStyle, string fromLocation, string toLocation,string fromPallet, string toPallet)
+        {
+
+
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code AS Pallet, dbo.Locations.Code AS Rack, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, " +
+                                                              "SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.CartonDetails INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                            "WHERE " +
+                                            "(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') AND " +
+                                            "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
+                                            "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
+                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode " +
+                                            "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (StockDetailedReportDS FHC = new StockDetailedReportDS())
+                {
+                    sda.Fill(FHC, "StockDetailedReportDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+
 
     }
 }
