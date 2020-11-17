@@ -399,18 +399,18 @@ namespace PDCSReporting
                 conn.Open();
             }
 
-            SqlCommand cmd = new SqlCommand("SELECT dbo.AODs.AODNumber AS AOD, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode AS BarCode, dbo.CartonHeaders.WIPArea, dbo.CartonDetails.Quantity " +
-                                            "FROM     dbo.Styles INNER JOIN " +
+            SqlCommand cmd = new SqlCommand("SELECT  dbo.AODs.AODNumber AS AOD, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.CartonDetails.Quantity " +
+                                            "FROM     dbo.AODs INNER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+                                                              "dbo.Styles INNER JOIN " +
                                                               "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                                              "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
                                                               "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-                                                              "dbo.AODBoxDetails INNER JOIN " +
-                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id ON dbo.CartonDetails.BoxId = dbo.AODBoxDetails.BoxId CROSS JOIN " +
-                                                              "dbo.Boxes INNER JOIN " +
-                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId " +
-                                            "WHERE(dbo.AODs.Id = " + AODId + ") AND (dbo.CartonHeaders.WIPArea IN (1,2)) " +
-                                            "ORDER BY AOD, Style, Colour, Size, BarCode, dbo.CartonHeaders.WIPArea");
+                                                              "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id " +
+                                            "WHERE(dbo.AODs.id = " + AODId + ") AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
+                                            "ORDER BY AOD, dbo.CartonHeaders.WIPArea, BarCode, Style, Colour, Size");
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
                 cmd.Connection = conn;
@@ -421,6 +421,40 @@ namespace PDCSReporting
                     sda.Fill(Customer, "AODUnavailableQuantitiesDS");
                     conn.Close();
                     return Customer;
+                }
+            }
+        }
+
+        public StockSummaryReportDS getStockSummaryDetails(string fromStyle, string toStyle)
+        {
+
+
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.CartonDetails INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                            "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
+                                            "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (StockSummaryReportDS FHC = new StockSummaryReportDS())
+                {
+                    sda.Fill(FHC, "StockSummaryReportDS");
+                    conn.Close();
+                    return FHC;
                 }
             }
         }

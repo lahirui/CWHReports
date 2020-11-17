@@ -70,25 +70,22 @@
                          <a href="AODUnavailableQuantities.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">AOD Unavailable Quantities</h6>
                         </a>
-                        <%--<a href="#" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">Warehouse In Details</h6>
-                        </a>--%>
-                        
-                       <%-- <a href="DailyScannedRFIDTags.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned RFID Tags - Trim Stores</h6>
-                        </a>--%>
                     </div>
                 </div>
 
-               <%-- <div class="col-sm-2 col-md-2 col-lg-2 ">
+                <div class="col-sm-2 col-md-2 col-lg-2 ">
                     <div class="list-group" style="border-color: #da532c; color: whitesmoke">
-                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-home"></span>  Box Stock Reports</div>
-                        <a href="BSScannedBoxDetails.aspx" class="list-group-item" style="border-top-color: #da532c; border-bottom-color: #da532c; border-top-width: 3px; border-bottom-width: 3px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">Box Stock Scanned Boxes Details</h6>
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-home"></span> Warehouse Stock Reports</div>
+                        <a href="StockSummaryReport.aspx" class="list-group-item" style="border-top-color: #da532c; border-top-width: 3px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Stock Summary Report</h6>
                         </a>
-                         
+
+                         <a href="AODUnavailableQuantities.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Stock Detailed Report</h6>
+                        </a>
                     </div>
-                </div>--%>
+                </div>
+
             </div>
         </div>
         <footer class="navbar navbar-fixed-bottom" style="background-color: whitesmoke;">

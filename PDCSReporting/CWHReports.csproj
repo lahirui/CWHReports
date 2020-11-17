@@ -223,6 +223,7 @@
     <Content Include="Scripts\i18n\zh-TW.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="StockSummaryReport.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
@@ -1891,6 +1892,20 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="StockSummaryReportDS.xsc">
+      <DependentUpon>StockSummaryReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StockSummaryReportDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockSummaryReportDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StockSummaryReportDS.xss">
+      <DependentUpon>StockSummaryReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2021,6 +2036,19 @@
     <Compile Include="ScannedReportCPOWise.aspx.designer.cs">
       <DependentUpon>ScannedReportCPOWise.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StockSummaryReport.aspx.cs">
+      <DependentUpon>StockSummaryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StockSummaryReport.aspx.designer.cs">
+      <DependentUpon>StockSummaryReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StockSummaryReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockSummaryReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="WarehouseStartPage.aspx.cs">
       <DependentUpon>WarehouseStartPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2073,6 +2101,9 @@
     <Content Include="ReportDesigns\AODUnavailableQuantities.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\StockSummaryReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
