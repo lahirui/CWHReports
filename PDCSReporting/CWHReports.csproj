@@ -227,6 +227,7 @@
     <Content Include="Scripts\select2.min.js" />
     <Content Include="ShipmentDetails.aspx" />
     <Content Include="ShipmentSummary.aspx" />
+    <Content Include="SingleScannedRFIDs.aspx" />
     <Content Include="StockDetailedReport.aspx" />
     <Content Include="StockSummaryReport.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
@@ -1978,6 +1979,17 @@
     <Content Include="ShipmentSummaryDS.xss">
       <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
     </Content>
+    <Content Include="SingleScannedRFIDsDS.xsc">
+      <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+    </Content>
+    <None Include="SingleScannedRFIDsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SingleScannedRFIDsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SingleScannedRFIDsDS.xss">
+      <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2159,6 +2171,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SingleScannedRFIDs.aspx.cs">
+      <DependentUpon>SingleScannedRFIDs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SingleScannedRFIDs.aspx.designer.cs">
+      <DependentUpon>SingleScannedRFIDs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SingleScannedRFIDsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="StockDetailedReport.aspx.cs">
       <DependentUpon>StockDetailedReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2265,6 +2289,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ReportDesigns\ShipmentSummary.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\SingleScannedRFIDsDS.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -157,7 +157,7 @@ namespace PDCSReporting
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
             ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/GoodsReceivedSummary.rdlc");
             GoodsReceivedSummaryDS output = dba.getGoodsReceivedSummary(dateFrom, dateTo,fromFactory,toFactory, fromAOD, toAOD, fromCPO, toCPO);
-            ReportDataSource ds = new ReportDataSource("GoodsReceivedSummary", output.Tables[0]);
+            ReportDataSource ds = new ReportDataSource("GoodsReceivedSummaryDS", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);
 

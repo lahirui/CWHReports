@@ -157,7 +157,7 @@ namespace PDCSReporting
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
             ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/ShipmentSummary.rdlc");
             ShipmentSummaryDS output = dba.getShipmentSummary(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO);
-            ReportDataSource ds = new ReportDataSource("ShipmentSummary", output.Tables[0]);
+            ReportDataSource ds = new ReportDataSource("ShipmentSummaryDS", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);
 

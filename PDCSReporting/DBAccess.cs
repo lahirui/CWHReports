@@ -535,7 +535,21 @@ namespace PDCSReporting
 
         public GoodsReceivedSummaryDS getGoodsReceivedSummary(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO)
         {
-            SqlCommand cmd = new SqlCommand("");
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(*) AS NumberOfCartons, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.Products INNER JOIN " +
+                                                              "dbo.CartonWips INNER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
+                                            "WHERE(dbo.CartonWips.TransactionType = 8) AND(dbo.CartonWips.WIPArea = 1) AND(dbo.CartonWips.Quantity > 0)  " +
+                                            "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
+                                            "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -592,7 +606,21 @@ namespace PDCSReporting
 
 
 
-            SqlCommand cmd = new SqlCommand("");
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(*) AS NumberOfCartons, ABS(SUM(dbo.CartonDetails.Quantity)) AS Quantity " +
+                                            "FROM     dbo.Products INNER JOIN " +
+                                                              "dbo.CartonWips INNER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
+                                            "WHERE(dbo.CartonWips.TransactionType IN(8, 10)) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0)  " +
+                                            "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE)<= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
+                                            "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -608,7 +636,33 @@ namespace PDCSReporting
             }
         }
 
+        public SingleScannedRFIDsDS getSingleScannedRFIDDetails(string fromStyle, string toStyle)
+        {
 
+
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.ProductModelCodes.CustomerStyle, dbo.Styles.Code AS PDCSStyle, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProductModelCodes.ModelCode, dbo.ProductModelCodes.ItemCode, COUNT(*) AS ScannedRFIDCount " +
+                                            "FROM   dbo.ProductModelCodes INNER JOIN " +
+                                                   "dbo.Styles ON dbo.ProductModelCodes.StyleID = dbo.Styles.Id INNER JOIN " +
+                                                   "dbo.Colors ON dbo.ProductModelCodes.ColourID = dbo.Colors.Id INNER JOIN " +
+                                                   "dbo.Sizes ON dbo.ProductModelCodes.SizeID = dbo.Sizes.Id " +
+                                            "WHERE(dbo.ProductModelCodes.IsDeleted = 0) AND(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                            "GROUP BY dbo.ProductModelCodes.CustomerStyle, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProductModelCodes.ModelCode, dbo.ProductModelCodes.ItemCode " +
+                                            "ORDER BY dbo.ProductModelCodes.CustomerStyle, PDCSStyle, Colour, Size, dbo.ProductModelCodes.ModelCode, dbo.ProductModelCodes.ItemCode");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (SingleScannedRFIDsDS FHC = new SingleScannedRFIDsDS())
+                {
+                    sda.Fill(FHC, "SingleScannedRFIDsDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
 
 
 
