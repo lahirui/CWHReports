@@ -497,6 +497,121 @@ namespace PDCSReporting
             }
         }
 
+        public GoodsReceivedDetailesDS getGoodsReceivedDetails(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
+                                                              "dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.Products INNER JOIN " +
+                                                              "dbo.CartonWips INNER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
+                                            "WHERE(dbo.CartonWips.TransactionType = 8) AND(dbo.CartonWips.WIPArea = 1) AND(dbo.CartonWips.Quantity > 0) " +
+                                            "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
+                                            "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
+                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
+                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
+                                            "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (GoodsReceivedDetailesDS FHC = new GoodsReceivedDetailesDS())
+                {
+                    sda.Fill(FHC, "GoodsReceivedDetailesDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+
+        public GoodsReceivedSummaryDS getGoodsReceivedSummary(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO)
+        {
+            SqlCommand cmd = new SqlCommand("");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (GoodsReceivedSummaryDS FHC = new GoodsReceivedSummaryDS())
+                {
+                    sda.Fill(FHC, "GoodsReceivedSummaryDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+       
+        public ShipmentDetailsDS getShipmentDetails(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
+                                                              "dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.Products INNER JOIN " +
+                                                              "dbo.CartonWips INNER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
+                                            "WHERE(dbo.CartonWips.TransactionType IN(8, 10)) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0) " +
+                                            "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
+                                            "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
+                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toFactory + "') " +
+                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + fromCPO + "') " +
+                                            "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
+                                            "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (ShipmentDetailsDS FHC = new ShipmentDetailsDS())
+                {
+                    sda.Fill(FHC, "ShipmentDetailsDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+
+        public ShipmentSummaryDS getShipmentSummary(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO)
+        {
+
+
+
+            SqlCommand cmd = new SqlCommand("");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (ShipmentSummaryDS FHC = new ShipmentSummaryDS())
+                {
+                    sda.Fill(FHC, "ShipmentSummaryDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+
+
+
+
+
 
     }
 }

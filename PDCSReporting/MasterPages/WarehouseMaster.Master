@@ -68,9 +68,14 @@
                             <li><a tabindex="-1" href="../DailyScannedBoxes.aspx">Daily Scanned Boxes Detailes</a></li>
                             <li><a tabindex="-1" href="../DailyScannedBoxesOldStock.aspx">Daily Scanned Boxes Detailes - Free Stock</a></li>
                             <li><a tabindex="-1" href="ScannedReportCPOWise.aspx">Scanned Details - CPO Wise</a></li>
-                            <li><a tabindex="-1" href="../PalletDetails.aspx">Pallet Details</a></li>
-                            <li><a tabindex="-1" href="../LocationDetails.aspx">Location Details</a></li>
+                            <%--<li><a tabindex="-1" href="../PalletDetails.aspx">Pallet Details</a></li>
+                            <li><a tabindex="-1" href="../LocationDetails.aspx">Location Details</a></li>--%>
                             <li><a tabindex="-1" href="../AODUnavailableQuantities.aspx">AOD Unavailable Quantities</a></li>
+                            <li><a tabindex="-1" href="../GoodsReceivedSummary.aspx">Goods Received Summary</a></li>
+                            <li><a tabindex="-1" href="../GoodsReceivedDetailes.aspx">Good Received Details</a></li>
+                            <li><a tabindex="-1" href="../ShipmentSummary.aspx">Shipment Summary</a></li>
+                            <li><a tabindex="-1" href="../ShipmentDetails.aspx">Shipment Details</a></li>
+
                           
                         </ul>
                     </li>

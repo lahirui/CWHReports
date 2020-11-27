@@ -158,6 +158,8 @@
     <Content Include="DailyScannedRFIDTags.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="GoodsReceivedDetailes.aspx" />
+    <Content Include="GoodsReceivedSummary.aspx" />
     <Content Include="LocationDetails.aspx" />
     <Content Include="PalletDetails.aspx" />
     <Content Include="Project_Readme.html" />
@@ -223,6 +225,8 @@
     <Content Include="Scripts\i18n\zh-TW.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="ShipmentDetails.aspx" />
+    <Content Include="ShipmentSummary.aspx" />
     <Content Include="StockDetailedReport.aspx" />
     <Content Include="StockSummaryReport.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
@@ -1832,6 +1836,34 @@
       <DependentUpon>AODUnavailableQuantitiesDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="GoodsReceivedDetailesDS.xsc">
+      <DependentUpon>GoodsReceivedDetailesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoodsReceivedDetailesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoodsReceivedDetailesDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoodsReceivedDetailesDS.xss">
+      <DependentUpon>GoodsReceivedDetailesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoodsReceivedSummaryDS.xsc">
+      <DependentUpon>GoodsReceivedSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoodsReceivedSummaryDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoodsReceivedSummaryDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GoodsReceivedSummaryDS.xss">
+      <DependentUpon>GoodsReceivedSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -1921,6 +1953,31 @@
       <DependentUpon>StockDetailedReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ShipmentDetailsDS.xsc">
+      <DependentUpon>ShipmentDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ShipmentDetailsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShipmentDetailsDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ShipmentDetailsDS.xss">
+      <DependentUpon>ShipmentDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ShipmentSummaryDS.xsc">
+      <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
+    </Content>
+    <None Include="ShipmentSummaryDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShipmentSummaryDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="ShipmentSummaryDS.xss">
+      <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2005,6 +2062,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GoodsReceivedDetailes.aspx.cs">
+      <DependentUpon>GoodsReceivedDetailes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailes.aspx.designer.cs">
+      <DependentUpon>GoodsReceivedDetailes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodsReceivedDetailesDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="GoodsReceivedSummary.aspx.cs">
+      <DependentUpon>GoodsReceivedSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodsReceivedSummary.aspx.designer.cs">
+      <DependentUpon>GoodsReceivedSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsReceivedSummaryDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodsReceivedSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="LocationDetails.aspx.cs">
       <DependentUpon>LocationDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2050,6 +2133,31 @@
     </Compile>
     <Compile Include="ScannedReportCPOWise.aspx.designer.cs">
       <DependentUpon>ScannedReportCPOWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentDetails.aspx.cs">
+      <DependentUpon>ShipmentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShipmentDetails.aspx.designer.cs">
+      <DependentUpon>ShipmentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShipmentDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ShipmentSummary.aspx.cs">
+      <DependentUpon>ShipmentSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShipmentSummary.aspx.designer.cs">
+      <DependentUpon>ShipmentSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentSummaryDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="StockDetailedReport.aspx.cs">
       <DependentUpon>StockDetailedReport.aspx</DependentUpon>
@@ -2139,6 +2247,24 @@
     <Content Include="ReportDesigns\StockDetailedReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\GoodsReceivedDetailes.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\GoodsReceivedSummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\ShipmentDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\ShipmentSummary.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
