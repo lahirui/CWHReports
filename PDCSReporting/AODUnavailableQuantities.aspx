@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function openModal() {
-            $('#WarehouseInDetailsModal').modal('show');
+            $('#DataFilterModal').modal('show');
         }
     </script>
 
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#WarehouseInDetailsModal" style="background-color:#da532c;">Setup Report</button>
+                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#DataFilterModal" style="background-color:#da532c;">Setup Report</button>
             </div>
         </div>
         <div class="row" style="padding-top: 20px; padding-bottom: 10px;">
@@ -45,7 +45,7 @@
     </div>
 
     <%-- Modal --%>
-    <div id="WarehouseInDetailsModal" class="modal fade" role="dialog">
+    <div id="DataFilterModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #da532c;">

@@ -110,14 +110,14 @@ namespace PDCSReporting
                 ReportParameter tStyle = new ReportParameter("ToStyle", tostyle);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { tStyle });
 
-                ReportParameter fRack = new ReportParameter("FromRack", tostyle);
+                ReportParameter fRack = new ReportParameter("FromRack", fromRack);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { fRack });
-                ReportParameter tRack = new ReportParameter("ToRack", tostyle);
+                ReportParameter tRack = new ReportParameter("ToRack", toRack);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { tRack });
 
-                ReportParameter fPallet = new ReportParameter("FromPallet", tostyle);
+                ReportParameter fPallet = new ReportParameter("FromPallet", fromPallet);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { fPallet });
-                ReportParameter tPallet = new ReportParameter("ToPallet", tostyle);
+                ReportParameter tPallet = new ReportParameter("ToPallet", toPallet);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { tPallet });
             }
         }

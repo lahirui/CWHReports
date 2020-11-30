@@ -24,9 +24,6 @@
               <Width>2.881cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.8175cm</Width>
-            </TablixColumn>
-            <TablixColumn>
               <Width>4.12148cm</Width>
             </TablixColumn>
             <TablixColumn>
@@ -251,44 +248,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#7292cc</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>#da532c</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox13">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>WIPArea</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#7292cc</Color>
@@ -584,42 +543,6 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="WIPArea">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=SWITCH (Fields!WIPArea.Value=1,"INQ",
-Fields!WIPArea.Value=2,"WIP",
-Fields!WIPArea.Value=3,"OUTQ")</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>WIPArea</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                    <rd:Selected>true</rd:Selected>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
                     <Textbox Name="BarCode">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -727,10 +650,9 @@ Fields!WIPArea.Value=3,"OUTQ")</Value>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>8</ColSpan>
+                    <ColSpan>7</ColSpan>
                   </CellContents>
                 </TablixCell>
-                <TablixCell />
                 <TablixCell />
                 <TablixCell />
                 <TablixCell />
@@ -789,7 +711,6 @@ Fields!WIPArea.Value=3,"OUTQ")</Value>
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -809,7 +730,7 @@ Fields!WIPArea.Value=3,"OUTQ")</Value>
         <Top>3.048cm</Top>
         <Left>0.29867cm</Left>
         <Height>1.8cm</Height>
-        <Width>30.22687cm</Width>
+        <Width>27.40937cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1240,7 +1161,7 @@ Fields!WIPArea.Value=3,"OUTQ")</Value>
     <Height>2.03333in</Height>
     <Style />
   </Body>
-  <Width>12.0916in</Width>
+  <Width>11.02493in</Width>
   <Page>
     <PageHeader>
       <Height>0.97367cm</Height>
@@ -1270,7 +1191,7 @@ Fields!WIPArea.Value=3,"OUTQ")</Value>
           </Paragraphs>
           <rd:DefaultName>Textbox19</rd:DefaultName>
           <Height>0.93867cm</Height>
-          <Width>30.52554cm</Width>
+          <Width>27.70804cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

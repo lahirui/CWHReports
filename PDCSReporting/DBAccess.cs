@@ -511,7 +511,7 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-                                            "WHERE(dbo.CartonWips.TransactionType = 8) AND(dbo.CartonWips.WIPArea = 1) AND(dbo.CartonWips.Quantity > 0) " +
+                                            "WHERE(dbo.CartonWips.TransactionType = 1) AND(dbo.CartonWips.WIPArea = 2) AND(dbo.CartonWips.Quantity > 0) " +
                                             "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
                                             "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
                                             "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
@@ -546,7 +546,7 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-                                            "WHERE(dbo.CartonWips.TransactionType = 8) AND(dbo.CartonWips.WIPArea = 1) AND(dbo.CartonWips.Quantity > 0)  " +
+                                            "WHERE(dbo.CartonWips.TransactionType = 1) AND(dbo.CartonWips.WIPArea = 2) AND(dbo.CartonWips.Quantity > 0)  " +
                                             "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
                                             "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
