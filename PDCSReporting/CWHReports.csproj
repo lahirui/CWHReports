@@ -1970,25 +1970,31 @@
     </Content>
     <Content Include="ShipmentSummaryDS.xsc">
       <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="ShipmentSummaryDS.xsd">
+    <Content Include="ShipmentSummaryDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ShipmentSummaryDS.Designer.cs</LastGenOutput>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ShipmentSummaryDS.xss">
       <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SingleScannedRFIDsDS.xsc">
       <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="SingleScannedRFIDsDS.xsd">
+    <Content Include="SingleScannedRFIDsDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SingleScannedRFIDsDS.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SingleScannedRFIDsDS.xss">
       <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2170,6 +2176,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShipmentSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="SingleScannedRFIDs.aspx.cs">
       <DependentUpon>SingleScannedRFIDs.aspx</DependentUpon>
@@ -2182,6 +2189,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SingleScannedRFIDsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="StockDetailedReport.aspx.cs">
       <DependentUpon>StockDetailedReport.aspx</DependentUpon>
@@ -2288,8 +2296,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReportDesigns\ShipmentSummary.rdlc" />
-    <EmbeddedResource Include="ReportDesigns\SingleScannedRFIDsDS.rdlc" />
+    <Content Include="ReportDesigns\ShipmentSummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\SingleScannedRFIDsDS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
