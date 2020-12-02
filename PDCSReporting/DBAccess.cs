@@ -425,7 +425,7 @@ namespace PDCSReporting
             }
         }
 
-        public StockSummaryReportDS getStockSummaryDetails(string fromStyle, string toStyle)
+        public StockSummaryReportDS getStockSummaryDetails(string fromStyle, string toStyle, string fromCPO, string toCPO)
         {
 
 
@@ -442,6 +442,7 @@ namespace PDCSReporting
                                                               "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
                                             "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                            "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
                                             "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code");
             cmd.CommandTimeout = 0;
@@ -459,7 +460,7 @@ namespace PDCSReporting
             }
         }
 
-        public StockDetailedReportDS getStockDetailedReport(string fromStyle, string toStyle, string fromLocation, string toLocation,string fromPallet, string toPallet)
+        public StockDetailedReportDS getStockDetailedReport(string fromStyle, string toStyle, string fromLocation, string toLocation,string fromPallet, string toPallet, string fromCPO, string toCPO)
         {
 
 
@@ -480,6 +481,7 @@ namespace PDCSReporting
                                             "(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') AND " +
                                             "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
                                             "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
+                                            "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode " +
                                             "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode");
             cmd.CommandTimeout = 0;

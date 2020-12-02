@@ -58,6 +58,24 @@ namespace PDCSReporting {
         protected global::System.Web.UI.WebControls.DropDownList ddlToStyle;
         
         /// <summary>
+        /// ddlFromCPO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFromCPO;
+        
+        /// <summary>
+        /// ddlToCPO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlToCPO;
+        
+        /// <summary>
         /// btnGenerate control.
         /// </summary>
         /// <remarks>

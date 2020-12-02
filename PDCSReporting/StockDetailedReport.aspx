@@ -57,6 +57,19 @@
                 allowClear: true
             });
         });
+         $(document).ready(function () {
+            $("#<%=ddlFromCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%=ddlToCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+            });
+        });
     </script>
 </asp:Content>
 
@@ -148,6 +161,27 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">CPO From:</label>
+                                            <div class="col-md-8">
+                                                <asp:DropDownList ID="ddlFromCPO" style="width:300px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3" for="so" style="font-family: Georgia">To:</label>
+                                            <div class="col-md-8">
+                                                <asp:DropDownList ID="ddlToCPO" style="width:300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToCPO_DataBound"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                             </div>
                         </ContentTemplate>

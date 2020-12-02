@@ -67,6 +67,21 @@ namespace PDCSReporting
 
                 }
 
+                DataSet dsCPO = new DataSet();
+                dsCPO = com.ReturnDataSet("SELECT DISTINCT CPO FROM dbo.BoxCPOAllocationDetails ORDER BY CPO");
+                if (dsCPO.Tables[0].Rows.Count > 0)
+                {
+                    ddlFromCPO.DataSource = dsCPO.Tables[0];
+                    ddlFromCPO.DataTextField = "CPO";
+                    ddlFromCPO.DataValueField = "CPO";
+                    ddlFromCPO.DataBind();
+
+                    ddlToCPO.DataSource = dsCPO.Tables[0];
+                    ddlToCPO.DataTextField = "CPO";
+                    ddlToCPO.DataValueField = "CPO";
+                    ddlToCPO.DataBind();
+                }
+
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
         }
@@ -86,6 +101,10 @@ namespace PDCSReporting
             ddlToPallet.SelectedIndex = ddlFromPallet.Items.Count - 1;
         }
 
+        protected void ddlToCPO_DataBound(object sender, EventArgs e)
+        {
+            ddlToCPO.SelectedIndex = ddlFromCPO.Items.Count - 1;
+        }
         protected void btnGenerate_Click(object sender, EventArgs e)
         {
             if (ddlFromStyle.SelectedIndex >= 0)
@@ -96,10 +115,12 @@ namespace PDCSReporting
                 string toRack =ddlToRack.SelectedItem.Text;
                 string fromPallet = ddlFromPallet.SelectedItem.Text;
                 string toPallet = ddlToPallet.SelectedItem.Text;
+                string fromCPO = ddlFromCPO.SelectedItem.Text;
+                string toCPO = ddlToCPO.SelectedItem.Text;
 
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/StockDetailedReport.rdlc");
-                StockDetailedReportDS data = dba.getStockDetailedReport(fromstyle, tostyle, fromRack, toRack, fromPallet, toPallet);
+                StockDetailedReportDS data = dba.getStockDetailedReport(fromstyle, tostyle, fromRack, toRack, fromPallet, toPallet, fromCPO, toCPO);
                 ReportDataSource dts = new ReportDataSource("StockDetailedReportDS", data.Tables[0]);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(dts);
@@ -119,7 +140,15 @@ namespace PDCSReporting
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { fPallet });
                 ReportParameter tPallet = new ReportParameter("ToPallet", toPallet);
                 this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { tPallet });
+
+                ReportParameter fCPO = new ReportParameter("FromCPO", fromCPO);
+                this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { fCPO });
+                ReportParameter tCPO = new ReportParameter("ToCPO", toCPO);
+                this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { tCPO });
+
             }
         }
+
+       
     }
 }
