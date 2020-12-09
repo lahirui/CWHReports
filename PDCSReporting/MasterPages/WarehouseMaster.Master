@@ -66,7 +66,7 @@
                         <a class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown" style="font-family: Georgia;" tabindex="-1" href="#">Central Warehouse Reports<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a tabindex="-1" href="../DailyScannedBoxes.aspx">Daily Scanned Boxes Detailes</a></li>
-                            <li><a tabindex="-1" href="../DailyScannedBoxesOldStock.aspx">Daily Scanned Boxes Detailes - Free Stock</a></li>
+                           <%-- <li><a tabindex="-1" href="../DailyScannedBoxesOldStock.aspx">Daily Scanned Boxes Detailes - Free Stock</a></li>--%>
                             <li><a tabindex="-1" href="ScannedReportCPOWise.aspx">Scanned Details - CPO Wise</a></li>
                             <%--<li><a tabindex="-1" href="../PalletDetails.aspx">Pallet Details</a></li>
                             <li><a tabindex="-1" href="../LocationDetails.aspx">Location Details</a></li>--%>

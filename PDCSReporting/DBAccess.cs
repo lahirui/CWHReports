@@ -27,19 +27,34 @@ namespace PDCSReporting
      
         public DailyScannedBoxesDS getDetailForDailyScannedBoxes(string FromDate, string ToDate)
         {
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO,  dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode, " +
-                                                               "SUM(dbo.FGWips.Quantity) AS Quantity " +
-                                             "FROM     dbo.Products INNER JOIN " +
-                                                               "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
-                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                                               "dbo.FGWips ON dbo.Products.Id = dbo.FGWips.ProductId INNER JOIN " +
-                                                               "dbo.ProdOrders ON dbo.FGWips.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
-                                                               "dbo.Boxes ON dbo.FGWips.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
-                                             "WHERE(CAST(dbo.FGWips.EffectiveDate AS DATE) >= '" + FromDate + "') AND(CAST(dbo.FGWips.EffectiveDate AS DATE) <= '" + ToDate + "') AND(dbo.FGWips.TransactionType = 1) AND(dbo.FGWips.WIPArea = 2) " +
-                                             "GROUP BY dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode " +
-                                             "ORDER BY Style, Colour, Size, MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode");
+            //SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO,  dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode, " +
+            //                                                   "SUM(dbo.FGWips.Quantity) AS Quantity " +
+            //                                 "FROM     dbo.Products INNER JOIN " +
+            //                                                   "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+            //                                                   "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                   "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                                                   "dbo.FGWips ON dbo.Products.Id = dbo.FGWips.ProductId INNER JOIN " +
+            //                                                   "dbo.ProdOrders ON dbo.FGWips.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+            //                                                   "dbo.Boxes ON dbo.FGWips.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                   "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
+            //                                 "WHERE(CAST(dbo.FGWips.EffectiveDate AS DATE) >= '" + FromDate + "') AND(CAST(dbo.FGWips.EffectiveDate AS DATE) <= '" + ToDate + "') AND(dbo.FGWips.TransactionType = 1) AND(dbo.FGWips.WIPArea = 2) " +
+            //                                 "GROUP BY dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode " +
+            //                                 "ORDER BY Style, Colour, Size, MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode");
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode, " +
+                                               "SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                               "FROM dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                               "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                               "dbo.ProdOrders INNER JOIN " +
+                                               "dbo.Products INNER JOIN " +
+                                               "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                               "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.ProdOrders.Id = dbo.CartonDetails.ProdOrderId ON dbo.Boxes.Id = dbo.CartonDetails.BoxId " +
+                                               "WHERE(CAST(dbo.CartonDetails.Date AS DATE) >= '" + FromDate + "') AND(CAST(dbo.CartonDetails.Date AS DATE) <= '" + ToDate + "') AND(dbo.CartonDetails.TransactionType = 2) " +
+                                               "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode " +
+                                               "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+                                               "ORDER BY Style, Colour, Size, MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.BoxCPOAllocationDetails.SO, dbo.Boxes.BoxCode");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -245,17 +260,30 @@ namespace PDCSReporting
             SqlCommand newCmd = conn.CreateCommand();
             newCmd.Connection = conn;
             newCmd.CommandType = CommandType.Text;
-            newCmd.CommandText = "SELECT DISTINCT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.FGWips.Quantity) AS Quantity " +
-                                 "FROM dbo.Products INNER JOIN " +
-                                 "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                 "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                 "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
-                                 "dbo.BoxCPOAllocationDetails INNER JOIN " +
-                                 "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                 "dbo.FGWips ON dbo.Boxes.Id = dbo.FGWips.BoxId ON dbo.Products.Id = dbo.FGWips.ProductId " +
-                                 "WHERE(dbo.FGWips.WIPArea = 1) AND(dbo.FGWips.Quantity > 0) AND(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
-                                 "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
-                                 "ORDER BY dbo.Sizes.Code";
+            //newCmd.CommandText = "SELECT DISTINCT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.FGWips.Quantity) AS Quantity " +
+            //                     "FROM dbo.Products INNER JOIN " +
+            //                     "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                     "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                     "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+            //                     "dbo.BoxCPOAllocationDetails INNER JOIN " +
+            //                     "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                     "dbo.FGWips ON dbo.Boxes.Id = dbo.FGWips.BoxId ON dbo.Products.Id = dbo.FGWips.ProductId " +
+            //                     "WHERE(dbo.FGWips.WIPArea = 1) AND(dbo.FGWips.Quantity > 0) AND(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+            //                     "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
+            //                     "ORDER BY dbo.Sizes.Code";
+
+            newCmd.CommandText = "SELECT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                   "FROM dbo.Products INNER JOIN " +
+                                   "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                   "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                   "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                   "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                   "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                   "dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                   "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
+                                   "WHERE(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+                                   "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+                                   "ORDER BY dbo.Sizes.Code";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
             DataTable dt = new DataTable();
@@ -275,17 +303,30 @@ namespace PDCSReporting
             newCmd.Connection = conn;
             newCmd.CommandType = CommandType.Text;
 
-            newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.FGWips.Quantity) AS Quantity, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes " +
-                                  "FROM dbo.Products INNER JOIN " +
-                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                  "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
-                                  "dbo.BoxCPOAllocationDetails INNER JOIN " +
-                                  "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                  "dbo.FGWips ON dbo.Boxes.Id = dbo.FGWips.BoxId ON dbo.Products.Id = dbo.FGWips.ProductId " +
-                                  "WHERE(dbo.FGWips.WIPArea = 1) AND(dbo.FGWips.Quantity > 0) AND(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
-                                  "GROUP BY dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
-                                  "ORDER BY Size";
+            //newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colours.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.FGWips.Quantity) AS Quantity, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes " +
+            //                      "FROM dbo.Products INNER JOIN " +
+            //                      "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                      "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                      "dbo.Colours ON dbo.Products.ColorId = dbo.Colours.Id INNER JOIN " +
+            //                      "dbo.BoxCPOAllocationDetails INNER JOIN " +
+            //                      "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                      "dbo.FGWips ON dbo.Boxes.Id = dbo.FGWips.BoxId ON dbo.Products.Id = dbo.FGWips.ProductId " +
+            //                      "WHERE(dbo.FGWips.WIPArea = 1) AND(dbo.FGWips.Quantity > 0) AND(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+            //                      "GROUP BY dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
+            //                      "ORDER BY Size";
+
+            newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                 "FROM dbo.Products INNER JOIN " +
+                                 "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                 "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                 "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                 "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                 "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                 "dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                 "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
+                                 "WHERE(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+                                 "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+                                 "ORDER BY Size";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
             DataTable dt = new DataTable();

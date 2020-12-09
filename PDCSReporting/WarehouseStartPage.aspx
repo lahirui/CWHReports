@@ -55,9 +55,9 @@
                         <a href="DailyScannedBoxes.aspx" class="list-group-item" style="border-top-color: #da532c; border-top-width: 3px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details - With CPO</h6>
                         </a>
-                        <a href="DailyScannedBoxesOldStock.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                      <%--  <a href="DailyScannedBoxesOldStock.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details - Free Stock</h6>
-                        </a>
+                        </a>--%>
                          <a href="ScannedReportCPOWise.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Scanned Details - CPO Wise</h6>
                         </a>
