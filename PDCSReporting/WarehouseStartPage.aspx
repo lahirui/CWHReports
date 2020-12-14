@@ -53,7 +53,7 @@
                     <div class="list-group" style="border-color: #da532c; color: whitesmoke">
                         <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-home"></span> Central  Warehouse Reports</div>
                         <a href="DailyScannedBoxes.aspx" class="list-group-item" style="border-top-color: #da532c; border-top-width: 3px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details - With CPO</h6>
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details</h6>
                         </a>
                       <%--  <a href="DailyScannedBoxesOldStock.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details - Free Stock</h6>
