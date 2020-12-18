@@ -707,7 +707,42 @@ namespace PDCSReporting
             }
         }
 
+        public StockTakePalletDetailsDS getStockTakePalletDetails(string fromDate, string toDate, string FromPallet, string ToPallet)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+            SqlCommand cmd = new SqlCommand("SELECT 'Saved'AS Status, (CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS DATE)) AS Date, dbo.Pallets.Code AS Pallet, dbo.Boxes.BoxCode AS BoxBarCode " +
+                                            "FROM     dbo.FGStockTakePostCountCartons INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.FGStockTakePostCountCartons.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id " +
+                                            "WHERE(dbo.FGStockTakePostCountCartons.IsDeleted = 0) AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS DATE) >= '" + fromDate + "') AND " +
+                                                              "(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS DATE) <= '" + toDate + "') " +
+                                            "UNION " +
 
+                                            "SELECT 'Un Saved'AS Status, (CAST(dbo.UnsavedBoxes.SavedDate AS DATE)) AS DATE, dbo.Pallets.Code AS Pallet, dbo.UnsavedBoxes.BoxCode AS BoxBarCode " +
+                                            "FROM     dbo.UnsavedBoxes INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.UnsavedBoxes.PalletId = dbo.Pallets.Id " +
+                                            "WHERE(CAST(dbo.UnsavedBoxes.SavedDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.UnsavedBoxes.SavedDate AS DATE) <= '" + toDate + "') " +
+                                            "AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') " +
+
+                                            "ORDER BY Status, Date, Pallet, BoxBarCode");
+
+
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (StockTakePalletDetailsDS Customer = new StockTakePalletDetailsDS())
+                {
+                    sda.Fill(Customer, "StockTakePalletDetailsDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
 
 
     }

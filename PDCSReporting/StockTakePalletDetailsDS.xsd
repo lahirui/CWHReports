@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StockTakePalletDetailsDS" targetNamespace="http://tempuri.org/StockTakePalletDetailsDS.xsd" xmlns:mstns="http://tempuri.org/StockTakePalletDetailsDS.xsd" xmlns="http://tempuri.org/StockTakePalletDetailsDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StockTakePalletDetailsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="StockTakePalletDetailsDS" msprop:Generator_UserDSName="StockTakePalletDetailsDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StockTakePalletDetailsDS" msprop:Generator_TableClassName="StockTakePalletDetailsDSDataTable" msprop:Generator_TableVarName="tableStockTakePalletDetailsDS" msprop:Generator_TablePropName="_StockTakePalletDetailsDS" msprop:Generator_RowDeletingName="StockTakePalletDetailsDSRowDeleting" msprop:Generator_RowChangingName="StockTakePalletDetailsDSRowChanging" msprop:Generator_RowEvHandlerName="StockTakePalletDetailsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="StockTakePalletDetailsDSRowDeleted" msprop:Generator_UserTableName="StockTakePalletDetailsDS" msprop:Generator_RowChangedName="StockTakePalletDetailsDSRowChanged" msprop:Generator_RowEvArgName="StockTakePalletDetailsDSRowChangeEvent" msprop:Generator_RowClassName="StockTakePalletDetailsDSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:string" minOccurs="0" />
+              <xs:element name="BoxBarCode" msprop:Generator_ColumnVarNameInTable="columnBoxBarCode" msprop:Generator_ColumnPropNameInRow="BoxBarCode" msprop:Generator_ColumnPropNameInTable="BoxBarCodeColumn" msprop:Generator_UserColumnName="BoxBarCode" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

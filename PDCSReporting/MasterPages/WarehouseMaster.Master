@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="icon" type="image/ico" href="~/Images/Report.ico" sizes="16x16" />
-    <title>PDCS - Production Reports</title>
+    <title>PDCS - Central Warehouse Reports</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -85,6 +85,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a tabindex="-1" href="../StockSummaryReport.aspx">Stock Summary Report</a></li>
                             <li><a tabindex="-1" href="../StockDetailedReport.aspx">Stock Detailed Report</a></li>                         
+                            <li><a tabindex="-1" href="../StockTakePalletDetails.aspx">Stock Take Pallet Details</a></li>                         
                         </ul>
                     </li>
 
