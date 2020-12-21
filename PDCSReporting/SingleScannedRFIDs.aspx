@@ -18,7 +18,31 @@
     <link href="Content/select2.min.css" rel="stylesheet" />
 
     <script type="text/javascript">
+
         $(document).ready(function () {
+            LoadSelect2();
+        });
+
+        var prm;
+        if (typeof (Sys) !== 'undefined') {
+            prm = Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function (sender, args) {
+                { { scopeName } } _init();
+            });
+        }
+
+        function LoadSelect2() {
+             $("#<%=ddlFromStyle.ClientID%>").select2({
+                placeholder: "Select Style",
+                allowClear: true
+             });
+
+             $("#<%=ddlToStyle.ClientID%>").select2({
+                placeholder: "Select Style",
+                allowClear: true
+             });
+
+        }
+       <%-- $(document).ready(function () {
             $("#<%=ddlFromStyle.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
@@ -30,7 +54,7 @@
                 placeholder: "Select Style",
                 allowClear: true
             });
-        });
+        });--%>
     </script>
 </asp:Content>
 
@@ -74,7 +98,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-4" for="so" style="font-family: Georgia">To Style:</label>
                                             <div class="col-md-5">
-                                                <asp:DropDownList ID="ddlToStyle" Style="width: 300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToStyle_DataBound"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlToStyle" Style="width: 300px" runat="server"  CssClass="form-control" OnDataBound="ddlToStyle_DataBound"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>

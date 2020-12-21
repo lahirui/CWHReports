@@ -107,7 +107,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">Style From:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlFromStyle" style="width:300px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlFromStyle" style="width:300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                             </div>
                                         </div>
                                        
@@ -116,7 +116,7 @@
                                          <div class="form-group">
                                             <label class="control-label col-md-3" for="so" style="font-family: Georgia">To:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlToStyle" style="width:300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToStyle_DataBound"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlToStyle" style="width:300px" runat="server"  CssClass="form-control" OnDataBound="ddlToStyle_DataBound"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">Rack From:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlFromRack" style="width:300px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlFromRack" style="width:300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                             </div>
                                         </div>
                                        
@@ -136,7 +136,7 @@
                                          <div class="form-group">
                                             <label class="control-label col-md-3" for="so" style="font-family: Georgia">To:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlToRack" style="width:300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToRack_DataBound"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlToRack" style="width:300px" runat="server"  CssClass="form-control" OnDataBound="ddlToRack_DataBound"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">Pallet From:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlFromPallet" style="width:300px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlFromPallet" style="width:300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                             </div>
                                         </div>
                                        
@@ -156,7 +156,7 @@
                                          <div class="form-group">
                                             <label class="control-label col-md-3" for="so" style="font-family: Georgia">To:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlToPallet" style="width:300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToPallet_DataBound"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlToPallet" style="width:300px" runat="server"  CssClass="form-control" OnDataBound="ddlToPallet_DataBound"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">CPO From:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlFromCPO" style="width:300px" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlFromCPO" style="width:300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                             </div>
                                         </div>
                                        
@@ -176,7 +176,7 @@
                                          <div class="form-group">
                                             <label class="control-label col-md-3" for="so" style="font-family: Georgia">To:</label>
                                             <div class="col-md-8">
-                                                <asp:DropDownList ID="ddlToCPO" style="width:300px" runat="server" AutoPostBack="true" CssClass="form-control" OnDataBound="ddlToCPO_DataBound"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlToCPO" style="width:300px" runat="server"  CssClass="form-control" OnDataBound="ddlToCPO_DataBound"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>

@@ -24,20 +24,21 @@ namespace PDCSReporting
 
         protected void CPODropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* if (CPODropDownList.SelectedIndex != 0)
-            {
-                SODropDownList.Items.Clear();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+            /* if (CPODropDownList.SelectedIndex != 0)
+             {
+                 SODropDownList.Items.Clear();
 
-                details = dba.getSOByCPOId(CPODropDownList.SelectedItem.Text);
-                SODropDownList.DataSource = details;
-                SODropDownList.DataTextField = "SO";
-                SODropDownList.DataValueField = "SO";
-                SODropDownList.DataBind();
-            }
-            else
-            {
-                SODropDownList.Items.Clear();
-            }*/
+                 details = dba.getSOByCPOId(CPODropDownList.SelectedItem.Text);
+                 SODropDownList.DataSource = details;
+                 SODropDownList.DataTextField = "SO";
+                 SODropDownList.DataValueField = "SO";
+                 SODropDownList.DataBind();
+             }
+             else
+             {
+                 SODropDownList.Items.Clear();
+             }*/
         }
 
         protected void GenerateReportButton_Click(object sender, EventArgs e)

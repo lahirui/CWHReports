@@ -33,6 +33,7 @@ namespace PDCSReporting
                     ddlToStyle.DataBind();
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             }
         }
 

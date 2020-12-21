@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cpo" style="font-family: Georgia">AOD:</label>
                                     <div class="col-sm-6 col-md-6 col-lg-6">
-                                        <asp:DropDownList ID="ddlAodNumbers" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlAodNumbers" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,9 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/utils.js"></script>
 
+    <script src="Scripts/select2.full.min.js"></script>
+    <link href="Content/select2.min.css" rel="stylesheet" />
+
     <script>
         $(document).ready(function () {
             $('.dropdown-submenu a.test').on("click", function (e) {
@@ -21,6 +24,20 @@
         function openMyModal() {
             $('#L-OUTandC-OUTModal').modal('show');
         }
+
+         $(document).ready(function () {
+            $("#<%=ddlFromPallet.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+            });
+        });
+        $(document).ready(function () {
+            $("#<%=ddlToPallet.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+            });
+        });
+
     </script>
 </asp:Content>
 
@@ -59,12 +76,12 @@
                                         <label class="control-label col-sm-2 col-md-2 col-lg-2" for="team" style="font-family: Georgia">Pallet From:</label>
                                         <div class="col-sm-3 col-md-3 col-lg-3">
 
-                                            <asp:DropDownList ID="ddlFromPallet" CssClass="form-control" Font-Names="Georgia" AutoPostBack="true" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlFromPallet" CssClass="form-control" Font-Names="Georgia"  runat="server"></asp:DropDownList>
 
                                         </div>
                                         <label class="control-label col-sm-2 col-md-2 col-lg-2" for="team" style="font-family: Georgia">To:</label>
                                         <div class="col-sm-3 col-md-3 col-lg-3">
-                                            <asp:DropDownList ID="ddlToPallet" CssClass="form-control" Font-Names="Georgia" AutoPostBack="true" runat="server" OnDataBound="ddlToPallet_DataBound"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlToPallet" CssClass="form-control" Font-Names="Georgia"  runat="server" OnDataBound="ddlToPallet_DataBound"></asp:DropDownList>
                                         </div>
 
                                     </div>
