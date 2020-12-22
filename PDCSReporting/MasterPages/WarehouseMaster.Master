@@ -86,6 +86,7 @@
                             <li><a tabindex="-1" href="../StockSummaryReport.aspx">Stock Summary Report</a></li>
                             <li><a tabindex="-1" href="../StockDetailedReport.aspx">Stock Detailed Report</a></li>                         
                             <li><a tabindex="-1" href="../StockTakePalletDetails.aspx">Stock Take Pallet Details</a></li>                         
+                            <li><a tabindex="-1" href="../CartonWiseStockReport.aspx">Carton Wise Stock Report</a></li>                         
                         </ul>
                     </li>
 

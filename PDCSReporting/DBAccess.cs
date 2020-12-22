@@ -764,6 +764,42 @@ namespace PDCSReporting
             }
         }
 
+        public CartonWiseStockReportDS getCartonWiseStockReportDetails(string fromDate, string toDate)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.BoxCPOAllocationDetails.CPO, " +
+                  "dbo.ProdOrders.Code AS MPO, dbo.CartonDetails.Quantity " +
+"FROM     dbo.Colors INNER JOIN " +
+                  "dbo.CartonDetails INNER JOIN " +
+                  "dbo.Boxes INNER JOIN " +
+                  "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                  "dbo.Products INNER JOIN " +
+                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id ON dbo.CartonDetails.ProductId = dbo.Products.Id ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
+                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                  "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
+                  "dbo.Locations INNER JOIN " +
+                  "dbo.Pallets ON dbo.Locations.Id = dbo.Pallets.LocationId ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id " +
+"WHERE(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) >= CAST('" + fromDate + "' AS date)) AND(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) <= CAST('" + toDate + "' AS date)) " +
+"ORDER BY Location, Pallet, dbo.Boxes.BoxCode");
 
+
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (CartonWiseStockReportDS Customer = new CartonWiseStockReportDS())
+                {
+                    sda.Fill(Customer, "CartonWiseStockReportDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
     }
 }

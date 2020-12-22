@@ -140,6 +140,7 @@
   <ItemGroup>
     <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
+    <Content Include="CartonWiseStockReport.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1866,6 +1867,20 @@
       <DependentUpon>GoodsReceivedSummaryDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CartonWiseStockReportDS.xsc">
+      <DependentUpon>CartonWiseStockReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CartonWiseStockReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CartonWiseStockReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CartonWiseStockReportDS.xss">
+      <DependentUpon>CartonWiseStockReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2045,6 +2060,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BSScannedBoxDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CartonWiseStockReport.aspx.cs">
+      <DependentUpon>CartonWiseStockReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartonWiseStockReport.aspx.designer.cs">
+      <DependentUpon>CartonWiseStockReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CartonWiseStockReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartonWiseStockReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Codes\Common.cs" />
@@ -2333,6 +2361,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\StockTakePalletDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\CartonWiseStockReportDesign.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
