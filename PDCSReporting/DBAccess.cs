@@ -484,6 +484,7 @@ namespace PDCSReporting
                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
                                             "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
                                             "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "AND ( dbo.CartonHeaders.WIPArea=2) " +
                                             "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
                                             "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code");
             cmd.CommandTimeout = 0;
@@ -523,6 +524,7 @@ namespace PDCSReporting
                                             "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
                                             "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
                                             "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "AND ( dbo.CartonHeaders.WIPArea=2) " +
                                             "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode " +
                                             "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode");
             cmd.CommandTimeout = 0;
@@ -642,7 +644,7 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-                                            "WHERE(dbo.CartonWips.TransactionType IN(10)) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0) " +
+                                            "WHERE(dbo.CartonWips.TransactionType =10) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0) " +
                                             "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
                                             "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
                                             "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
@@ -680,7 +682,7 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-                                            "WHERE(dbo.CartonWips.TransactionType IN(8, 10)) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0)  " +
+                                            "WHERE(dbo.CartonWips.TransactionType =10) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0)  " +
                                             "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE)<= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
                                             "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
