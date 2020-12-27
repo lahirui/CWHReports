@@ -129,7 +129,7 @@ namespace PDCSReporting
 
         protected void ddlToFactory_DataBound(object sender, EventArgs e)
         {
-            ddlToFactory.SelectedIndex = ddlFromFactory.Items.Count - 1;
+           ddlToFactory.SelectedIndex = ddlFromFactory.Items.Count - 1;
         }
 
         protected void ddlToAOD_DataBound(object sender, EventArgs e)

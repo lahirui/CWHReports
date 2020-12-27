@@ -649,6 +649,7 @@ namespace PDCSReporting
                                             "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
                                             "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
                                             "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "AND (dbo.AODs.LorryNumber IS NOT NULL) "+
                                             "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
                                             "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
             cmd.CommandTimeout = 0;
@@ -684,6 +685,7 @@ namespace PDCSReporting
                                                               "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
                                             "WHERE(dbo.CartonWips.TransactionType =10) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0)  " +
                                             "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE)<= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "AND (dbo.AODs.LorryNumber IS NOT NULL) "+
                                             "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
                                             "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
             cmd.CommandTimeout = 0;
