@@ -113,6 +113,17 @@
                     </div>
                 </div>
 
+                <div class="col-sm-2 col-md-2 col-lg-2 ">
+                    <div class="list-group" style="border-color: #da532c; color: whitesmoke">
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-folder"></span>  AODs</div>
+                        <a href="FactoryDAOD.aspx" class="list-group-item" style="border-top-color: #da532c; border-top-width: 3px; border-bottom-width: 3px; border-bottom-color:#da532c; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Dispatched AODs</h6>
+                        </a>
+                    </div>
+                </div>
+
+
+
                  
 
             </div>

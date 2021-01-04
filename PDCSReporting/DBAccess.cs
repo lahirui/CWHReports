@@ -914,5 +914,67 @@ namespace PDCSReporting
                 }
             }
         }
+
+        public DataTable getAODDetailsforPrintN(int AODId)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand newCmd = conn.CreateCommand();
+            newCmd.Connection = conn;
+            newCmd.CommandType = CommandType.Text;
+
+            newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                 "FROM dbo.AODBoxDetails INNER JOIN " +
+                                 "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                 "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                 "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                 "dbo.Products INNER JOIN " +
+                                 "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                 "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                 "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id ON dbo.CartonDetails.ProductId = dbo.Products.Id " +
+                                 "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") " +
+                                 "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+                                 "ORDER BY Colour, Size";
+
+            SqlDataAdapter da = new SqlDataAdapter(newCmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+
+        public string getLorryNumber(int AODId)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand com = new SqlCommand("SELECT LorryNumber FROM dbo.AODs WHERE (Id = " + AODId + ")", conn);
+
+            string AODNumber = com.ExecuteScalar().ToString();
+            conn.Close();
+            return AODNumber;
+        }
+
+        public string getDestination(int AODId)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand com = new SqlCommand("SELECT DstinationWarehouse FROM dbo.AODs WHERE (Id = " + AODId + ")", conn);
+
+            string destination = com.ExecuteScalar().ToString();
+            conn.Close();
+            return destination;
+        }
+
+
+
     }
 }
