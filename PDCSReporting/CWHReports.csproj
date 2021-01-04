@@ -226,6 +226,7 @@
     <Content Include="Scripts\i18n\zh-TW.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="FactoryTransfers.aspx" />
     <Content Include="ShipmentDetails.aspx" />
     <Content Include="ShipmentSummary.aspx" />
     <Content Include="SingleScannedRFIDs.aspx" />
@@ -1881,6 +1882,20 @@
       <DependentUpon>CartonWiseStockReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="FactoryTransfersDS.xsc">
+      <DependentUpon>FactoryTransfersDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransfersDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FactoryTransfersDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransfersDS.xss">
+      <DependentUpon>FactoryTransfersDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2120,6 +2135,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FactoryTransfersDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FactoryTransfersDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2194,6 +2215,13 @@
     </Compile>
     <Compile Include="ScannedReportCPOWise.aspx.designer.cs">
       <DependentUpon>ScannedReportCPOWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryTransfers.aspx.cs">
+      <DependentUpon>FactoryTransfers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryTransfers.aspx.designer.cs">
+      <DependentUpon>FactoryTransfers.aspx</DependentUpon>
     </Compile>
     <Compile Include="ShipmentDetails.aspx.cs">
       <DependentUpon>ShipmentDetails.aspx</DependentUpon>
@@ -2366,6 +2394,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\CartonWiseStockReportDesign.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\FactoryTransfers.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -75,6 +75,7 @@
                             <li><a tabindex="-1" href="../GoodsReceivedDetailes.aspx">Good Received Details</a></li>
                             <li><a tabindex="-1" href="../ShipmentSummary.aspx">Shipment Summary</a></li>
                             <li><a tabindex="-1" href="../ShipmentDetails.aspx">Shipment Details</a></li>
+                            <li><a tabindex="-1" href="../FactoryTransfers.aspx">Factory Transfer Details</a></li>
                             <li> <hr /></li>
                           <li><a tabindex="-1" href="../SingleScannedRFIDs.aspx">Scanned RFIDs Details - (Single Scan)</a></li>
                         </ul>
