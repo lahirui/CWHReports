@@ -1315,7 +1315,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Stock Detailed Report</Value>
+                  <Value>On Hand Stock Detailed Report</Value>
                   <Style>
                     <FontFamily>Georgia</FontFamily>
                     <FontSize>16pt</FontSize>

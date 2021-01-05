@@ -78,7 +78,7 @@
 
     <div class="container-fluid">
         <div class="page-header" style="padding-top:80px;">
-            <h1 style="font-family: Georgia; color: #da532c;">Stock Detailed Report</h1>
+            <h1 style="font-family: Georgia; color: #da532c;">On Hand Stock Detailed Report</h1>
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
@@ -96,7 +96,7 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #da532c;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title" style="font-family: Georgia; color: white; font-weight: 500">Stock Detailed Report</h3>
+                    <h3 class="modal-title" style="font-family: Georgia; color: white; font-weight: 500">On Hand Stock Detailed Report</h3>
                 </div>
                 <div class="modal-body">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">

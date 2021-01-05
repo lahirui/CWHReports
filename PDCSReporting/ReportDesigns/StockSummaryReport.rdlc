@@ -896,7 +896,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Stock Summary Report</Value>
+                  <Value>On Hand Stock Summary Report</Value>
                   <Style>
                     <FontFamily>Georgia</FontFamily>
                     <FontSize>16pt</FontSize>
