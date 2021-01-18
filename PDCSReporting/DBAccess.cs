@@ -440,7 +440,20 @@ namespace PDCSReporting
                 conn.Open();
             }
 
-            SqlCommand cmd = new SqlCommand("SELECT  dbo.AODs.AODNumber AS AOD, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.CartonDetails.Quantity " +
+            //SqlCommand cmd = new SqlCommand("SELECT  dbo.AODs.AODNumber AS AOD, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.CartonDetails.Quantity " +
+            //                                "FROM     dbo.AODs INNER JOIN " +
+            //                                                  "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+            //                                                  "dbo.Styles INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId INNER JOIN " +
+            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                  "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id " +
+            //                                "WHERE(dbo.AODs.id = " + AODId + ") AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
+            //                                "ORDER BY AOD, dbo.CartonHeaders.WIPArea, BarCode, Style, Colour, Size");
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.AODs.AODNumber AS AOD, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, dbo.Styles.Code AS Style, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.CartonDetails.Quantity " +
                                             "FROM     dbo.AODs INNER JOIN " +
                                                               "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
                                                               "dbo.Styles INNER JOIN " +
@@ -449,9 +462,12 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id " +
-                                            "WHERE(dbo.AODs.id = " + AODId + ") AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
-                                            "ORDER BY AOD, dbo.CartonHeaders.WIPArea, BarCode, Style, Colour, Size");
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
+                                            "WHERE(dbo.AODs.id = " + AODId + ")AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
+                                            "ORDER BY AOD, dbo.CartonHeaders.WIPArea, BarCode, Style,MPO, CPO, Colour, Size");
+
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
                 cmd.Connection = conn;

@@ -293,6 +293,10 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnMPO;
+            
+            private global::System.Data.DataColumn columnCPO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AODUnavailableQuantitiesDSDataTable() {
@@ -384,6 +388,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MPOColumn {
+                get {
+                    return this.columnMPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CPOColumn {
+                get {
+                    return this.columnCPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +439,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AODUnavailableQuantitiesDSRow AddAODUnavailableQuantitiesDSRow(string AOD, string Style, string Colour, string Size, string BarCode, int WIPArea, int Quantity) {
+            public AODUnavailableQuantitiesDSRow AddAODUnavailableQuantitiesDSRow(string AOD, string Style, string Colour, string Size, string BarCode, int WIPArea, int Quantity, string MPO, string CPO) {
                 AODUnavailableQuantitiesDSRow rowAODUnavailableQuantitiesDSRow = ((AODUnavailableQuantitiesDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         AOD,
@@ -428,7 +448,9 @@ namespace PDCSReporting {
                         Size,
                         BarCode,
                         WIPArea,
-                        Quantity};
+                        Quantity,
+                        MPO,
+                        CPO};
                 rowAODUnavailableQuantitiesDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAODUnavailableQuantitiesDSRow);
                 return rowAODUnavailableQuantitiesDSRow;
@@ -458,6 +480,8 @@ namespace PDCSReporting {
                 this.columnBarCode = base.Columns["BarCode"];
                 this.columnWIPArea = base.Columns["WIPArea"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnMPO = base.Columns["MPO"];
+                this.columnCPO = base.Columns["CPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +501,10 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnWIPArea);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnMPO = new global::System.Data.DataColumn("MPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMPO);
+                this.columnCPO = new global::System.Data.DataColumn("CPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPO);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_AODUnavailableQuantitiesDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "AODUnavailableQuantitiesDS");
             }
@@ -733,6 +761,38 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableAODUnavailableQuantitiesDS.MPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MPO\' in table \'AODUnavailableQuantitiesDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAODUnavailableQuantitiesDS.MPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableAODUnavailableQuantitiesDS.CPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'AODUnavailableQuantitiesDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAODUnavailableQuantitiesDS.CPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsAODNull() {
                 return this.IsNull(this.tableAODUnavailableQuantitiesDS.AODColumn);
             }
@@ -813,6 +873,30 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableAODUnavailableQuantitiesDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMPONull() {
+                return this.IsNull(this.tableAODUnavailableQuantitiesDS.MPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMPONull() {
+                this[this.tableAODUnavailableQuantitiesDS.MPOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCPONull() {
+                return this.IsNull(this.tableAODUnavailableQuantitiesDS.CPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCPONull() {
+                this[this.tableAODUnavailableQuantitiesDS.CPOColumn] = global::System.Convert.DBNull;
             }
         }
         

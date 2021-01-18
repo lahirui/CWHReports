@@ -18,12 +18,29 @@
     <link href="Content/select2.min.css" rel="stylesheet" />
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        <%--  $(document).ready(function () {
             $("#<%=ddlAodNumbers.ClientID%>").select2({
                 placeholder: "Select CPO",
                 allowClear: true
             });
+        });--%>
+
+        $(document).ready(function () {
+            LoadSelect2();
         });
+
+        var prm;
+        if (typeof (Sys) !== 'undefined') {
+            prm = Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function (sender, args) {
+                { { scopeName } } _init();
+            });
+        }
+        function LoadSelect2() {
+             $("#<%=ddlAodNumbers.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+            });
+        }
     </script>
 </asp:Content>
 
@@ -36,7 +53,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#DataFilterModal" style="background-color:#da532c;">Setup Report</button>
+                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#DataFilterModal" style="background-color:#da532c;" onclick="LoadSelect2()">Setup Report</button>
             </div>
         </div>
         <div class="row" style="padding-top: 20px; padding-bottom: 10px;">
@@ -59,7 +76,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cpo" style="font-family: Georgia">AOD:</label>
                                     <div class="col-sm-6 col-md-6 col-lg-6">
-                                        <asp:DropDownList ID="ddlAodNumbers" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlAodNumbers" Width="300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
