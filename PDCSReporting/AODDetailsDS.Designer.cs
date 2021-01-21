@@ -289,6 +289,10 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnMPO;
+            
+            private global::System.Data.DataColumn columnCPO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AODDetailsDSDataTable() {
@@ -364,6 +368,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MPOColumn {
+                get {
+                    return this.columnMPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CPOColumn {
+                get {
+                    return this.columnCPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +419,16 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AODDetailsDSRow AddAODDetailsDSRow(string Style, string Colour, string Size, int NoOfBoxes, int Quantity) {
+            public AODDetailsDSRow AddAODDetailsDSRow(string Style, string Colour, string Size, int NoOfBoxes, int Quantity, string MPO, string CPO) {
                 AODDetailsDSRow rowAODDetailsDSRow = ((AODDetailsDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Style,
                         Colour,
                         Size,
                         NoOfBoxes,
-                        Quantity};
+                        Quantity,
+                        MPO,
+                        CPO};
                 rowAODDetailsDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAODDetailsDSRow);
                 return rowAODDetailsDSRow;
@@ -434,6 +456,8 @@ namespace PDCSReporting {
                 this.columnSize = base.Columns["Size"];
                 this.columnNoOfBoxes = base.Columns["NoOfBoxes"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnMPO = base.Columns["MPO"];
+                this.columnCPO = base.Columns["CPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,6 +473,10 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnNoOfBoxes);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnMPO = new global::System.Data.DataColumn("MPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMPO);
+                this.columnCPO = new global::System.Data.DataColumn("CPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPO);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_AODDetailsDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "AODDetailsDS");
             }
@@ -673,6 +701,38 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableAODDetailsDS.MPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MPO\' in table \'AODDetailsDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAODDetailsDS.MPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableAODDetailsDS.CPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'AODDetailsDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAODDetailsDS.CPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStyleNull() {
                 return this.IsNull(this.tableAODDetailsDS.StyleColumn);
             }
@@ -729,6 +789,30 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableAODDetailsDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMPONull() {
+                return this.IsNull(this.tableAODDetailsDS.MPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMPONull() {
+                this[this.tableAODDetailsDS.MPOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCPONull() {
+                return this.IsNull(this.tableAODDetailsDS.CPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCPONull() {
+                this[this.tableAODDetailsDS.CPOColumn] = global::System.Convert.DBNull;
             }
         }
         

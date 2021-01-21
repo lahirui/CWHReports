@@ -942,18 +942,35 @@ namespace PDCSReporting
             newCmd.Connection = conn;
             newCmd.CommandType = CommandType.Text;
 
-            newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                                 "FROM dbo.AODBoxDetails INNER JOIN " +
-                                 "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                 "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-                                 "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
-                                 "dbo.Products INNER JOIN " +
-                                 "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                 "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                 "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id ON dbo.CartonDetails.ProductId = dbo.Products.Id " +
-                                 "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") " +
-                                 "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
-                                 "ORDER BY Colour, Size";
+            //newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                     "FROM dbo.AODBoxDetails INNER JOIN " +
+            //                     "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                     "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+            //                     "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+            //                     "dbo.Products INNER JOIN " +
+            //                     "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                     "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                     "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id ON dbo.CartonDetails.ProductId = dbo.Products.Id " +
+            //                     "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") " +
+            //                     "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+            //                     "ORDER BY Colour, Size";
+
+            newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, " +
+                                                 "SUM(dbo.CartonDetails.Quantity)AS Quantity " +
+                                "FROM     dbo.AODBoxDetails INNER JOIN " +
+                                                 "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                 "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                 "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                 "dbo.Products INNER JOIN " +
+                                                 "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                 "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                 "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                 "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                 "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
+                                "WHERE(dbo.AODBoxDetails.AODId = " + AODId + ") AND(dbo.CartonDetails.TransactionType <> 8 OR " +
+                                                 "dbo.CartonDetails.TransactionType <> 10) AND(dbo.CartonDetails.Quantity > 0) " +
+                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO " +
+                                "ORDER BY Colour, Size";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
             DataTable dt = new DataTable();

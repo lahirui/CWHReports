@@ -12,7 +12,7 @@
   <xs:element name="AODDetailsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AODDetailsDS" msprop:Generator_UserDSName="AODDetailsDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="AODDetailsDS" msprop:Generator_TableClassName="AODDetailsDSDataTable" msprop:Generator_TableVarName="tableAODDetailsDS" msprop:Generator_TablePropName="_AODDetailsDS" msprop:Generator_RowDeletingName="AODDetailsDSRowDeleting" msprop:Generator_RowChangingName="AODDetailsDSRowChanging" msprop:Generator_RowEvHandlerName="AODDetailsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="AODDetailsDSRowDeleted" msprop:Generator_UserTableName="AODDetailsDS" msprop:Generator_RowChangedName="AODDetailsDSRowChanged" msprop:Generator_RowEvArgName="AODDetailsDSRowChangeEvent" msprop:Generator_RowClassName="AODDetailsDSRow">
+        <xs:element name="AODDetailsDS" msprop:Generator_TableClassName="AODDetailsDSDataTable" msprop:Generator_TableVarName="tableAODDetailsDS" msprop:Generator_RowChangedName="AODDetailsDSRowChanged" msprop:Generator_TablePropName="_AODDetailsDS" msprop:Generator_RowDeletingName="AODDetailsDSRowDeleting" msprop:Generator_RowChangingName="AODDetailsDSRowChanging" msprop:Generator_RowEvHandlerName="AODDetailsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="AODDetailsDSRowDeleted" msprop:Generator_RowClassName="AODDetailsDSRow" msprop:Generator_UserTableName="AODDetailsDS" msprop:Generator_RowEvArgName="AODDetailsDSRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Style" msprop:Generator_ColumnVarNameInTable="columnStyle" msprop:Generator_ColumnPropNameInRow="Style" msprop:Generator_ColumnPropNameInTable="StyleColumn" msprop:Generator_UserColumnName="Style" type="xs:string" minOccurs="0" />
@@ -20,6 +20,8 @@
               <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
               <xs:element name="NoOfBoxes" msprop:Generator_ColumnVarNameInTable="columnNoOfBoxes" msprop:Generator_ColumnPropNameInRow="NoOfBoxes" msprop:Generator_ColumnPropNameInTable="NoOfBoxesColumn" msprop:Generator_UserColumnName="NoOfBoxes" type="xs:int" minOccurs="0" />
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="MPO" msprop:Generator_ColumnVarNameInTable="columnMPO" msprop:Generator_ColumnPropNameInRow="MPO" msprop:Generator_ColumnPropNameInTable="MPOColumn" msprop:Generator_UserColumnName="MPO" type="xs:string" minOccurs="0" />
+              <xs:element name="CPO" msprop:Generator_ColumnVarNameInTable="columnCPO" msprop:Generator_ColumnPropNameInRow="CPO" msprop:Generator_ColumnPropNameInTable="CPOColumn" msprop:Generator_UserColumnName="CPO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -11,6 +11,8 @@ namespace PDCSReporting
     public partial class FactoryDAOD : System.Web.UI.Page
     {
         DBAccess dba = new DBAccess();
+        string LorryNumber;
+        string destination;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -28,8 +30,19 @@ namespace PDCSReporting
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(AODDetailsDS);
 
-            string LorryNumber = dba.getLorryNumber(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
-            string destination = dba.getDestination(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
+            LorryNumber = dba.getLorryNumber(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
+            destination = dba.getDestination(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
+            if (LorryNumber == "" || LorryNumber==null)
+            {
+                LorryNumber = "N/A";
+            }
+           
+
+            if (destination == "")
+            {
+                destination = "N/A";
+            }
+            
 
             ReportParameter AODNop = new ReportParameter("AODNumber", AODNumberDropDownList.SelectedItem.Text);
             this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { AODNop });
