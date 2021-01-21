@@ -138,6 +138,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AODCheckList.aspx" />
     <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
     <Content Include="CartonWiseStockReport.aspx" />
@@ -1925,6 +1926,20 @@
       <DependentUpon>AODDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="AODCheckListDS.xsc">
+      <DependentUpon>AODCheckListDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AODCheckListDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AODCheckListDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AODCheckListDS.xss">
+      <DependentUpon>AODCheckListDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2078,6 +2093,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AODCheckList.aspx.cs">
+      <DependentUpon>AODCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AODCheckList.aspx.designer.cs">
+      <DependentUpon>AODCheckList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AODCheckListDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AODCheckListDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="AODDetailsDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2452,6 +2480,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\AODDetailsReportDesign.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\AODCheckList.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

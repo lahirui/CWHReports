@@ -990,7 +990,46 @@ namespace PDCSReporting
             return destination;
         }
 
+        public AODCheckListDS getAODCheckListDetails(string AodNumber)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT dbo.AODs.AODNumber AS AOD, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode, " +
+                                                  "SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                "FROM dbo.AODBoxDetails INNER JOIN " +
+                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
+                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                  "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
+                                "WHERE(dbo.AODs.AODNumber = '" + AodNumber + "') " +
+                                "GROUP BY dbo.AODs.AODNumber, dbo.Styles.Code, dbo.Colors.Code,  dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
+                                "ORDER BY AOD, Style, Colour, MPO, dbo.BoxCPOAllocationDetails.CPO, Size, dbo.Boxes.BoxCode";
 
+
+
+
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (AODCheckListDS Customer = new AODCheckListDS())
+                {
+                    sda.Fill(Customer, "AODCheckListDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
 
     }
 }
