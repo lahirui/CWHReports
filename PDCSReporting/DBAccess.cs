@@ -1031,5 +1031,40 @@ namespace PDCSReporting
             }
         }
 
+        public WIPAtDefaultBoxDS getDefaultBoxDetails(int BoxId, string FromStyle, string ToStyle)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT dbo.Styles.Code AS Style,dbo.BoxCPOAllocationDetails.CPO,dbo.ProdOrders.Code AS MPO, dbo.Colors.Code AS Colour,   dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                "FROM dbo.CartonDetails INNER JOIN " +
+                                                  "dbo.CartonWips ON dbo.CartonDetails.BoxId = dbo.CartonWips.BoxId INNER JOIN " +
+                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonDetails.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id " +
+                                "WHERE(dbo.CartonDetails.BoxId = " + BoxId + ") AND(dbo.CartonWips.WIPArea = 1) AND (dbo.Styles.Code BETWEEN '" + FromStyle + "' AND '" + ToStyle + "')" +
+                                "GROUP BY dbo.Styles.Code, dbo.BoxCPOAllocationDetails.CPO,dbo.ProdOrders.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+                                "ORDER BY dbo.Styles.Code, dbo.BoxCPOAllocationDetails.CPO,dbo.ProdOrders.Code, dbo.Colors.Code, dbo.Sizes.Code";
+
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (WIPAtDefaultBoxDS Customer = new WIPAtDefaultBoxDS())
+                {
+                    sda.Fill(Customer, "WIPAtDefaultBoxDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
+
     }
 }

@@ -1940,6 +1940,7 @@
       <DependentUpon>AODCheckListDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="WIPAtDefaultBox.aspx" />
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2091,6 +2092,20 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WIPAtDefaultBoxDS.xsc">
+      <DependentUpon>WIPAtDefaultBoxDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WIPAtDefaultBoxDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WIPAtDefaultBoxDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WIPAtDefaultBoxDS.xss">
+      <DependentUpon>WIPAtDefaultBoxDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AODCheckList.aspx.cs">
@@ -2399,6 +2414,19 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WIPAtDefaultBox.aspx.cs">
+      <DependentUpon>WIPAtDefaultBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WIPAtDefaultBox.aspx.designer.cs">
+      <DependentUpon>WIPAtDefaultBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WIPAtDefaultBoxDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WIPAtDefaultBoxDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\BSScannedBoxDetailsDS.rdlc">
@@ -2488,6 +2516,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\WIPAtDefaultBox.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -2503,7 +2536,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57566</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57566/</IISUrl>
+          <IISUrl>http://localhost:57568/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
