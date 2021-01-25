@@ -233,6 +233,7 @@
     <Content Include="ShipmentSummary.aspx" />
     <Content Include="SingleScannedRFIDs.aspx" />
     <Content Include="StockDetailedReport.aspx" />
+    <Content Include="StockPositionReport.aspx" />
     <Content Include="StockSummaryReport.aspx" />
     <Content Include="StockTakePalletDetails.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
@@ -2086,6 +2087,20 @@
       <DependentUpon>StockTakePalletDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="StockPositionReportDS.xsc">
+      <DependentUpon>StockPositionReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StockPositionReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockPositionReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StockPositionReportDS.xss">
+      <DependentUpon>StockPositionReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2366,6 +2381,19 @@
       <DependentUpon>StockDetailedReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="StockPositionReport.aspx.cs">
+      <DependentUpon>StockPositionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StockPositionReport.aspx.designer.cs">
+      <DependentUpon>StockPositionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StockPositionReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockPositionReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="StockSummaryReport.aspx.cs">
       <DependentUpon>StockSummaryReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2518,6 +2546,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\WIPAtDefaultBox.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\StockPositionReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

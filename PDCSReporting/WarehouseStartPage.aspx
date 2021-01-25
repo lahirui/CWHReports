@@ -119,10 +119,12 @@
                             <h6 class="list-group-item-heading" style="color: #da532c;">On Hand Stock Summary Report</h6>
                         </a>
 
-                         <a href="StockDetailedReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                         <a href="StockDetailedReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">On Hand Stock Detailed Report</h6>
                         </a>
-
+                        <a href="StockPositionReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Stock Position Report</h6>
+                        </a>
                          
 
 

@@ -1083,5 +1083,43 @@ namespace PDCSReporting
             }
         }
 
+        public StockPositionReportDS getStockPositionReport(string fromStyle, string toStyle, string date)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, RIGHT(dbo.Styles.Code,4) AS Season, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUBSTRING(dbo.Boxes.BoxCode,1,(CHARINDEX('-', dbo.Boxes.BoxCode)-1)) AS Factory, dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.ProdOrders.Code AS MPO, UPPER(dbo.BoxCPOAllocationDetails.CPO) AS CPO, dbo.Boxes.BoxCode, SUM(dbo.CartonDetails.Quantity) as Quantity " +
+                                            "FROM   dbo.Locations INNER JOIN " +
+                                                         "dbo.Boxes INNER JOIN " +
+                                                         "dbo.Styles INNER JOIN " +
+                                                         "dbo.Products INNER JOIN " +
+                                                         "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Styles.Id = dbo.Products.StyleId INNER JOIN " +
+                                                         "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                         "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                         "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                                         "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id ON dbo.Locations.Id = dbo.Pallets.LocationId INNER JOIN " +
+                                                         "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                         "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
+                                            "WHERE    CAST(dbo.CartonDetails.Date as Date) <= CAST('" + date + "' AS Date) " +
+                                                     "AND dbo.Boxes.Id IN(SELECT BoxId " +
+                                                                          "FROM   dbo.CartonWips " +
+                                                                          "WHERE(CAST(EffectiveDate AS Date) <= CAST('" + date + "' AS Date)) AND(WIPArea = 2) " +
+                                                                          "GROUP BY BoxId " +
+                                                                          "HAVING(SUM(Quantity) > 0)) " +
+                                            "GROUP BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, SUBSTRING(dbo.Boxes.BoxCode, 1, (CHARINDEX('-', dbo.Boxes.BoxCode) - 1)), dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode " +
+                                            "HAVING SUM(dbo.CartonDetails.Quantity) > 0 AND(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND'" + toStyle + "') " +
+                                            "ORDER BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, SUBSTRING(dbo.Boxes.BoxCode, 1, (CHARINDEX('-', dbo.Boxes.BoxCode) - 1)), dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (StockPositionReportDS FHC = new StockPositionReportDS())
+                {
+                    sda.Fill(FHC, "StockPositionReportDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
+
     }
 }

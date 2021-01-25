@@ -94,7 +94,8 @@
                         <a class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown" style="font-family: Georgia;" tabindex="-1" href="#"> On Hand Stock Reports<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a tabindex="-1" href="../StockSummaryReport.aspx">On Hand Stock Summary Report</a></li>
-                            <li><a tabindex="-1" href="../StockDetailedReport.aspx">On Hand Stock Detailed Report</a></li>                         
+                            <li><a tabindex="-1" href="../StockDetailedReport.aspx">On Hand Stock Detailed Report</a></li> 
+                            <li><a tabindex="-1" href="../StockPositionReport.aspx">Stock Position Report</a></li>                        
                         
                         </ul>
                     </li>
