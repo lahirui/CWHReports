@@ -281,7 +281,7 @@ namespace PDCSReporting
                                    "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
                                    "dbo.BoxCPOAllocationDetails INNER JOIN " +
                                    "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                                   "WHERE(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+                                   "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
                                    "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
                                    "ORDER BY dbo.Sizes.Code";
 
@@ -324,7 +324,7 @@ namespace PDCSReporting
                                  "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
                                  "dbo.BoxCPOAllocationDetails INNER JOIN " +
                                  "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                                 "WHERE(dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+                                 "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
                                  "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
                                  "ORDER BY Size";
 
@@ -465,7 +465,7 @@ namespace PDCSReporting
                                                               "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
                                                               "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
-                                            "WHERE(dbo.AODs.id = " + AODId + ")AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
+                                            "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.AODs.id = " + AODId + ")AND(dbo.CartonHeaders.WIPArea IN(1, 2)) " +
                                             "ORDER BY AOD, dbo.CartonHeaders.WIPArea, BarCode, Style,MPO, CPO, Colour, Size");
 
             using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -498,7 +498,7 @@ namespace PDCSReporting
                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
                                                               "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                            "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
                                             "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "AND ( dbo.CartonHeaders.WIPArea=2) " +
                                             "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
@@ -535,7 +535,7 @@ namespace PDCSReporting
                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
                                                               "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE " +
+                                            "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND " +
                                             "(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') AND " +
                                             "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
                                             "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
@@ -830,7 +830,7 @@ namespace PDCSReporting
                   "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
                   "dbo.Locations INNER JOIN " +
                   "dbo.Pallets ON dbo.Locations.Id = dbo.Pallets.LocationId ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id " +
-"WHERE(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) >= CAST('" + fromDate + "' AS date)) AND(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) <= CAST('" + toDate + "' AS date)) " +
+"WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) >= CAST('" + fromDate + "' AS date)) AND(CAST(dbo.FGStockTakePostCountCartons.EffectiveDate AS date) <= CAST('" + toDate + "' AS date)) " +
 "ORDER BY Location, Pallet, dbo.Boxes.BoxCode");
 
 
@@ -1097,7 +1097,7 @@ namespace PDCSReporting
                                                          "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id ON dbo.Locations.Id = dbo.Pallets.LocationId INNER JOIN " +
                                                          "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
                                                          "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
-                                            "WHERE    CAST(dbo.CartonDetails.Date as Date) <= CAST('" + date + "' AS Date) " +
+                                            "WHERE  (dbo.CartonHeaders.IsDeleted = 0) AND  CAST(dbo.CartonDetails.Date as Date) <= CAST('" + date + "' AS Date) " +
                                                      "AND dbo.Boxes.Id IN(SELECT BoxId " +
                                                                           "FROM   dbo.CartonWips " +
                                                                           "WHERE(CAST(EffectiveDate AS Date) <= CAST('" + date + "' AS Date)) AND(WIPArea = 2) " +
