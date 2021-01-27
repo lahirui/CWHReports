@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace PDCSReporting
 {
-    public partial class GoodsReceivedDetailes : System.Web.UI.Page
+    public partial class FactoryTransferDetails : System.Web.UI.Page
     {
         DBAccess dba = new DBAccess();
         Common com = new Common();
@@ -24,7 +24,7 @@ namespace PDCSReporting
                 calToDate.SelectedDate = DateTime.Today;
                 txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
                 txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
-               
+                
                 DataSet dsFactory = new DataSet();
                 dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM     AODs ORDER BY SourceWarehouse");
                 if (dsFactory.Tables[0].Rows.Count > 0)
@@ -77,6 +77,7 @@ namespace PDCSReporting
 
         protected void lbFromDate_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             if (calFromDate.Visible)
             {
                 calFromDate.Visible = false;
@@ -97,12 +98,14 @@ namespace PDCSReporting
 
         protected void calFromDate_SelectionChanged(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
             calFromDate.Visible = false;
         }
 
         protected void lbToDate_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             if (calToDate.Visible)
             {
                 calToDate.Visible = false;
@@ -123,6 +126,7 @@ namespace PDCSReporting
 
         protected void calToDate_SelectionChanged(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
             calToDate.Visible = false;
         }
@@ -159,10 +163,11 @@ namespace PDCSReporting
             {
                 factoryName = dsFac.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
             }
+
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
-            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/GoodsReceivedDetailes.rdlc");
-            GoodsReceivedDetailesDS output = dba.getGoodsReceivedDetails(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO, factoryName);
-            ReportDataSource ds = new ReportDataSource("GoodsReceivedDetailes", output.Tables[0]);
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/FactoryTransferDetails.rdlc");
+            FactoryTransferDetailsDS output = dba.getFactoryTransferDetails(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO, factoryName);
+            ReportDataSource ds = new ReportDataSource("FactoryTransferDetailsDS", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);
 

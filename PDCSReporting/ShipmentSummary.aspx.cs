@@ -13,7 +13,7 @@ namespace PDCSReporting
     {
         DBAccess dba = new DBAccess();
         Common com = new Common();
-
+        string factoryName;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -24,7 +24,7 @@ namespace PDCSReporting
                 calToDate.SelectedDate = DateTime.Today;
                 txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
                 txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
-
+               
                 DataSet dsFactory = new DataSet();
                 dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM     AODs ORDER BY SourceWarehouse");
                 if (dsFactory.Tables[0].Rows.Count > 0)
@@ -153,10 +153,15 @@ namespace PDCSReporting
             string toAOD = ddlToAOD.SelectedItem.Text;
             string fromCPO = ddlFromCPO.SelectedItem.Text;
             string toCPO = ddlToCPO.SelectedItem.Text;
-
+            DataSet dsFac = new DataSet();
+            dsFac = com.ReturnDataSet("SELECT TOP (200) ParamValue FROM     Configurations WHERE(ParamName = N'FactoryName')");
+            if (dsFac.Tables[0].Rows.Count > 0)
+            {
+                factoryName = dsFac.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
+            }
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
             ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/ShipmentSummary.rdlc");
-            ShipmentSummaryDS output = dba.getShipmentSummary(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO);
+            ShipmentSummaryDS output = dba.getShipmentSummary(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO,factoryName);
             ReportDataSource ds = new ReportDataSource("ShipmentSummaryDS", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);

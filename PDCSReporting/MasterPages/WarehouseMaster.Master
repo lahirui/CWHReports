@@ -78,6 +78,8 @@
                             <li><a tabindex="-1" href="../FactoryTransfers.aspx">Factory Transfer Details</a></li>
                             <li><a tabindex="-1" href="../AODCheckList.aspx">AOD Check List</a></li>
                             <li><a tabindex="-1" href="../WIPAtDefaultBox.aspx">WIP at Default Box</a></li>
+                            <li><a tabindex="-1" href="../FactoryTransferSummary.aspx">Factory Transfer Summary</a></li>
+                            <li><a tabindex="-1" href="../FactoryTransferDetails.aspx">Factory Transfer Details</a></li>
                             <li> <hr /></li>
                           <li><a tabindex="-1" href="../SingleScannedRFIDs.aspx">Scanned RFIDs Details - (Single Scan)</a></li>
                         </ul>

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace PDCSReporting
 {
-    public partial class GoodsReceivedDetailes : System.Web.UI.Page
+    public partial class FactoryTransferSummary : System.Web.UI.Page
     {
         DBAccess dba = new DBAccess();
         Common com = new Common();
@@ -77,6 +77,8 @@ namespace PDCSReporting
 
         protected void lbFromDate_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+
             if (calFromDate.Visible)
             {
                 calFromDate.Visible = false;
@@ -97,12 +99,14 @@ namespace PDCSReporting
 
         protected void calFromDate_SelectionChanged(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
             calFromDate.Visible = false;
         }
 
         protected void lbToDate_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             if (calToDate.Visible)
             {
                 calToDate.Visible = false;
@@ -123,6 +127,7 @@ namespace PDCSReporting
 
         protected void calToDate_SelectionChanged(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
             calToDate.Visible = false;
         }
@@ -153,16 +158,18 @@ namespace PDCSReporting
             string toAOD = ddlToAOD.SelectedItem.Text;
             string fromCPO = ddlFromCPO.SelectedItem.Text;
             string toCPO = ddlToCPO.SelectedItem.Text;
+
             DataSet dsFac = new DataSet();
             dsFac = com.ReturnDataSet("SELECT TOP (200) ParamValue FROM     Configurations WHERE(ParamName = N'FactoryName')");
             if (dsFac.Tables[0].Rows.Count > 0)
             {
                 factoryName = dsFac.Tables[0].Rows[0].ItemArray.GetValue(0).ToString();
             }
+
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
-            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/GoodsReceivedDetailes.rdlc");
-            GoodsReceivedDetailesDS output = dba.getGoodsReceivedDetails(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO, factoryName);
-            ReportDataSource ds = new ReportDataSource("GoodsReceivedDetailes", output.Tables[0]);
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/FactoryTransferSummary.rdlc");
+            FactoryTransferSummaryDS output = dba.getFactoryTransferSummary(dateFrom, dateTo, fromFactory, toFactory, fromAOD, toAOD, fromCPO, toCPO,factoryName);
+            ReportDataSource ds = new ReportDataSource("FactoryTransferSummaryDS", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);
 

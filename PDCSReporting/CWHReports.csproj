@@ -160,6 +160,8 @@
     <Content Include="DailyScannedRFIDTags.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="FactoryDAOD.aspx" />
+    <Content Include="FactoryTransferDetails.aspx" />
+    <Content Include="FactoryTransferSummary.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GoodsReceivedDetailes.aspx" />
     <Content Include="GoodsReceivedSummary.aspx" />
@@ -1942,6 +1944,34 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="WIPAtDefaultBox.aspx" />
+    <Content Include="FactoryTransferDetailsDS.xsc">
+      <DependentUpon>FactoryTransferDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransferDetailsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FactoryTransferDetailsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransferDetailsDS.xss">
+      <DependentUpon>FactoryTransferDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransferSummaryDS.xsc">
+      <DependentUpon>FactoryTransferSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransferSummaryDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FactoryTransferSummaryDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FactoryTransferSummaryDS.xss">
+      <DependentUpon>FactoryTransferSummaryDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2241,10 +2271,36 @@
       <DependentUpon>FactoryTransferAODDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="FactoryTransferDetails.aspx.cs">
+      <DependentUpon>FactoryTransferDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryTransferDetails.aspx.designer.cs">
+      <DependentUpon>FactoryTransferDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryTransferDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FactoryTransferDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="FactoryTransfersDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FactoryTransfersDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="FactoryTransferSummary.aspx.cs">
+      <DependentUpon>FactoryTransferSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryTransferSummary.aspx.designer.cs">
+      <DependentUpon>FactoryTransferSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryTransferSummaryDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FactoryTransferSummaryDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -2551,6 +2607,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\StockPositionReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\FactoryTransferDetails.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportDesigns\FactoryTransferSummary.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -299,6 +299,8 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnMPO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public GoodsReceivedDetailesDSDataTable() {
@@ -414,6 +416,14 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MPOColumn {
+                get {
+                    return this.columnMPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GoodsReceivedDetailesDSRow AddGoodsReceivedDetailesDSRow(System.DateTime Date, string LorryNumber, string SourceFactory, string AOD, string CPO, string Style, string Colour, string Size, string CartonNumber, int Quantity) {
+            public GoodsReceivedDetailesDSRow AddGoodsReceivedDetailesDSRow(System.DateTime Date, string LorryNumber, string SourceFactory, string AOD, string CPO, string Style, string Colour, string Size, string CartonNumber, int Quantity, string MPO) {
                 GoodsReceivedDetailesDSRow rowGoodsReceivedDetailesDSRow = ((GoodsReceivedDetailesDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Date,
@@ -461,7 +471,8 @@ namespace PDCSReporting {
                         Colour,
                         Size,
                         CartonNumber,
-                        Quantity};
+                        Quantity,
+                        MPO};
                 rowGoodsReceivedDetailesDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGoodsReceivedDetailesDSRow);
                 return rowGoodsReceivedDetailesDSRow;
@@ -494,6 +505,7 @@ namespace PDCSReporting {
                 this.columnSize = base.Columns["Size"];
                 this.columnCartonNumber = base.Columns["CartonNumber"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnMPO = base.Columns["MPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnCartonNumber);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnMPO = new global::System.Data.DataColumn("MPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMPO);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_GoodsReceivedDetailesDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "GoodsReceivedDetailesDS");
             }
@@ -825,6 +839,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MPO {
+                get {
+                    try {
+                        return ((string)(this[this.tableGoodsReceivedDetailesDS.MPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MPO\' in table \'GoodsReceivedDetailesDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGoodsReceivedDetailesDS.MPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDateNull() {
                 return this.IsNull(this.tableGoodsReceivedDetailesDS.DateColumn);
             }
@@ -941,6 +971,18 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableGoodsReceivedDetailesDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMPONull() {
+                return this.IsNull(this.tableGoodsReceivedDetailesDS.MPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMPONull() {
+                this[this.tableGoodsReceivedDetailesDS.MPOColumn] = global::System.Convert.DBNull;
             }
         }
         

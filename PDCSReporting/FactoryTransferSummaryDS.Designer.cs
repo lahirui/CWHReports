@@ -20,17 +20,17 @@ namespace PDCSReporting {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("ShipmentDetailsDS")]
+    [global::System.Xml.Serialization.XmlRootAttribute("FactoryTransferSummaryDS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ShipmentDetailsDS : global::System.Data.DataSet {
+    public partial class FactoryTransferSummaryDS : global::System.Data.DataSet {
         
-        private ShipmentDetailsDSDataTable tableShipmentDetailsDS;
+        private FactoryTransferSummaryDSDataTable tableFactoryTransferSummaryDS;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ShipmentDetailsDS() {
+        public FactoryTransferSummaryDS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace PDCSReporting {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected ShipmentDetailsDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected FactoryTransferSummaryDS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace PDCSReporting {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["ShipmentDetailsDS"] != null)) {
-                    base.Tables.Add(new ShipmentDetailsDSDataTable(ds.Tables["ShipmentDetailsDS"]));
+                if ((ds.Tables["FactoryTransferSummaryDS"] != null)) {
+                    base.Tables.Add(new FactoryTransferSummaryDSDataTable(ds.Tables["FactoryTransferSummaryDS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace PDCSReporting {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ShipmentDetailsDSDataTable _ShipmentDetailsDS {
+        public FactoryTransferSummaryDSDataTable _FactoryTransferSummaryDS {
             get {
-                return this.tableShipmentDetailsDS;
+                return this.tableFactoryTransferSummaryDS;
             }
         }
         
@@ -127,7 +127,7 @@ namespace PDCSReporting {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ShipmentDetailsDS cln = ((ShipmentDetailsDS)(base.Clone()));
+            FactoryTransferSummaryDS cln = ((FactoryTransferSummaryDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace PDCSReporting {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["ShipmentDetailsDS"] != null)) {
-                    base.Tables.Add(new ShipmentDetailsDSDataTable(ds.Tables["ShipmentDetailsDS"]));
+                if ((ds.Tables["FactoryTransferSummaryDS"] != null)) {
+                    base.Tables.Add(new FactoryTransferSummaryDSDataTable(ds.Tables["FactoryTransferSummaryDS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace PDCSReporting {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableShipmentDetailsDS = ((ShipmentDetailsDSDataTable)(base.Tables["ShipmentDetailsDS"]));
+            this.tableFactoryTransferSummaryDS = ((FactoryTransferSummaryDSDataTable)(base.Tables["FactoryTransferSummaryDS"]));
             if ((initTable == true)) {
-                if ((this.tableShipmentDetailsDS != null)) {
-                    this.tableShipmentDetailsDS.InitVars();
+                if ((this.tableFactoryTransferSummaryDS != null)) {
+                    this.tableFactoryTransferSummaryDS.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace PDCSReporting {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "ShipmentDetailsDS";
+            this.DataSetName = "FactoryTransferSummaryDS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/ShipmentDetailsDS.xsd";
+            this.Namespace = "http://tempuri.org/FactoryTransferSummaryDS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableShipmentDetailsDS = new ShipmentDetailsDSDataTable();
-            base.Tables.Add(this.tableShipmentDetailsDS);
+            this.tableFactoryTransferSummaryDS = new FactoryTransferSummaryDSDataTable();
+            base.Tables.Add(this.tableFactoryTransferSummaryDS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerialize_ShipmentDetailsDS() {
+        private bool ShouldSerialize_FactoryTransferSummaryDS() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace PDCSReporting {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ShipmentDetailsDS ds = new ShipmentDetailsDS();
+            FactoryTransferSummaryDS ds = new FactoryTransferSummaryDS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,41 +270,33 @@ namespace PDCSReporting {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ShipmentDetailsDSRowChangeEventHandler(object sender, ShipmentDetailsDSRowChangeEvent e);
+        public delegate void FactoryTransferSummaryDSRowChangeEventHandler(object sender, FactoryTransferSummaryDSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ShipmentDetailsDSDataTable : global::System.Data.TypedTableBase<ShipmentDetailsDSRow> {
+        public partial class FactoryTransferSummaryDSDataTable : global::System.Data.TypedTableBase<FactoryTransferSummaryDSRow> {
             
             private global::System.Data.DataColumn columnDate;
             
-            private global::System.Data.DataColumn columnLorryNumber;
-            
             private global::System.Data.DataColumn columnSourceFactory;
+            
+            private global::System.Data.DataColumn columnDestinationFactory;
             
             private global::System.Data.DataColumn columnAOD;
             
             private global::System.Data.DataColumn columnCPO;
             
-            private global::System.Data.DataColumn columnStyle;
-            
-            private global::System.Data.DataColumn columnColour;
-            
-            private global::System.Data.DataColumn columnSize;
-            
             private global::System.Data.DataColumn columnCartonNumber;
             
             private global::System.Data.DataColumn columnQuantity;
             
-            private global::System.Data.DataColumn columnMPO;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSDataTable() {
-                this.TableName = "ShipmentDetailsDS";
+            public FactoryTransferSummaryDSDataTable() {
+                this.TableName = "FactoryTransferSummaryDS";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -312,7 +304,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ShipmentDetailsDSDataTable(global::System.Data.DataTable table) {
+            internal FactoryTransferSummaryDSDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -329,7 +321,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ShipmentDetailsDSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected FactoryTransferSummaryDSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -344,17 +336,17 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LorryNumberColumn {
+            public global::System.Data.DataColumn SourceFactoryColumn {
                 get {
-                    return this.columnLorryNumber;
+                    return this.columnSourceFactory;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SourceFactoryColumn {
+            public global::System.Data.DataColumn DestinationFactoryColumn {
                 get {
-                    return this.columnSourceFactory;
+                    return this.columnDestinationFactory;
                 }
             }
             
@@ -376,30 +368,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StyleColumn {
-                get {
-                    return this.columnStyle;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ColourColumn {
-                get {
-                    return this.columnColour;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SizeColumn {
-                get {
-                    return this.columnSize;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn CartonNumberColumn {
                 get {
                     return this.columnCartonNumber;
@@ -416,14 +384,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MPOColumn {
-                get {
-                    return this.columnMPO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -433,55 +393,51 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSRow this[int index] {
+            public FactoryTransferSummaryDSRow this[int index] {
                 get {
-                    return ((ShipmentDetailsDSRow)(this.Rows[index]));
+                    return ((FactoryTransferSummaryDSRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ShipmentDetailsDSRowChangeEventHandler ShipmentDetailsDSRowChanging;
+            public event FactoryTransferSummaryDSRowChangeEventHandler FactoryTransferSummaryDSRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ShipmentDetailsDSRowChangeEventHandler ShipmentDetailsDSRowChanged;
+            public event FactoryTransferSummaryDSRowChangeEventHandler FactoryTransferSummaryDSRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ShipmentDetailsDSRowChangeEventHandler ShipmentDetailsDSRowDeleting;
+            public event FactoryTransferSummaryDSRowChangeEventHandler FactoryTransferSummaryDSRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ShipmentDetailsDSRowChangeEventHandler ShipmentDetailsDSRowDeleted;
+            public event FactoryTransferSummaryDSRowChangeEventHandler FactoryTransferSummaryDSRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddShipmentDetailsDSRow(ShipmentDetailsDSRow row) {
+            public void AddFactoryTransferSummaryDSRow(FactoryTransferSummaryDSRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSRow AddShipmentDetailsDSRow(System.DateTime Date, string LorryNumber, string SourceFactory, string AOD, string CPO, string Style, string Colour, string Size, string CartonNumber, int Quantity, string MPO) {
-                ShipmentDetailsDSRow rowShipmentDetailsDSRow = ((ShipmentDetailsDSRow)(this.NewRow()));
+            public FactoryTransferSummaryDSRow AddFactoryTransferSummaryDSRow(System.DateTime Date, string SourceFactory, string DestinationFactory, string AOD, string CPO, int CartonNumber, int Quantity) {
+                FactoryTransferSummaryDSRow rowFactoryTransferSummaryDSRow = ((FactoryTransferSummaryDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Date,
-                        LorryNumber,
                         SourceFactory,
+                        DestinationFactory,
                         AOD,
                         CPO,
-                        Style,
-                        Colour,
-                        Size,
                         CartonNumber,
-                        Quantity,
-                        MPO};
-                rowShipmentDetailsDSRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowShipmentDetailsDSRow);
-                return rowShipmentDetailsDSRow;
+                        Quantity};
+                rowFactoryTransferSummaryDSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFactoryTransferSummaryDSRow);
+                return rowFactoryTransferSummaryDSRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ShipmentDetailsDSDataTable cln = ((ShipmentDetailsDSDataTable)(base.Clone()));
+                FactoryTransferSummaryDSDataTable cln = ((FactoryTransferSummaryDSDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -489,23 +445,19 @@ namespace PDCSReporting {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ShipmentDetailsDSDataTable();
+                return new FactoryTransferSummaryDSDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnDate = base.Columns["Date"];
-                this.columnLorryNumber = base.Columns["LorryNumber"];
                 this.columnSourceFactory = base.Columns["SourceFactory"];
+                this.columnDestinationFactory = base.Columns["DestinationFactory"];
                 this.columnAOD = base.Columns["AOD"];
                 this.columnCPO = base.Columns["CPO"];
-                this.columnStyle = base.Columns["Style"];
-                this.columnColour = base.Columns["Colour"];
-                this.columnSize = base.Columns["Size"];
                 this.columnCartonNumber = base.Columns["CartonNumber"];
                 this.columnQuantity = base.Columns["Quantity"];
-                this.columnMPO = base.Columns["MPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -513,54 +465,46 @@ namespace PDCSReporting {
             private void InitClass() {
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
-                this.columnLorryNumber = new global::System.Data.DataColumn("LorryNumber", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLorryNumber);
                 this.columnSourceFactory = new global::System.Data.DataColumn("SourceFactory", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSourceFactory);
+                this.columnDestinationFactory = new global::System.Data.DataColumn("DestinationFactory", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDestinationFactory);
                 this.columnAOD = new global::System.Data.DataColumn("AOD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAOD);
                 this.columnCPO = new global::System.Data.DataColumn("CPO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCPO);
-                this.columnStyle = new global::System.Data.DataColumn("Style", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStyle);
-                this.columnColour = new global::System.Data.DataColumn("Colour", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnColour);
-                this.columnSize = new global::System.Data.DataColumn("Size", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSize);
-                this.columnCartonNumber = new global::System.Data.DataColumn("CartonNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCartonNumber = new global::System.Data.DataColumn("CartonNumber", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCartonNumber);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
-                this.columnMPO = new global::System.Data.DataColumn("MPO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMPO);
-                this.ExtendedProperties.Add("Generator_TablePropName", "_ShipmentDetailsDS");
-                this.ExtendedProperties.Add("Generator_UserTableName", "ShipmentDetailsDS");
+                this.ExtendedProperties.Add("Generator_TablePropName", "_FactoryTransferSummaryDS");
+                this.ExtendedProperties.Add("Generator_UserTableName", "FactoryTransferSummaryDS");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSRow NewShipmentDetailsDSRow() {
-                return ((ShipmentDetailsDSRow)(this.NewRow()));
+            public FactoryTransferSummaryDSRow NewFactoryTransferSummaryDSRow() {
+                return ((FactoryTransferSummaryDSRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ShipmentDetailsDSRow(builder);
+                return new FactoryTransferSummaryDSRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ShipmentDetailsDSRow);
+                return typeof(FactoryTransferSummaryDSRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ShipmentDetailsDSRowChanged != null)) {
-                    this.ShipmentDetailsDSRowChanged(this, new ShipmentDetailsDSRowChangeEvent(((ShipmentDetailsDSRow)(e.Row)), e.Action));
+                if ((this.FactoryTransferSummaryDSRowChanged != null)) {
+                    this.FactoryTransferSummaryDSRowChanged(this, new FactoryTransferSummaryDSRowChangeEvent(((FactoryTransferSummaryDSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -568,8 +512,8 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ShipmentDetailsDSRowChanging != null)) {
-                    this.ShipmentDetailsDSRowChanging(this, new ShipmentDetailsDSRowChangeEvent(((ShipmentDetailsDSRow)(e.Row)), e.Action));
+                if ((this.FactoryTransferSummaryDSRowChanging != null)) {
+                    this.FactoryTransferSummaryDSRowChanging(this, new FactoryTransferSummaryDSRowChangeEvent(((FactoryTransferSummaryDSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -577,8 +521,8 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ShipmentDetailsDSRowDeleted != null)) {
-                    this.ShipmentDetailsDSRowDeleted(this, new ShipmentDetailsDSRowChangeEvent(((ShipmentDetailsDSRow)(e.Row)), e.Action));
+                if ((this.FactoryTransferSummaryDSRowDeleted != null)) {
+                    this.FactoryTransferSummaryDSRowDeleted(this, new FactoryTransferSummaryDSRowChangeEvent(((FactoryTransferSummaryDSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -586,14 +530,14 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ShipmentDetailsDSRowDeleting != null)) {
-                    this.ShipmentDetailsDSRowDeleting(this, new ShipmentDetailsDSRowChangeEvent(((ShipmentDetailsDSRow)(e.Row)), e.Action));
+                if ((this.FactoryTransferSummaryDSRowDeleting != null)) {
+                    this.FactoryTransferSummaryDSRowDeleting(this, new FactoryTransferSummaryDSRowChangeEvent(((FactoryTransferSummaryDSRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveShipmentDetailsDSRow(ShipmentDetailsDSRow row) {
+            public void RemoveFactoryTransferSummaryDSRow(FactoryTransferSummaryDSRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -602,7 +546,7 @@ namespace PDCSReporting {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ShipmentDetailsDS ds = new ShipmentDetailsDS();
+                FactoryTransferSummaryDS ds = new FactoryTransferSummaryDS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -620,7 +564,7 @@ namespace PDCSReporting {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ShipmentDetailsDSDataTable";
+                attribute2.FixedValue = "FactoryTransferSummaryDSDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -664,15 +608,15 @@ namespace PDCSReporting {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ShipmentDetailsDSRow : global::System.Data.DataRow {
+        public partial class FactoryTransferSummaryDSRow : global::System.Data.DataRow {
             
-            private ShipmentDetailsDSDataTable tableShipmentDetailsDS;
+            private FactoryTransferSummaryDSDataTable tableFactoryTransferSummaryDS;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ShipmentDetailsDSRow(global::System.Data.DataRowBuilder rb) : 
+            internal FactoryTransferSummaryDSRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableShipmentDetailsDS = ((ShipmentDetailsDSDataTable)(this.Table));
+                this.tableFactoryTransferSummaryDS = ((FactoryTransferSummaryDSDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -680,30 +624,14 @@ namespace PDCSReporting {
             public System.DateTime Date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableShipmentDetailsDS.DateColumn]));
+                        return ((global::System.DateTime)(this[this.tableFactoryTransferSummaryDS.DateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'FactoryTransferSummaryDS\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.DateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LorryNumber {
-                get {
-                    try {
-                        return ((string)(this[this.tableShipmentDetailsDS.LorryNumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LorryNumber\' in table \'ShipmentDetailsDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableShipmentDetailsDS.LorryNumberColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.DateColumn] = value;
                 }
             }
             
@@ -712,14 +640,32 @@ namespace PDCSReporting {
             public string SourceFactory {
                 get {
                     try {
-                        return ((string)(this[this.tableShipmentDetailsDS.SourceFactoryColumn]));
+                        return ((string)(this[this.tableFactoryTransferSummaryDS.SourceFactoryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SourceFactory\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SourceFactory\' in table \'FactoryTransferSummaryDS\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.SourceFactoryColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.SourceFactoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DestinationFactory {
+                get {
+                    try {
+                        return ((string)(this[this.tableFactoryTransferSummaryDS.DestinationFactoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DestinationFactory\' in table \'FactoryTransferSummaryDS\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFactoryTransferSummaryDS.DestinationFactoryColumn] = value;
                 }
             }
             
@@ -728,14 +674,14 @@ namespace PDCSReporting {
             public string AOD {
                 get {
                     try {
-                        return ((string)(this[this.tableShipmentDetailsDS.AODColumn]));
+                        return ((string)(this[this.tableFactoryTransferSummaryDS.AODColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AOD\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'AOD\' in table \'FactoryTransferSummaryDS\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.AODColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.AODColumn] = value;
                 }
             }
             
@@ -744,78 +690,31 @@ namespace PDCSReporting {
             public string CPO {
                 get {
                     try {
-                        return ((string)(this[this.tableShipmentDetailsDS.CPOColumn]));
+                        return ((string)(this[this.tableFactoryTransferSummaryDS.CPOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'FactoryTransferSummaryDS\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.CPOColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.CPOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Style {
+            public int CartonNumber {
                 get {
                     try {
-                        return ((string)(this[this.tableShipmentDetailsDS.StyleColumn]));
+                        return ((int)(this[this.tableFactoryTransferSummaryDS.CartonNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Style\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CartonNumber\' in table \'FactoryTransferSummaryDS\' is DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.StyleColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Colour {
-                get {
-                    try {
-                        return ((string)(this[this.tableShipmentDetailsDS.ColourColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Colour\' in table \'ShipmentDetailsDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableShipmentDetailsDS.ColourColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Size {
-                get {
-                    try {
-                        return ((string)(this[this.tableShipmentDetailsDS.SizeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Size\' in table \'ShipmentDetailsDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableShipmentDetailsDS.SizeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CartonNumber {
-                get {
-                    try {
-                        return ((string)(this[this.tableShipmentDetailsDS.CartonNumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CartonNumber\' in table \'ShipmentDetailsDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableShipmentDetailsDS.CartonNumberColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.CartonNumberColumn] = value;
                 }
             }
             
@@ -824,163 +723,99 @@ namespace PDCSReporting {
             public int Quantity {
                 get {
                     try {
-                        return ((int)(this[this.tableShipmentDetailsDS.QuantityColumn]));
+                        return ((int)(this[this.tableFactoryTransferSummaryDS.QuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'ShipmentDetailsDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'FactoryTransferSummaryDS\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableShipmentDetailsDS.QuantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MPO {
-                get {
-                    try {
-                        return ((string)(this[this.tableShipmentDetailsDS.MPOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MPO\' in table \'ShipmentDetailsDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableShipmentDetailsDS.MPOColumn] = value;
+                    this[this.tableFactoryTransferSummaryDS.QuantityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDateNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.DateColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.DateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDateNull() {
-                this[this.tableShipmentDetailsDS.DateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLorryNumberNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.LorryNumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLorryNumberNull() {
-                this[this.tableShipmentDetailsDS.LorryNumberColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.DateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSourceFactoryNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.SourceFactoryColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.SourceFactoryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSourceFactoryNull() {
-                this[this.tableShipmentDetailsDS.SourceFactoryColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.SourceFactoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDestinationFactoryNull() {
+                return this.IsNull(this.tableFactoryTransferSummaryDS.DestinationFactoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDestinationFactoryNull() {
+                this[this.tableFactoryTransferSummaryDS.DestinationFactoryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsAODNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.AODColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.AODColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAODNull() {
-                this[this.tableShipmentDetailsDS.AODColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.AODColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCPONull() {
-                return this.IsNull(this.tableShipmentDetailsDS.CPOColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.CPOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCPONull() {
-                this[this.tableShipmentDetailsDS.CPOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStyleNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.StyleColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStyleNull() {
-                this[this.tableShipmentDetailsDS.StyleColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsColourNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.ColourColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetColourNull() {
-                this[this.tableShipmentDetailsDS.ColourColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSizeNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.SizeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSizeNull() {
-                this[this.tableShipmentDetailsDS.SizeColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.CPOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCartonNumberNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.CartonNumberColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.CartonNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCartonNumberNull() {
-                this[this.tableShipmentDetailsDS.CartonNumberColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.CartonNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsQuantityNull() {
-                return this.IsNull(this.tableShipmentDetailsDS.QuantityColumn);
+                return this.IsNull(this.tableFactoryTransferSummaryDS.QuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
-                this[this.tableShipmentDetailsDS.QuantityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMPONull() {
-                return this.IsNull(this.tableShipmentDetailsDS.MPOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMPONull() {
-                this[this.tableShipmentDetailsDS.MPOColumn] = global::System.Convert.DBNull;
+                this[this.tableFactoryTransferSummaryDS.QuantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -988,22 +823,22 @@ namespace PDCSReporting {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ShipmentDetailsDSRowChangeEvent : global::System.EventArgs {
+        public class FactoryTransferSummaryDSRowChangeEvent : global::System.EventArgs {
             
-            private ShipmentDetailsDSRow eventRow;
+            private FactoryTransferSummaryDSRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSRowChangeEvent(ShipmentDetailsDSRow row, global::System.Data.DataRowAction action) {
+            public FactoryTransferSummaryDSRowChangeEvent(FactoryTransferSummaryDSRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ShipmentDetailsDSRow Row {
+            public FactoryTransferSummaryDSRow Row {
                 get {
                     return this.eventRow;
                 }
