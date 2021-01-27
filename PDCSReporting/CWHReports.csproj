@@ -167,6 +167,7 @@
     <Content Include="GoodsReceivedSummary.aspx" />
     <Content Include="LocationDetails.aspx" />
     <Content Include="PalletDetails.aspx" />
+    <Content Include="PIPreAndPostCount.aspx" />
     <Content Include="Project_Readme.html" />
     <Content Include="ScannedReportCPOWise.aspx" />
     <Content Include="Scripts\i18n\af.js" />
@@ -1972,6 +1973,20 @@
       <DependentUpon>FactoryTransferSummaryDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PIPreAndPostCountDS.xsc">
+      <DependentUpon>PIPreAndPostCountDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIPreAndPostCountDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIPreAndPostCountDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIPreAndPostCountDS.xss">
+      <DependentUpon>PIPreAndPostCountDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2365,6 +2380,19 @@
       <DependentUpon>PalletDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PIPreAndPostCount.aspx.cs">
+      <DependentUpon>PIPreAndPostCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PIPreAndPostCount.aspx.designer.cs">
+      <DependentUpon>PIPreAndPostCount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PIPreAndPostCountDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIPreAndPostCountDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2615,6 +2643,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReportDesigns\FactoryTransferSummary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\PIPreAndPostCount.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
