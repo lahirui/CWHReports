@@ -1329,5 +1329,33 @@ namespace PDCSReporting
             }
 
         }
+
+        public LocationDisplayDS getLocationDisplayDetails()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT  RIGHT(dbo.Locations.Code,1) AS RowNum,dbo.Locations.Code AS Location,(COUNT(DISTINCT dbo.Boxes.BoxCode))AS Boxes,(SUM(dbo.CartonDetails.Quantity)) AS Count,LEFT(dbo.Locations.Code,1) AS Prefix " +
+                                            "FROM     dbo.Pallets INNER JOIN " +
+                                            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id INNER JOIN " +
+                                            "dbo.CartonHeaders ON dbo.Pallets.Id = dbo.CartonHeaders.PalletId INNER JOIN " +
+                                            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId " +
+                                            "WHERE(dbo.CartonHeaders.WIPArea = 2) AND(dbo.CartonHeaders.IsDeleted = 0) " +
+                                            "GROUP BY dbo.Locations.Code " +
+                                            "ORDER BY  RowNum, Location");
+
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (LocationDisplayDS FHC = new LocationDisplayDS())
+                {
+                    sda.Fill(FHC, "LocationDisplayDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+
+        }
     }
 }

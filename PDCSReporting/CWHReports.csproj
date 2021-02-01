@@ -166,6 +166,7 @@
     <Content Include="GoodsReceivedDetailes.aspx" />
     <Content Include="GoodsReceivedSummary.aspx" />
     <Content Include="LocationDetails.aspx" />
+    <Content Include="LocationDisplay.aspx" />
     <Content Include="PalletDetails.aspx" />
     <Content Include="PIPreAndPostCount.aspx" />
     <Content Include="Project_Readme.html" />
@@ -1987,6 +1988,20 @@
       <DependentUpon>PIPreAndPostCountDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LocationDisplayDS.xsc">
+      <DependentUpon>LocationDisplayDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationDisplayDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LocationDisplayDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LocationDisplayDS.xss">
+      <DependentUpon>LocationDisplayDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2360,6 +2375,19 @@
       <DependentUpon>LocationDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="LocationDisplay.aspx.cs">
+      <DependentUpon>LocationDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LocationDisplay.aspx.designer.cs">
+      <DependentUpon>LocationDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LocationDisplayDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocationDisplayDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="MasterPages\WarehouseMaster.Master.cs">
       <DependentUpon>WarehouseMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2648,6 +2676,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\PIPreAndPostCount.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\LocationDisplay.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
