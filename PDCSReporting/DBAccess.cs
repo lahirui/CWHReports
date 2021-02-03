@@ -1057,7 +1057,7 @@ namespace PDCSReporting
                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
                                 //"WHERE(dbo.AODBoxDetails.AODId = " + AODId + ") AND(dbo.CartonDetails.TransactionType <> 8 OR " +
                                 //                 "dbo.CartonDetails.TransactionType <> 10) AND(dbo.CartonDetails.Quantity > 0) " +
-                                "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") AND (dbo.CartonDetails.TransactionType =2) AND (dbo.CartonDetails.Quantity > 0) " +
+                                "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") AND (dbo.CartonDetails.TransactionType =1) AND (dbo.CartonDetails.Quantity > 0) " +
                                 "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO " +
                                 "ORDER BY Colour, Size";
 
@@ -1308,27 +1308,47 @@ namespace PDCSReporting
         public PIPreAndPostCountDS getPiPreAndPostCounts(int RefId, string FromPallet, string ToPallet, string FromLocation, string ToLocation)
         {
             SqlCommand cmd = new SqlCommand("SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, COUNT(DISTINCT dbo.Boxes.BoxCode) AS 'NoOfCartons', SUM(dbo.CartonDetails.Quantity) AS Quantity, 'PRE' AS Category " +
-                                            "FROM dbo.FGStockTakePreCountCartons INNER JOIN " +
-                                            "dbo.Boxes ON dbo.FGStockTakePreCountCartons.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                            "dbo.Pallets ON dbo.FGStockTakePreCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
-                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
-                                            "dbo.PIPallets ON dbo.Pallets.Id = dbo.PIPallets.PalletId INNER JOIN " +
-                                            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE(dbo.FGStockTakePreCountCartons.PIReferenceId = " + RefId + ") AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') " +
-                                            "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
-                                            "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
-                                            "UNION " +
-                                            "SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, COUNT(DISTINCT dbo.Boxes.BoxCode) AS 'NoOfCartons', SUM(dbo.CartonDetails.Quantity) AS Quantity, 'POST' AS Category " +
-                                            "FROM dbo.Boxes INNER JOIN " +
-                                            "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
-                                            "dbo.Pallets ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
-                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
-                                            "dbo.PIPallets ON dbo.Pallets.Id = dbo.PIPallets.PalletId INNER JOIN " +
-                                            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE(dbo.FGStockTakePostCountCartons.PIReferenceId = " + RefId + ") AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') " +
-                                            "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
-                                            "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
-                                            "ORDER BY Category DESC, dbo.Locations.Code, dbo.Pallets.Code");
+                                             "FROM     dbo.FGStockTakePreCountCartons INNER JOIN " +
+                                                               "dbo.Boxes ON dbo.FGStockTakePreCountCartons.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                               "dbo.Pallets ON dbo.FGStockTakePreCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                               "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                             "WHERE(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') AND(dbo.FGStockTakePreCountCartons.PIReferenceId = " + RefId + ") " +
+                                             "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
+                                             "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+                                             "UNION " +
+                                             "SELECT  dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, COUNT(DISTINCT dbo.Boxes.BoxCode) AS 'NoOfCartons', SUM(dbo.CartonDetails.Quantity) AS Quantity, 'POST' AS Category " +
+                                             "FROM     dbo.Boxes INNER JOIN " +
+                                                               "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
+                                                               "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                               "dbo.Pallets ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                               "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                             "WHERE(dbo.FGStockTakePostCountCartons.PIReferenceId = " + RefId + ") AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') " +
+                                             "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
+                                             "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+                                             "ORDER BY Category DESC, dbo.Locations.Code, dbo.Pallets.Code");
+            //SqlCommand cmd = new SqlCommand("SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, COUNT(DISTINCT dbo.Boxes.BoxCode) AS 'NoOfCartons', SUM(dbo.CartonDetails.Quantity) AS Quantity, 'PRE' AS Category " +
+            //                                "FROM dbo.FGStockTakePreCountCartons INNER JOIN " +
+            //                                "dbo.Boxes ON dbo.FGStockTakePreCountCartons.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                "dbo.Pallets ON dbo.FGStockTakePreCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+            //                                "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+            //                                "dbo.PIPallets ON dbo.Pallets.Id = dbo.PIPallets.PalletId INNER JOIN " +
+            //                                "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            //                                "WHERE(dbo.FGStockTakePreCountCartons.PIReferenceId = " + RefId + ") AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') " +
+            //                                "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
+            //                                "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+            //                                "UNION " +
+            //                                "SELECT dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, COUNT(DISTINCT dbo.Boxes.BoxCode) AS 'NoOfCartons', SUM(dbo.CartonDetails.Quantity) AS Quantity, 'POST' AS Category " +
+            //                                "FROM dbo.Boxes INNER JOIN " +
+            //                                "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
+            //                                "dbo.Pallets ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+            //                                "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+            //                                "dbo.PIPallets ON dbo.Pallets.Id = dbo.PIPallets.PalletId INNER JOIN " +
+            //                                "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            //                                "WHERE(dbo.FGStockTakePostCountCartons.PIReferenceId = " + RefId + ") AND(dbo.Pallets.Code BETWEEN '" + FromPallet + "' AND '" + ToPallet + "') AND(dbo.Locations.Code BETWEEN '" + FromLocation + "' AND '" + ToLocation + "') " +
+            //                                "GROUP BY dbo.Locations.Code, dbo.Pallets.Code " +
+            //                                "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+            //                                "ORDER BY Category DESC, dbo.Locations.Code, dbo.Pallets.Code");
 
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
