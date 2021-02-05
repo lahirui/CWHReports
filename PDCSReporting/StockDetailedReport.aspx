@@ -19,57 +19,51 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#<%=ddlFromStyle.ClientID%>").select2({
-                placeholder: "Select Style",
-                allowClear: true
-            });
+            LoadSelect2();
         });
 
-         $(document).ready(function () {
-            $("#<%=ddlToStyle.ClientID%>").select2({
+        var prm;
+        if (typeof (Sys) !== 'undefined') {
+            prm = Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function (sender, args) {
+                { { scopeName } } _init();
+            });
+        }
+        function LoadSelect2() {
+              $("#<%=ddlFromStyle.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
-            });
-         });
-
-        $(document).ready(function () {
-            $("#<%=ddlFromRack.ClientID%>").select2({
+              });
+             $("#<%=ddlToStyle.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
-            });
-        });
-        $(document).ready(function () {
-            $("#<%=ddlToRack.ClientID%>").select2({
+             });
+             $("#<%=ddlFromRack.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
-            });
-        });
-
-        $(document).ready(function () {
-            $("#<%=ddlFromPallet.ClientID%>").select2({
+             });
+              $("#<%=ddlToRack.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
-            });
-        });
-        $(document).ready(function () {
-            $("#<%=ddlToPallet.ClientID%>").select2({
+              });
+              $("#<%=ddlFromPallet.ClientID%>").select2({
                 placeholder: "Select Style",
                 allowClear: true
-            });
-        });
-         $(document).ready(function () {
-            $("#<%=ddlFromCPO.ClientID%>").select2({
+              });
+             $("#<%=ddlToPallet.ClientID%>").select2({
+                placeholder: "Select Style",
+                allowClear: true
+             });
+             $("#<%=ddlFromCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+             });
+             $("#<%=ddlToCPO.ClientID%>").select2({
                 placeholder: "Select CPO",
                 allowClear: true
             });
-        });
+        }
 
-        $(document).ready(function () {
-            $("#<%=ddlToCPO.ClientID%>").select2({
-                placeholder: "Select CPO",
-                allowClear: true
-            });
-        });
+      
     </script>
 </asp:Content>
 
@@ -82,7 +76,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#WarehouseInDetailsModal" style="background-color:#da532c;">Setup Report</button>
+                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#WarehouseInDetailsModal" style="background-color:#da532c;" onclick="LoadSelect2()">Setup Report</button>
             </div>
         </div>
         <div class="row" style="padding-top: 20px; padding-bottom: 10px;">

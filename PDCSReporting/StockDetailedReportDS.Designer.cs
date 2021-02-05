@@ -297,6 +297,10 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnSourceWarehouse;
+            
+            private global::System.Data.DataColumn columnReceivedinAOD;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public StockDetailedReportDSDataTable() {
@@ -404,6 +408,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SourceWarehouseColumn {
+                get {
+                    return this.columnSourceWarehouse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ReceivedinAODColumn {
+                get {
+                    return this.columnReceivedinAOD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +459,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StockDetailedReportDSRow AddStockDetailedReportDSRow(string Style, string Colour, string Size, string CPO, string Pallet, string Rack, string WIPArea, string BarCode, int Quantity) {
+            public StockDetailedReportDSRow AddStockDetailedReportDSRow(string Style, string Colour, string Size, string CPO, string Pallet, string Rack, string WIPArea, string BarCode, int Quantity, string SourceWarehouse, string ReceivedinAOD) {
                 StockDetailedReportDSRow rowStockDetailedReportDSRow = ((StockDetailedReportDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Style,
@@ -450,7 +470,9 @@ namespace PDCSReporting {
                         Rack,
                         WIPArea,
                         BarCode,
-                        Quantity};
+                        Quantity,
+                        SourceWarehouse,
+                        ReceivedinAOD};
                 rowStockDetailedReportDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStockDetailedReportDSRow);
                 return rowStockDetailedReportDSRow;
@@ -482,6 +504,8 @@ namespace PDCSReporting {
                 this.columnWIPArea = base.Columns["WIPArea"];
                 this.columnBarCode = base.Columns["BarCode"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnSourceWarehouse = base.Columns["SourceWarehouse"];
+                this.columnReceivedinAOD = base.Columns["ReceivedinAOD"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -505,6 +529,10 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnBarCode);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnSourceWarehouse = new global::System.Data.DataColumn("SourceWarehouse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSourceWarehouse);
+                this.columnReceivedinAOD = new global::System.Data.DataColumn("ReceivedinAOD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReceivedinAOD);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_StockDetailedReportDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "StockDetailedReportDS");
             }
@@ -793,6 +821,39 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SourceWarehouse {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockDetailedReportDS.SourceWarehouseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SourceWarehouse\' in table \'StockDetailedReportDS\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableStockDetailedReportDS.SourceWarehouseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ReceivedinAOD {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockDetailedReportDS.ReceivedinAODColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReceivedinAOD\' in table \'StockDetailedReportDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockDetailedReportDS.ReceivedinAODColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStyleNull() {
                 return this.IsNull(this.tableStockDetailedReportDS.StyleColumn);
             }
@@ -897,6 +958,30 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableStockDetailedReportDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSourceWarehouseNull() {
+                return this.IsNull(this.tableStockDetailedReportDS.SourceWarehouseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSourceWarehouseNull() {
+                this[this.tableStockDetailedReportDS.SourceWarehouseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsReceivedinAODNull() {
+                return this.IsNull(this.tableStockDetailedReportDS.ReceivedinAODColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetReceivedinAODNull() {
+                this[this.tableStockDetailedReportDS.ReceivedinAODColumn] = global::System.Convert.DBNull;
             }
         }
         

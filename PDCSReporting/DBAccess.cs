@@ -485,9 +485,7 @@ namespace PDCSReporting
         public StockSummaryReportDS getStockSummaryDetails(string fromStyle, string toStyle, string fromCPO, string toCPO)
         {
 
-
-
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            SqlCommand cmd = new SqlCommand("SELECT  ISNULL(dbo.AODs.SourceWarehouse, 'N/A') AS SourceFactory, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size,COUNT(dbo.Boxes.BoxCode) AS BoxCount, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
                                             "FROM     dbo.CartonDetails INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
                                                               "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
@@ -497,12 +495,32 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
                                                               "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
-                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
-                                            "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-                                            "AND ( dbo.CartonHeaders.WIPArea=2) " +
-                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
-                                            "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code");
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id FULL OUTER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.Boxes.Id = dbo.AODBoxDetails.BoxId FULL OUTER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id " +
+                                            "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                                              "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                                              "AND(dbo.CartonHeaders.WIPArea = 2) AND " +
+                                                              "(dbo.CartonHeaders.IsDeleted = 0) " +
+                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code, dbo.AODs.SourceWarehouse " +
+                                            "ORDER BY dbo.AODs.SourceWarehouse, Style, Colour, dbo.BoxCPOAllocationDetails.CPO, Size");
+
+            //SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.CartonDetails INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            //                                                  "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            //                                "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND (dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+            //                                "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+            //                                "AND ( dbo.CartonHeaders.WIPArea=2) " +
+            //                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code " +
+            //                                "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Sizes.Code");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -520,11 +538,8 @@ namespace PDCSReporting
 
         public StockDetailedReportDS getStockDetailedReport(string fromStyle, string toStyle, string fromLocation, string toLocation,string fromPallet, string toPallet, string fromCPO, string toCPO)
         {
-
-
-
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code AS Pallet, dbo.Locations.Code AS Rack, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, " +
-                                                              "SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            SqlCommand cmd = new SqlCommand("SELECT  dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code AS Pallet, dbo.Locations.Code AS Rack, dbo.CartonHeaders.WIPArea, " +
+                                                                "ISNULL(dbo.AODs.SourceWarehouse, 'N/A') AS SourceWarehouse, ISNULL(dbo.AODs.AODNumber, 'N/A') AS ReceivedinAOD, dbo.Boxes.BoxCode AS BarCode, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
                                             "FROM     dbo.CartonDetails INNER JOIN " +
                                                               "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
                                                               "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
@@ -534,15 +549,40 @@ namespace PDCSReporting
                                                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
                                                               "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
                                                               "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
-                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND " +
-                                            "(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') AND " +
-                                            "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
-                                            "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
-                                            "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-                                            "AND ( dbo.CartonHeaders.WIPArea=2) " +
-                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode " +
-                                            "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode");
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id FULL OUTER JOIN " +
+                                                              "dbo.AODBoxDetails ON dbo.Boxes.Id = dbo.AODBoxDetails.BoxId FULL OUTER JOIN " +
+                                                              "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id " +
+                                            "WHERE(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') " +
+                                            "AND(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') " +
+                                            "AND(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
+                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+                                            "AND(dbo.CartonHeaders.WIPArea = 2) " +
+                                            "AND(dbo.CartonHeaders.IsDeleted = 0) " +
+                                            "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber " +
+                                            "ORDER BY Style, Colour, Size, dbo.BoxCPOAllocationDetails.CPO, Pallet, Rack, dbo.CartonHeaders.WIPArea, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, BarCode");
+
+
+            //SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code AS Pallet, dbo.Locations.Code AS Rack, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode AS BarCode, " +
+            //                                                  "SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.CartonDetails INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.CartonDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            //                                                  "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            //                                "WHERE (dbo.CartonHeaders.IsDeleted = 0) AND " +
+            //                                "(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND '" + toStyle + "') AND " +
+            //                                "(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND " +
+            //                                "(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') " +
+            //                                "AND (dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+            //                                "AND ( dbo.CartonHeaders.WIPArea=2) " +
+            //                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode " +
+            //                                "ORDER BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Pallets.Code, dbo.Locations.Code, dbo.CartonHeaders.WIPArea, dbo.Boxes.BoxCode");
+
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
