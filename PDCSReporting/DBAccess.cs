@@ -1229,7 +1229,7 @@ namespace PDCSReporting
 
         public StockPositionReportDS getStockPositionReport(string fromStyle, string toStyle, string date)
         {
-            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, RIGHT(dbo.Styles.Code,4) AS Season, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUBSTRING(dbo.Boxes.BoxCode,1,(CHARINDEX('-', dbo.Boxes.BoxCode)-1)) AS Factory, dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.ProdOrders.Code AS MPO, UPPER(dbo.BoxCPOAllocationDetails.CPO) AS CPO, dbo.Boxes.BoxCode, SUM(dbo.CartonDetails.Quantity) as Quantity " +
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Styles.Code AS Style, RIGHT(dbo.Styles.Code,4) AS Season, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUBSTRING(dbo.Boxes.BoxCode, 1 ,case when  CHARINDEX('-', dbo.Boxes.BoxCode ) = 0 then LEN(dbo.Boxes.BoxCode) else CHARINDEX('-', dbo.Boxes.BoxCode) -1 end) AS Factory, dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.ProdOrders.Code AS MPO, UPPER(dbo.BoxCPOAllocationDetails.CPO) AS CPO, dbo.Boxes.BoxCode, SUM(dbo.CartonDetails.Quantity) as Quantity " +
                                             "FROM   dbo.Locations INNER JOIN " +
                                                          "dbo.Boxes INNER JOIN " +
                                                          "dbo.Styles INNER JOIN " +
@@ -1247,9 +1247,9 @@ namespace PDCSReporting
                                                                           "WHERE(CAST(EffectiveDate AS Date) <= CAST('" + date + "' AS Date)) AND(WIPArea = 2) " +
                                                                           "GROUP BY BoxId " +
                                                                           "HAVING(SUM(Quantity) > 0)) " +
-                                            "GROUP BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, SUBSTRING(dbo.Boxes.BoxCode, 1, (CHARINDEX('-', dbo.Boxes.BoxCode) - 1)), dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode " +
-                                            "HAVING SUM(dbo.CartonDetails.Quantity) > 0 AND(dbo.Styles.Code BETWEEN '" + fromStyle + "' AND'" + toStyle + "') " +
-                                            "ORDER BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, SUBSTRING(dbo.Boxes.BoxCode, 1, (CHARINDEX('-', dbo.Boxes.BoxCode) - 1)), dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode");
+                                            "GROUP BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, SUBSTRING(dbo.Boxes.BoxCode, 1 ,case when  CHARINDEX('-', dbo.Boxes.BoxCode ) = 0 then LEN(dbo.Boxes.BoxCode) else CHARINDEX('-', dbo.Boxes.BoxCode) -1 end), dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode " +
+                                            "HAVING SUM(dbo.CartonDetails.Quantity) > 0 AND (dbo.Styles.Code BETWEEN '" + fromStyle + "' AND'" + toStyle + "') " +
+                                            "ORDER BY dbo.Styles.Code, RIGHT(dbo.Styles.Code, 4), dbo.Colors.Code, dbo.Sizes.Code, Factory, dbo.Locations.Code, dbo.Pallets.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Boxes.BoxCode");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -1408,16 +1408,23 @@ namespace PDCSReporting
 
         public LocationDisplayDS getLocationDisplayDetails()
         {
-            SqlCommand cmd = new SqlCommand("SELECT LEFT(dbo.Locations.Code,1) AS Prefix ,LEFT(RIGHT(dbo.Locations.Code,4),2) AS ColNum, RIGHT(dbo.Locations.Code,1) AS RowNum,dbo.Locations.Code AS Location,(COUNT(DISTINCT dbo.Boxes.BoxCode))AS Boxes,(SUM(dbo.CartonDetails.Quantity)) AS Count " +
-                                            "FROM     dbo.Pallets INNER JOIN " +
-                                            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id INNER JOIN " +
-                                            "dbo.CartonHeaders ON dbo.Pallets.Id = dbo.CartonHeaders.PalletId INNER JOIN " +
-                                            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId " +
-                                            "WHERE(dbo.CartonHeaders.WIPArea = 2) AND(dbo.CartonHeaders.IsDeleted = 0) " +
+            //SqlCommand cmd = new SqlCommand("SELECT LEFT(dbo.Locations.Code,1) AS Prefix ,LEFT(RIGHT(dbo.Locations.Code,4),2) AS ColNum, RIGHT(dbo.Locations.Code,1) AS RowNum,dbo.Locations.Code AS Location,(COUNT(DISTINCT dbo.Boxes.BoxCode))AS Boxes,(SUM(dbo.CartonDetails.Quantity)) AS Count " +
+            //                                "FROM     dbo.Pallets INNER JOIN " +
+            //                                "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id INNER JOIN " +
+            //                                "dbo.CartonHeaders ON dbo.Pallets.Id = dbo.CartonHeaders.PalletId INNER JOIN " +
+            //                                "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId " +
+            //                                "WHERE(dbo.CartonHeaders.WIPArea = 2) AND(dbo.CartonHeaders.IsDeleted = 0) " +
+            //                                "GROUP BY dbo.Locations.Code " +
+            //                                "ORDER BY  Prefix, ColNum, RowNum");
+            SqlCommand cmd = new SqlCommand("SELECT ISNULL(LEFT(dbo.Locations.Code, 1),0) AS Prefix, ISNULL(LEFT(RIGHT(dbo.Locations.Code, 4), 2),0) AS ColNum, ISNULL(dbo.Locations.Code, 0) AS Location, COUNT(dbo.Boxes.BoxCode) AS Boxes " +
+                                            "FROM     dbo.CartonHeaders INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
                                             "GROUP BY dbo.Locations.Code " +
-                                            "ORDER BY  Prefix, ColNum, RowNum");
-
+                                            //"HAVING COUNT(dbo.Boxes.BoxCode) = 0 " +
+                                            "ORDER BY Prefix, ColNum,  Location");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {

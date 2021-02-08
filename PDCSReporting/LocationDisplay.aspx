@@ -23,12 +23,16 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
     <div class="container-fluid">
-        <div class="page-header" style="margin-top:80px">
-           <%-- <h1 style="font-family: Georgia; color: #da532c;">Location</h1>--%>
+        <div class="page-header" style="margin-top: 80px">
+            <%-- <h1 style="font-family: Georgia; color: #da532c;">Location</h1>--%>
         </div>
         <div class="row" style="margin-top:-20px; overflow-x:scroll; overflow-y:scroll">
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true"></rsweb:ReportViewer>
         </div>
+       <%-- <div class="row" style="overflow:scroll">
+             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        </div>--%>
+       
     </div>
 </asp:Content>
 
