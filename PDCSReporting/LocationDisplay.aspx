@@ -19,7 +19,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <meta http-equiv="refresh" content="3600";/>
+    <meta http-equiv="refresh" content="1800";/>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
     <div class="container-fluid">

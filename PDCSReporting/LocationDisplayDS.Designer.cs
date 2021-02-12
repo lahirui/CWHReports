@@ -281,15 +281,9 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnPrefix;
             
-            private global::System.Data.DataColumn columnColNum;
-            
-            private global::System.Data.DataColumn columnRowNum;
-            
             private global::System.Data.DataColumn columnLocation;
             
-            private global::System.Data.DataColumn columnBoxes;
-            
-            private global::System.Data.DataColumn columnCount;
+            private global::System.Data.DataColumn columnSequence;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -334,22 +328,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ColNumColumn {
-                get {
-                    return this.columnColNum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RowNumColumn {
-                get {
-                    return this.columnRowNum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn LocationColumn {
                 get {
                     return this.columnLocation;
@@ -358,17 +336,9 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn BoxesColumn {
+            public global::System.Data.DataColumn SequenceColumn {
                 get {
-                    return this.columnBoxes;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CountColumn {
-                get {
-                    return this.columnCount;
+                    return this.columnSequence;
                 }
             }
             
@@ -409,15 +379,12 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LocationDisplayDSRow AddLocationDisplayDSRow(string Prefix, string ColNum, string RowNum, string Location, int Boxes, int Count) {
+            public LocationDisplayDSRow AddLocationDisplayDSRow(string Prefix, string Location, int Sequence) {
                 LocationDisplayDSRow rowLocationDisplayDSRow = ((LocationDisplayDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Prefix,
-                        ColNum,
-                        RowNum,
                         Location,
-                        Boxes,
-                        Count};
+                        Sequence};
                 rowLocationDisplayDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLocationDisplayDSRow);
                 return rowLocationDisplayDSRow;
@@ -441,11 +408,8 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnPrefix = base.Columns["Prefix"];
-                this.columnColNum = base.Columns["ColNum"];
-                this.columnRowNum = base.Columns["RowNum"];
                 this.columnLocation = base.Columns["Location"];
-                this.columnBoxes = base.Columns["Boxes"];
-                this.columnCount = base.Columns["Count"];
+                this.columnSequence = base.Columns["Sequence"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -453,16 +417,10 @@ namespace PDCSReporting {
             private void InitClass() {
                 this.columnPrefix = new global::System.Data.DataColumn("Prefix", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrefix);
-                this.columnColNum = new global::System.Data.DataColumn("ColNum", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnColNum);
-                this.columnRowNum = new global::System.Data.DataColumn("RowNum", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRowNum);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocation);
-                this.columnBoxes = new global::System.Data.DataColumn("Boxes", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBoxes);
-                this.columnCount = new global::System.Data.DataColumn("Count", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCount);
+                this.columnSequence = new global::System.Data.DataColumn("Sequence", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSequence);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_LocationDisplayDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "LocationDisplayDS");
             }
@@ -623,38 +581,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ColNum {
-                get {
-                    try {
-                        return ((string)(this[this.tableLocationDisplayDS.ColNumColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ColNum\' in table \'LocationDisplayDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableLocationDisplayDS.ColNumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RowNum {
-                get {
-                    try {
-                        return ((string)(this[this.tableLocationDisplayDS.RowNumColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RowNum\' in table \'LocationDisplayDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableLocationDisplayDS.RowNumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Location {
                 get {
                     try {
@@ -671,33 +597,17 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Boxes {
+            public int Sequence {
                 get {
                     try {
-                        return ((int)(this[this.tableLocationDisplayDS.BoxesColumn]));
+                        return ((int)(this[this.tableLocationDisplayDS.SequenceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Boxes\' in table \'LocationDisplayDS\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sequence\' in table \'LocationDisplayDS\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableLocationDisplayDS.BoxesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Count {
-                get {
-                    try {
-                        return ((int)(this[this.tableLocationDisplayDS.CountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Count\' in table \'LocationDisplayDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableLocationDisplayDS.CountColumn] = value;
+                    this[this.tableLocationDisplayDS.SequenceColumn] = value;
                 }
             }
             
@@ -715,30 +625,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsColNumNull() {
-                return this.IsNull(this.tableLocationDisplayDS.ColNumColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetColNumNull() {
-                this[this.tableLocationDisplayDS.ColNumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRowNumNull() {
-                return this.IsNull(this.tableLocationDisplayDS.RowNumColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRowNumNull() {
-                this[this.tableLocationDisplayDS.RowNumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsLocationNull() {
                 return this.IsNull(this.tableLocationDisplayDS.LocationColumn);
             }
@@ -751,26 +637,14 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsBoxesNull() {
-                return this.IsNull(this.tableLocationDisplayDS.BoxesColumn);
+            public bool IsSequenceNull() {
+                return this.IsNull(this.tableLocationDisplayDS.SequenceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetBoxesNull() {
-                this[this.tableLocationDisplayDS.BoxesColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCountNull() {
-                return this.IsNull(this.tableLocationDisplayDS.CountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCountNull() {
-                this[this.tableLocationDisplayDS.CountColumn] = global::System.Convert.DBNull;
+            public void SetSequenceNull() {
+                this[this.tableLocationDisplayDS.SequenceColumn] = global::System.Convert.DBNull;
             }
         }
         

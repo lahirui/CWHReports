@@ -1408,23 +1408,293 @@ namespace PDCSReporting
 
         public LocationDisplayDS getLocationDisplayDetails()
         {
-            //SqlCommand cmd = new SqlCommand("SELECT LEFT(dbo.Locations.Code,1) AS Prefix ,LEFT(RIGHT(dbo.Locations.Code,4),2) AS ColNum, RIGHT(dbo.Locations.Code,1) AS RowNum,dbo.Locations.Code AS Location,(COUNT(DISTINCT dbo.Boxes.BoxCode))AS Boxes,(SUM(dbo.CartonDetails.Quantity)) AS Count " +
-            //                                "FROM     dbo.Pallets INNER JOIN " +
-            //                                "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id INNER JOIN " +
-            //                                "dbo.CartonHeaders ON dbo.Pallets.Id = dbo.CartonHeaders.PalletId INNER JOIN " +
-            //                                "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id INNER JOIN " +
-            //                                "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId " +
-            //                                "WHERE(dbo.CartonHeaders.WIPArea = 2) AND(dbo.CartonHeaders.IsDeleted = 0) " +
-            //                                "GROUP BY dbo.Locations.Code " +
-            //                                "ORDER BY  Prefix, ColNum, RowNum");
-            SqlCommand cmd = new SqlCommand("SELECT ISNULL(LEFT(dbo.Locations.Code, 1),0) AS Prefix, ISNULL(LEFT(RIGHT(dbo.Locations.Code, 4), 2),0) AS ColNum, ISNULL(dbo.Locations.Code, 0) AS Location, COUNT(dbo.Boxes.BoxCode) AS Boxes " +
-                                            "FROM     dbo.CartonHeaders INNER JOIN " +
-                                                              "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
-                                                              "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
-                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
-                                            "GROUP BY dbo.Locations.Code " +
-                                            //"HAVING COUNT(dbo.Boxes.BoxCode) = 0 " +
-                                            "ORDER BY Prefix, ColNum,  Location");
+           
+            SqlCommand cmd = new SqlCommand("(SELECT " +
+                                            "ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+                                            "(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'A' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+                                                "ISNULL(dbo.Locations.Code, 0) AS Location " +
+                                                        "FROM dbo.CartonHeaders INNER JOIN " +
+                                                        "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                        "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+                                                        "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                                        "GROUP BY dbo.Locations.Code " +
+                                                        "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'A' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+                                            "UNION " +
+                                            "(SELECT " +
+                                            "ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+                                            "(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'B' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+                                                "ISNULL(dbo.Locations.Code, 0) AS Location " +
+                                                        "FROM dbo.CartonHeaders INNER JOIN " +
+                                                        "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                        "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+                                                        "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                                        "GROUP BY dbo.Locations.Code " +
+                                                        "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'B' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+                                            "UNION " +
+                                            "(SELECT " +
+                                            "ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+                                            "(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'C' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+                                                "ISNULL(dbo.Locations.Code, 0) AS Location " +
+                                                        "FROM dbo.CartonHeaders INNER JOIN " +
+                                                        "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                        "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+                                                        "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+                                                        "GROUP BY dbo.Locations.Code " +
+                                                        "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'C' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+                                                        "UNION "+
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'D' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+"ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM     dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'D' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'E' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'E' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'F' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'F' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'G' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'G' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'H' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'H' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'I' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'I' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'J' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'J' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'K' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'K' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'L' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'L' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'M' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'M' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'N' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'N' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'O' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'O' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'P' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'P' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Q' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Q' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'R' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'R' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'S' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'S' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'T' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'T' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'U' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'U' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'V' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'V' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'W' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'W' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'X' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'X' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Y' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Y' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+"UNION " +
+"(SELECT " +
+"ROW_NUMBER() OVER(ORDER BY ISNULL(LEFT(dbo.Locations.Code, 1), 0), ISNULL(dbo.Locations.Code, 0)) AS Sequence, " +
+"(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Z' THEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) ELSE 'NA' END) AS Prefix, " +
+    "ISNULL(dbo.Locations.Code, 0) AS Location " +
+            "FROM dbo.CartonHeaders INNER JOIN " +
+            "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id INNER JOIN " +
+            "dbo.Boxes ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id FULL OUTER JOIN " +
+            "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id " +
+            "GROUP BY dbo.Locations.Code " +
+            "HAVING COUNT(dbo.Boxes.BoxCode) = 0 AND(CASE WHEN ISNULL(LEFT(dbo.Locations.Code, 1), 0) = 'Z' THEN ISNULL(dbo.Locations.Code, 0) ELSE 'NA' END) <> 'NA') " +
+            "ORDER BY Prefix,Sequence, Location");
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
