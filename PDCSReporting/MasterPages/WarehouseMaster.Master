@@ -98,8 +98,8 @@
                             <li><a tabindex="-1" href="../StockSummaryReport.aspx">On Hand Stock Summary Report</a></li>
                             <li><a tabindex="-1" href="../StockDetailedReport.aspx">On Hand Stock Detailed Report</a></li> 
                             <li><a tabindex="-1" href="../StockPositionReport.aspx">Stock Position Report</a></li> 
-                            <li><a tabindex="-1" href="../PIPreAndPostCount.aspx">PI Pre & Post Count</a></li>                       
-                        
+                            <li><a tabindex="-1" href="../PIPreAndPostCount.aspx">PI Pre & Post Count Summary Report</a></li>                       
+                        <li><a tabindex="-1" href="../PIPreAndPostDetails.aspx">PI Pre & Post Count Detailed Report</a></li>                       
                         </ul>
                     </li>
 

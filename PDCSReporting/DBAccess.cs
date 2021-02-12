@@ -1710,5 +1710,56 @@ namespace PDCSReporting
             }
 
         }
+
+        public PIPreAndPostDetailsDS getPIPreAndPostDetails(string fromDate, string toDate, string fromPI, string toPI, string fromPallet, string toPallet, string fromLocation, string toLocation)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.PIs.CreatedDate AS DATE)) AS PIDate, dbo.PIs.PIReference AS Reference, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.Boxes.BoxCode, SUM(dbo.CartonDetails.Quantity) AS Quantity, 'PRE' AS Category " +
+                                            "FROM     dbo.FGStockTakePreCountCartons INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.FGStockTakePreCountCartons.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.FGStockTakePreCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id INNER JOIN " +
+                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.PIs ON dbo.FGStockTakePreCountCartons.PIReferenceId = dbo.PIs.Id " +
+                                            "WHERE(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') AND(dbo.FGStockTakePreCountCartons.IsDeleted = 0) " +
+                                            "AND(CAST(dbo.PIs.CreatedDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.PIs.CreatedDate AS DATE) <= '" + toDate + "') AND(dbo.PIs.PIReference BETWEEN '" + fromPI + "' AND '" + toPI + "') " +
+                                            "GROUP BY dbo.Locations.Code, dbo.Pallets.Code, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode, dbo.PIs.PIReference, dbo.PIs.CreatedDate " +
+                                            "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+                                            "UNION " +
+                                            "SELECT(CAST(dbo.PIs.CreatedDate AS DATE)) AS PIDate, dbo.PIs.PIReference AS Reference, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Locations.Code AS Location, dbo.Pallets.Code AS Pallet, dbo.Boxes.BoxCode, " +
+                                                              "SUM(dbo.CartonDetails.Quantity) AS Quantity, 'POST' AS Category " +
+                                            "FROM     dbo.Products INNER JOIN " +
+                                                              "dbo.Boxes INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.FGStockTakePostCountCartons ON dbo.Boxes.Id = dbo.FGStockTakePostCountCartons.BoxId INNER JOIN " +
+                                                              "dbo.Locations INNER JOIN " +
+                                                              "dbo.Pallets ON dbo.Locations.Id = dbo.Pallets.LocationId ON dbo.FGStockTakePostCountCartons.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                                              "dbo.PIs ON dbo.FGStockTakePostCountCartons.PIReferenceId = dbo.PIs.Id " +
+                                            "WHERE(dbo.Pallets.Code BETWEEN '" + fromPallet + "' AND '" + toPallet + "') AND(dbo.Locations.Code BETWEEN '" + fromLocation + "' AND '" + toLocation + "') AND(dbo.FGStockTakePostCountCartons.IsDeleted = 0) " +
+                                            "AND(CAST(dbo.PIs.CreatedDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.PIs.CreatedDate AS DATE) <= '" + toDate + "') AND(dbo.PIs.PIReference BETWEEN '" + fromPI + "' AND '" + toPI + "') " +
+                                            "GROUP BY dbo.Locations.Code, dbo.Pallets.Code, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode, dbo.PIs.PIReference, dbo.PIs.CreatedDate " +
+                                            "HAVING(SUM(dbo.CartonDetails.Quantity) > 0) " +
+                                            "ORDER BY Category DESC, PIDate, Reference, Style, Colour, Size, Location, Pallet, BoxCode");
+            
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (PIPreAndPostDetailsDS FHC = new PIPreAndPostDetailsDS())
+                {
+                    sda.Fill(FHC, "PIPreAndPostDetailsDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+        }
     }
 }

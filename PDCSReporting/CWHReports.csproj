@@ -164,6 +164,7 @@
     <Content Include="FactoryTransferSummary.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GoodsReceivedDetailes.aspx" />
+    <Content Include="PIPreAndPostDetails.aspx" />
     <Content Include="GoodsReceivedSummary.aspx" />
     <Content Include="LocationDetails.aspx" />
     <Content Include="LocationDisplay.aspx" />
@@ -2002,6 +2003,20 @@
       <DependentUpon>LocationDisplayDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PIPreAndPostDetailsDS.xsc">
+      <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIPreAndPostDetailsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIPreAndPostDetailsDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIPreAndPostDetailsDS.xss">
+      <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2349,6 +2364,13 @@
       <DependentUpon>GoodsReceivedDetailesDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PIPreAndPostDetails.aspx.cs">
+      <DependentUpon>PIPreAndPostDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PIPreAndPostDetails.aspx.designer.cs">
+      <DependentUpon>PIPreAndPostDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GoodsReceivedSummary.aspx.cs">
       <DependentUpon>GoodsReceivedSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2419,6 +2441,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PIPreAndPostCountDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="PIPreAndPostDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
@@ -2683,6 +2711,9 @@
     <Content Include="ReportDesigns\LocationDisplay.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\PIPreAndPostDetails.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
