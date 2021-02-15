@@ -291,7 +291,6 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1882,7 +1881,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.04167in</Height>
+    <Height>1.36667in</Height>
     <Style />
   </Body>
   <Width>17.55962in</Width>
