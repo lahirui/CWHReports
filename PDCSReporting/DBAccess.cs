@@ -1763,5 +1763,43 @@ namespace PDCSReporting
                 }
             }
         }
+
+        public BoxMovementReportDS getBoxMovementDetails(int BoxId)
+        {
+
+            SqlCommand cmd = new SqlCommand("SELECT dbo.Boxes.BoxCode AS Box, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, " +
+                                                              "(ISNULL(dbo.Pallets.Code, 'N/A')) AS Pallet, (ISNULL(dbo.Locations.Code, 'N/A')) AS Location, dbo.CartonWips.EffectiveDate, dbo.CartonWips.TransactionType, dbo.CartonWips.WIPArea, dbo.CartonWips.Quantity * dbo.CartonDetails.Quantity AS Quantity, " +
+                                                              "(CASE WHEN dbo.CartonWips.WIPArea = 1 THEN((dbo.CartonWips.Quantity) * (dbo.CartonDetails.Quantity)) ELSE 0 END) AS 'INQ',  " +
+                                                              "(CASE WHEN dbo.CartonWips.WIPArea = 2 THEN((dbo.CartonWips.Quantity) * (dbo.CartonDetails.Quantity)) ELSE 0 END) AS 'WIP',  " +
+                                                              "(CASE WHEN dbo.CartonWips.WIPArea = 3 THEN((dbo.CartonWips.Quantity) * (dbo.CartonDetails.Quantity)) ELSE 0 END) AS 'OUTQ' " +
+                                            "FROM dbo.CartonWips INNER JOIN " +
+                                                              "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                                              "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId INNER JOIN " +
+                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                                              "dbo.CartonHeaders ON dbo.Boxes.Id = dbo.CartonHeaders.BoxId FULL OUTER JOIN " +
+                                                              "dbo.Pallets ON dbo.CartonHeaders.PalletId = dbo.Pallets.Id FULL OUTER JOIN " +
+                                                              "dbo.Locations ON dbo.Pallets.LocationId = dbo.Locations.Id FULL OUTER JOIN " +
+                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId " +
+                                            "WHERE(dbo.CartonWips.BoxId = " + BoxId + ") " +
+                                            "ORDER BY dbo.CartonWips.EffectiveDate, dbo.CartonWips.WIPArea,Pallet, Location");
+            cmd.CommandTimeout = 0;
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+                conn.Open();
+                sda.SelectCommand = cmd;
+                using (BoxMovementReportDS FHC = new BoxMovementReportDS())
+                {
+                    sda.Fill(FHC, "BoxMovementReportDS");
+                    conn.Close();
+                    return FHC;
+                }
+            }
+
+        }
     }
 }

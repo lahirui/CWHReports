@@ -3,14 +3,6 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        function openModal() {
-            $('#ReportDataFilterModal').modal('show');
-        }
-    </script>
-
-  
-
      <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/utils.js"></script>
@@ -18,45 +10,50 @@
     <link href="Content/select2.min.css" rel="stylesheet" />
 
     <script type="text/javascript">
-        $(document).ready(function () {
+
+        function openModal() {
+            $('#ReportDataFilterModal').modal('show');
+        }
+
+           $(document).ready(function () {
+            LoadSelect2();
+        });
+
+        var prm;
+        if (typeof (Sys) !== 'undefined') {
+            prm = Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function (sender, args) {
+                { { scopeName } } _init();
+            });
+        }
+        function LoadSelect2() {
             $("#<%=ddlFromFactory.ClientID%>").select2({
                 placeholder: "Select Factory",
                 allowClear: true
             });
-        });
-
-         $(document).ready(function () {
             $("#<%=ddlToFactory.ClientID%>").select2({
                 placeholder: "Select Factory",
                 allowClear: true
             });
-         });
-
-        $(document).ready(function () {
-            $("#<%=ddlFromAOD.ClientID%>").select2({
+             $("#<%=ddlFromAOD.ClientID%>").select2({
                 placeholder: "Select AOD",
                 allowClear: true
-            });
-        });
-        $(document).ready(function () {
-            $("#<%=ddlToAOD.ClientID%>").select2({
+             });
+              $("#<%=ddlToAOD.ClientID%>").select2({
                 placeholder: "Select AOD",
                 allowClear: true
-            });
-        });
+              });
+             $("#<%=ddlFromCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+             });
+             $("#<%=ddlToCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
+             });
 
-        $(document).ready(function () {
-            $("#<%=ddlFromCPO.ClientID%>").select2({
-                placeholder: "Select CPO",
-                allowClear: true
-            });
-        });
-        $(document).ready(function () {
-            $("#<%=ddlToCPO.ClientID%>").select2({
-                placeholder: "Select CPO",
-                allowClear: true
-            });
-        });
+        }
+
+      
     </script>
 </asp:Content>
 
@@ -69,7 +66,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ReportDataFilterModal" style="background-color:#da532c;">Setup Report</button>
+                <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ReportDataFilterModal" style="background-color:#da532c;" onclick="LoadSelect2()">Setup Report</button>
             </div>
         </div>
         <div class="row" style="padding-top: 20px; padding-bottom: 10px;">

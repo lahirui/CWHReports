@@ -99,6 +99,7 @@ namespace PDCSReporting
         {
             txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
             calFromDate.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2()", true);
         }
 
         protected void lbToDate_Click(object sender, EventArgs e)
@@ -125,6 +126,7 @@ namespace PDCSReporting
         {
             txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
             calToDate.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2()", true);
         }
 
         protected void ddlToFactory_DataBound(object sender, EventArgs e)

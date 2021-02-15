@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AODCheckList.aspx" />
+    <Content Include="BoxMovementReport.aspx" />
     <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
     <Content Include="CartonWiseStockReport.aspx" />
@@ -2017,6 +2018,20 @@
       <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="BoxMovementReportDS.xsc">
+      <DependentUpon>BoxMovementReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BoxMovementReportDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BoxMovementReportDS.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BoxMovementReportDS.xss">
+      <DependentUpon>BoxMovementReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2217,6 +2232,13 @@
       <DependentUpon>AODDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="BoxMovementReport.aspx.cs">
+      <DependentUpon>BoxMovementReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BoxMovementReport.aspx.designer.cs">
+      <DependentUpon>BoxMovementReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AODUnavailableQuantities.aspx.cs">
       <DependentUpon>AODUnavailableQuantities.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2232,6 +2254,12 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BoxMovementReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoxMovementReportDS.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="BSScannedBoxDetails.aspx.cs">
       <DependentUpon>BSScannedBoxDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2716,6 +2744,9 @@
     <Content Include="ReportDesigns\PIPreAndPostDetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\BoxMovementReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
