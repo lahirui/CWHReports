@@ -133,7 +133,8 @@ namespace PDCSReporting
         {
             txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
             calToDate.Visible = false;
-
+            ddlFromPI.Items.Clear();
+            ddlToPI.Items.Clear();
             string dateFrom = calFromDate.SelectedDate.ToString("dd-MMM-yyyy");
             string dateTo = calToDate.SelectedDate.ToString("dd-MMM-yyyy");
             DataSet dsPI = new DataSet();

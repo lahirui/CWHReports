@@ -12,7 +12,7 @@
   <xs:element name="PIPreAndPostDetailsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PIPreAndPostDetailsDS" msprop:Generator_UserDSName="PIPreAndPostDetailsDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PIPreAndPostDetailsDS" msprop:Generator_TableClassName="PIPreAndPostDetailsDSDataTable" msprop:Generator_TableVarName="tablePIPreAndPostDetailsDS" msprop:Generator_TablePropName="_PIPreAndPostDetailsDS" msprop:Generator_RowDeletingName="PIPreAndPostDetailsDSRowDeleting" msprop:Generator_RowChangingName="PIPreAndPostDetailsDSRowChanging" msprop:Generator_RowEvHandlerName="PIPreAndPostDetailsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="PIPreAndPostDetailsDSRowDeleted" msprop:Generator_UserTableName="PIPreAndPostDetailsDS" msprop:Generator_RowChangedName="PIPreAndPostDetailsDSRowChanged" msprop:Generator_RowEvArgName="PIPreAndPostDetailsDSRowChangeEvent" msprop:Generator_RowClassName="PIPreAndPostDetailsDSRow">
+        <xs:element name="PIPreAndPostDetailsDS" msprop:Generator_TableClassName="PIPreAndPostDetailsDSDataTable" msprop:Generator_TableVarName="tablePIPreAndPostDetailsDS" msprop:Generator_RowChangedName="PIPreAndPostDetailsDSRowChanged" msprop:Generator_TablePropName="_PIPreAndPostDetailsDS" msprop:Generator_RowDeletingName="PIPreAndPostDetailsDSRowDeleting" msprop:Generator_RowChangingName="PIPreAndPostDetailsDSRowChanging" msprop:Generator_RowEvHandlerName="PIPreAndPostDetailsDSRowChangeEventHandler" msprop:Generator_RowDeletedName="PIPreAndPostDetailsDSRowDeleted" msprop:Generator_RowClassName="PIPreAndPostDetailsDSRow" msprop:Generator_UserTableName="PIPreAndPostDetailsDS" msprop:Generator_RowEvArgName="PIPreAndPostDetailsDSRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PIDate" msprop:Generator_ColumnVarNameInTable="columnPIDate" msprop:Generator_ColumnPropNameInRow="PIDate" msprop:Generator_ColumnPropNameInTable="PIDateColumn" msprop:Generator_UserColumnName="PIDate" type="xs:dateTime" minOccurs="0" />
@@ -25,6 +25,7 @@
               <xs:element name="BoxCode" msprop:Generator_ColumnVarNameInTable="columnBoxCode" msprop:Generator_ColumnPropNameInRow="BoxCode" msprop:Generator_ColumnPropNameInTable="BoxCodeColumn" msprop:Generator_UserColumnName="BoxCode" type="xs:string" minOccurs="0" />
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
               <xs:element name="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_UserColumnName="Category" type="xs:string" minOccurs="0" />
+              <xs:element name="CPO" msprop:Generator_ColumnVarNameInTable="columnCPO" msprop:Generator_ColumnPropNameInRow="CPO" msprop:Generator_ColumnPropNameInTable="CPOColumn" msprop:Generator_UserColumnName="CPO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

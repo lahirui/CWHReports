@@ -299,6 +299,8 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnCategory;
             
+            private global::System.Data.DataColumn columnCPO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PIPreAndPostDetailsDSDataTable() {
@@ -414,6 +416,14 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CPOColumn {
+                get {
+                    return this.columnCPO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PIPreAndPostDetailsDSRow AddPIPreAndPostDetailsDSRow(System.DateTime PIDate, string Reference, string Style, string Colour, string Size, string Location, string Pallet, string BoxCode, int Quantity, string Category) {
+            public PIPreAndPostDetailsDSRow AddPIPreAndPostDetailsDSRow(System.DateTime PIDate, string Reference, string Style, string Colour, string Size, string Location, string Pallet, string BoxCode, int Quantity, string Category, string CPO) {
                 PIPreAndPostDetailsDSRow rowPIPreAndPostDetailsDSRow = ((PIPreAndPostDetailsDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PIDate,
@@ -461,7 +471,8 @@ namespace PDCSReporting {
                         Pallet,
                         BoxCode,
                         Quantity,
-                        Category};
+                        Category,
+                        CPO};
                 rowPIPreAndPostDetailsDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPIPreAndPostDetailsDSRow);
                 return rowPIPreAndPostDetailsDSRow;
@@ -494,6 +505,7 @@ namespace PDCSReporting {
                 this.columnBoxCode = base.Columns["BoxCode"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnCategory = base.Columns["Category"];
+                this.columnCPO = base.Columns["CPO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnQuantity);
                 this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategory);
+                this.columnCPO = new global::System.Data.DataColumn("CPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPO);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_PIPreAndPostDetailsDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "PIPreAndPostDetailsDS");
             }
@@ -823,6 +837,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CPO {
+                get {
+                    try {
+                        return ((string)(this[this.tablePIPreAndPostDetailsDS.CPOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'PIPreAndPostDetailsDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePIPreAndPostDetailsDS.CPOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPIDateNull() {
                 return this.IsNull(this.tablePIPreAndPostDetailsDS.PIDateColumn);
             }
@@ -939,6 +969,18 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCategoryNull() {
                 this[this.tablePIPreAndPostDetailsDS.CategoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCPONull() {
+                return this.IsNull(this.tablePIPreAndPostDetailsDS.CPOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCPONull() {
+                this[this.tablePIPreAndPostDetailsDS.CPOColumn] = global::System.Convert.DBNull;
             }
         }
         
