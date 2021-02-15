@@ -56,7 +56,7 @@
                 <button type="button" id="customiseStyleReportBtn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#DataFilterModal" style="background-color:#da532c;" onclick="LoadSelect2()">Setup Report</button>
             </div>
         </div>
-        <div class="row" style="padding-top: 20px; padding-bottom: 10px;">
+        <div class="row" style="padding-top: 20px; padding-bottom: 10px; overflow:scroll">
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true"></rsweb:ReportViewer>
         </div>
     </div>

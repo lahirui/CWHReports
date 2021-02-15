@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>7.834cm</Width>
+              <Width>4.57433cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>8.61717cm</Width>
+              <Width>7.34717cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -236,7 +236,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>EffectiveDate</rd:DefaultName>
@@ -266,8 +268,16 @@
 SWITCH(
 Fields!TransactionType.Value=8 and fields!WIPArea.Value=1 and fields!Quantity.Value&gt;0,"Received into loading bay",
 Fields!TransactionType.Value=1 and fields!WIPArea.Value=2 and fields!Quantity.Value&gt;0,"Received into warehouse",
+
+Fields!TransactionType.Value=1 and fields!WIPArea.Value=1 and fields!Quantity.Value&lt;0,"Received into warehouse",
+
 Fields!TransactionType.Value=2 and fields!WIPArea.Value=3 and fields!Quantity.Value&gt;0,"Ready for Shipment",
 Fields!TransactionType.Value=8 and fields!WIPArea.Value=3 and fields!Quantity.Value&lt;0,"Transferred out",
+
+
+Fields!TransactionType.Value=3 and fields!WIPArea.Value=2 and fields!Quantity.Value&lt;0,"Ready to Ship/Transfer",
+Fields!TransactionType.Value=3 and fields!WIPArea.Value=3 and fields!Quantity.Value&gt;0,"Ready to Ship/Transfer",
+
 Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.Value&lt;0,"Shipped out"
 )</Value>
                               <Style>
@@ -607,7 +617,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>4.16626cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox40">
                     <CanGrow>true</CanGrow>
@@ -648,7 +658,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>7.12849cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox42">
                         <CanGrow>true</CanGrow>
@@ -689,7 +699,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.5cm</Size>
+                        <Size>3.73cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox44">
                             <CanGrow>true</CanGrow>
@@ -771,7 +781,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>2.5cm</Size>
+                                <Size>3.17733cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox52">
                                     <CanGrow>true</CanGrow>
@@ -812,7 +822,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>2.5cm</Size>
+                                    <Size>3.09267cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox54">
                                         <CanGrow>true</CanGrow>
@@ -963,7 +973,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>4.16626cm</Size>
                 <CellContents>
                   <Textbox Name="Box1">
                     <CanGrow>true</CanGrow>
@@ -1009,7 +1019,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>7.12849cm</Size>
                     <CellContents>
                       <Textbox Name="Style1">
                         <CanGrow>true</CanGrow>
@@ -1055,7 +1065,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.5cm</Size>
+                        <Size>3.73cm</Size>
                         <CellContents>
                           <Textbox Name="Colour1">
                             <CanGrow>true</CanGrow>
@@ -1147,7 +1157,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                                 </SortExpression>
                               </SortExpressions>
                               <TablixHeader>
-                                <Size>2.5cm</Size>
+                                <Size>3.17733cm</Size>
                                 <CellContents>
                                   <Textbox Name="CPO">
                                     <CanGrow>true</CanGrow>
@@ -1193,7 +1203,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                                     </SortExpression>
                                   </SortExpressions>
                                   <TablixHeader>
-                                    <Size>2.5cm</Size>
+                                    <Size>3.09267cm</Size>
                                     <CellContents>
                                       <Textbox Name="MPO1">
                                         <CanGrow>true</CanGrow>
@@ -1340,7 +1350,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>4.16626cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox56">
                     <CanGrow>true</CanGrow>
@@ -1378,7 +1388,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.5cm</Size>
+                    <Size>7.12849cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox57">
                         <CanGrow>true</CanGrow>
@@ -1416,7 +1426,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.5cm</Size>
+                        <Size>3.73cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox58">
                             <CanGrow>true</CanGrow>
@@ -1492,7 +1502,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>2.5cm</Size>
+                                <Size>3.17733cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox60">
                                     <CanGrow>true</CanGrow>
@@ -1530,7 +1540,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>2.5cm</Size>
+                                    <Size>3.09267cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox61">
                                         <CanGrow>true</CanGrow>
@@ -1663,7 +1673,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
         <Top>1.2065cm</Top>
         <Left>0.3916cm</Left>
         <Height>1.8cm</Height>
-        <Width>43.95116cm</Width>
+        <Width>48.21624cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1831,7 +1841,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
         </Paragraphs>
         <rd:DefaultName>AODNumber</rd:DefaultName>
         <Top>0.17639cm</Top>
-        <Left>11.9391cm</Left>
+        <Left>13.79009cm</Left>
         <Height>0.6cm</Height>
         <Width>2.90449cm</Width>
         <ZIndex>5</ZIndex>
@@ -1852,7 +1862,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Factory:</Value>
+                <Value>Source Factory:</Value>
                 <Style>
                   <FontFamily>Georgia</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -1868,7 +1878,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
         <Top>0.17639cm</Top>
         <Left>9.96826cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.97084cm</Width>
+        <Width>3.716cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -1884,7 +1894,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
     <Height>1.36667in</Height>
     <Style />
   </Body>
-  <Width>17.55962in</Width>
+  <Width>19.29528in</Width>
   <Page>
     <PageHeader>
       <Height>0.97367cm</Height>
@@ -1914,7 +1924,7 @@ Fields!TransactionType.Value=10 and fields!WIPArea.Value=3 and fields!Quantity.V
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
           <Height>0.91017cm</Height>
-          <Width>44.34276cm</Width>
+          <Width>48.60784cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
