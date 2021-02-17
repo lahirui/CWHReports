@@ -26,7 +26,23 @@
         <div class="page-header" style="margin-top: 80px">
             <%-- <h1 style="font-family: Georgia; color: #da532c;">Location</h1>--%>
         </div>
-        <div class="row" style="margin-top:-20px; overflow-x:scroll; overflow-y:scroll">
+        <div class="row">
+            <div class="col-md-4">
+                <asp:Label ID="Label1" runat="server" style="font-size:xx-large; color:red; font-weight:bold">Available Precentage: </asp:Label>
+                <asp:Label ID="lblPrecentage" runat="server" style="font-size:xx-large; color:red; font-weight:bold"></asp:Label>
+            </div>
+            <div class="col-md-4">
+                 <asp:Label ID="Label2" runat="server" style="font-size:xx-large; color:red; font-weight:bold">Available Locations : </asp:Label>
+                 <asp:Label ID="lblRemaining" runat="server" style="font-size:xx-large; color:red; font-weight:bold"></asp:Label>
+            </div>
+             <div class="col-md-4">
+                 <asp:Label ID="Label3" runat="server" style="font-size:xx-large; color:red; font-weight:bold">Used Locations : </asp:Label>
+                 <asp:Label ID="lblUsed" runat="server" style="font-size:xx-large; color:red; font-weight:bold"></asp:Label>
+            </div>
+
+
+        </div>
+        <div class="row" style="margin-top:10px; overflow-x:scroll; overflow-y:scroll">
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true"></rsweb:ReportViewer>
         </div>
        <%-- <div class="row" style="overflow:scroll">
