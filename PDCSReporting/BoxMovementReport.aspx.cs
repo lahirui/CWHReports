@@ -18,16 +18,18 @@ namespace PDCSReporting
         {
             if (!this.IsPostBack)
             {
-                DataSet dsAOD = new DataSet();
-                dsAOD = com.ReturnDataSet("SELECT Id, BoxCode FROM Boxes ORDER BY BoxCode");
-                if (dsAOD.Tables[0].Rows.Count > 0)
+                
+                DataSet dsFac = new DataSet();
+                dsFac = com.ReturnDataSet("SELECT Id, Code FROM     Factories WHERE(IsDeleted = 0) ORDER BY Code");
+                if (dsFac.Tables[0].Rows.Count > 0)
                 {
-                    ddlBoxCode.DataSource = dsAOD.Tables[0];
-                    ddlBoxCode.DataValueField = "Id";
-                    ddlBoxCode.DataTextField = "BoxCode";
-                    ddlBoxCode.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                    ddlFactory.DataSource = dsFac.Tables[0];
+                    ddlFactory.DataValueField = "Id";
+                    ddlFactory.DataTextField = "Code";
+                    ddlFactory.DataBind();
                 }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+
             }
         }
 
@@ -71,6 +73,45 @@ namespace PDCSReporting
 
             ReportParameter Aod = new ReportParameter("AOD", AODNumber);
             this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { Aod });
+        }
+
+        protected void ddlFactory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet dsCPO = new DataSet();
+            dsCPO = com.ReturnDataSet("SELECT DISTINCT dbo.BoxCPOAllocationDetails.CPO " +
+                                    "FROM     dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                                      "dbo.AODBoxDetails ON dbo.BoxCPOAllocationDetails.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
+                                                      "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id " +
+                                    "WHERE(dbo.AODs.SourceWarehouse = '" + ddlFactory.SelectedItem.Text + "') AND(dbo.AODs.IsDeleted = 0) " +
+                                    "ORDER BY dbo.BoxCPOAllocationDetails.CPO");
+            if (dsCPO.Tables[0].Rows.Count > 0)
+            {
+                ddlCPO.DataSource = dsCPO.Tables[0];
+                ddlCPO.DataValueField = "CPO";
+                ddlCPO.DataTextField = "CPO";
+                ddlCPO.DataBind();
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2()", true);
+        }
+
+        protected void ddlCPO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet dsBox = new DataSet();
+            dsBox = com.ReturnDataSet("SELECT DISTINCT  dbo.Boxes.Id, dbo.Boxes.BoxCode " +
+                                        "FROM     dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                                          "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id " +
+                                        "WHERE(dbo.BoxCPOAllocationDetails.CPO = '" + ddlCPO.SelectedItem.Text + "') " +
+                                        "ORDER BY dbo.Boxes.BoxCode");
+            if (dsBox.Tables[0].Rows.Count > 0)
+            {
+                ddlBoxCode.DataSource = dsBox.Tables[0];
+                ddlBoxCode.DataValueField = "Id";
+                ddlBoxCode.DataTextField = "BoxCode";
+                ddlBoxCode.DataBind();
+
+            }
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2()", true);
         }
     }
 }

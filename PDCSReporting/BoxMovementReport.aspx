@@ -39,6 +39,14 @@
              $("#<%=ddlBoxCode.ClientID%>").select2({
                 placeholder: "Select Box Code",
                 allowClear: true
+             });
+             $("#<%=ddlFactory.ClientID%>").select2({
+                placeholder: "Select Factory",
+                allowClear: true
+             });
+             $("#<%=ddlCPO.ClientID%>").select2({
+                placeholder: "Select CPO",
+                allowClear: true
             });
         }
     </script>
@@ -67,14 +75,26 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #da532c;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title" style="font-family: Georgia; color: white; font-weight: 500">Box Movement Reports</h3>
+                    <h3 class="modal-title" style="font-family: Georgia; color: white; font-weight: 500">Box Movement Report</h3>
                 </div>
                 <div class="modal-body">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <div class="form-horizontal" role="form">
+                                 <div class="form-group">
+                                    <label class="control-label col-sm-4 col-md-4 col-lg-4" for="cpo" style="font-family: Georgia">Source Factory:</label>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <asp:DropDownList ID="ddlFactory" Width="300px" runat="server" AutoPostBack="true"  AppendDataBoundItems="true" CssClass="form-control" OnSelectedIndexChanged="ddlFactory_SelectedIndexChanged"></asp:DropDownList>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="control-label col-sm-4 col-md-4 col-lg-4" for="cpo" style="font-family: Georgia">CPO:</label>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <asp:DropDownList ID="ddlCPO" Width="300px" runat="server" AutoPostBack="true"  AppendDataBoundItems="true" CssClass="form-control" OnSelectedIndexChanged="ddlCPO_SelectedIndexChanged"></asp:DropDownList>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cpo" style="font-family: Georgia">Box:</label>
+                                    <label class="control-label col-sm-4 col-md-4 col-lg-4" for="cpo" style="font-family: Georgia">Box Barcode:</label>
                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                         <asp:DropDownList ID="ddlBoxCode" Width="300px" runat="server"  AppendDataBoundItems="true" CssClass="form-control"></asp:DropDownList>
                                     </div>
