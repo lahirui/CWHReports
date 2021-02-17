@@ -27,6 +27,7 @@ namespace PDCSReporting
                     ddlFactory.DataValueField = "Id";
                     ddlFactory.DataTextField = "Code";
                     ddlFactory.DataBind();
+                    ddlFactory.Items.Insert(0, "Select Factory");
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
 
@@ -77,6 +78,8 @@ namespace PDCSReporting
 
         protected void ddlFactory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlCPO.Items.Clear();
+            ddlBoxCode.Items.Clear();
             DataSet dsCPO = new DataSet();
             dsCPO = com.ReturnDataSet("SELECT DISTINCT dbo.BoxCPOAllocationDetails.CPO " +
                                     "FROM     dbo.BoxCPOAllocationDetails INNER JOIN " +
@@ -86,6 +89,7 @@ namespace PDCSReporting
                                     "ORDER BY dbo.BoxCPOAllocationDetails.CPO");
             if (dsCPO.Tables[0].Rows.Count > 0)
             {
+                
                 ddlCPO.DataSource = dsCPO.Tables[0];
                 ddlCPO.DataValueField = "CPO";
                 ddlCPO.DataTextField = "CPO";
