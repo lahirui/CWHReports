@@ -324,6 +324,8 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnStatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ScannedDetailsCPOWiseDSDataTable() {
@@ -399,6 +401,14 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StatusColumn {
+                get {
+                    return this.columnStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -434,14 +444,15 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScannedDetailsCPOWiseDSRow AddScannedDetailsCPOWiseDSRow(string BoxCode, string Style, string Colour, string Size, int Quantity) {
+            public ScannedDetailsCPOWiseDSRow AddScannedDetailsCPOWiseDSRow(string BoxCode, string Style, string Colour, string Size, int Quantity, bool Status) {
                 ScannedDetailsCPOWiseDSRow rowScannedDetailsCPOWiseDSRow = ((ScannedDetailsCPOWiseDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BoxCode,
                         Style,
                         Colour,
                         Size,
-                        Quantity};
+                        Quantity,
+                        Status};
                 rowScannedDetailsCPOWiseDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScannedDetailsCPOWiseDSRow);
                 return rowScannedDetailsCPOWiseDSRow;
@@ -469,6 +480,7 @@ namespace PDCSReporting {
                 this.columnColour = base.Columns["Colour"];
                 this.columnSize = base.Columns["Size"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnStatus = base.Columns["Status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -484,6 +496,8 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnSize);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_ScannedDetailsCPOWiseDS");
                 this.ExtendedProperties.Add("Generator_UserTableName", "ScannedDetailsCPOWiseDS");
             }
@@ -1011,6 +1025,22 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Status {
+                get {
+                    try {
+                        return ((bool)(this[this.tableScannedDetailsCPOWiseDS.StatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'ScannedDetailsCPOWiseDS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableScannedDetailsCPOWiseDS.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsBoxCodeNull() {
                 return this.IsNull(this.tableScannedDetailsCPOWiseDS.BoxCodeColumn);
             }
@@ -1067,6 +1097,18 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableScannedDetailsCPOWiseDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStatusNull() {
+                return this.IsNull(this.tableScannedDetailsCPOWiseDS.StatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStatusNull() {
+                this[this.tableScannedDetailsCPOWiseDS.StatusColumn] = global::System.Convert.DBNull;
             }
         }
         
