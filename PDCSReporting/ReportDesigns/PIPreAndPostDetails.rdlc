@@ -1044,7 +1044,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=SUM(SUM(iif(Fields!Category.Value="PRE",1,0)*SUM(Fields!Quantity.Value)) - SUM(iif(Fields!Category.Value="POST",1,0)*SUM(Fields!Quantity.Value)))</Value>
+                              <Value>=SUM(iif(Fields!Category.Value="PRE",1,0)*Fields!Quantity.Value) - SUM(iif(Fields!Category.Value="POST",1,0)*Fields!Quantity.Value)</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
                                 <FontWeight>Bold</FontWeight>
@@ -1070,6 +1070,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
