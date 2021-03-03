@@ -99,8 +99,7 @@
                             <li><a tabindex="-1" href="../StockSummaryReport.aspx">On Hand Stock Summary Report</a></li>
                             <li><a tabindex="-1" href="../StockDetailedReport.aspx">On Hand Stock Detailed Report</a></li> 
                             <li><a tabindex="-1" href="../StockPositionReport.aspx">Stock Position Report</a></li> 
-                            <li><a tabindex="-1" href="../PIPreAndPostCount.aspx">PI Pre & Post Count Summary Report</a></li>                       
-                        <li><a tabindex="-1" href="../PIPreAndPostDetails.aspx">PI Pre & Post Count Detailed Report</a></li>                       
+                                                  
                         </ul>
                     </li>
 
@@ -117,6 +116,16 @@
                             <li><a tabindex="-1" href="../LocationDisplay.aspx">Location Display</a></li>                      
                         </ul>
                     </li>
+
+                     <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown" style="font-family: Georgia;" tabindex="-1" href="#"> PI Reports<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a tabindex="-1" href="../PIStyleColorCPO.aspx">Location Display</a></li> 
+                             <li><a tabindex="-1" href="../PIPreAndPostCount.aspx">PI Pre & Post Count Summary Report</a></li>                       
+                        <li><a tabindex="-1" href="../PIPreAndPostDetails.aspx">PI Pre & Post Count Detailed Report</a></li>                     
+                        </ul>
+                    </li>
+
 
                 </ul>
             </div>

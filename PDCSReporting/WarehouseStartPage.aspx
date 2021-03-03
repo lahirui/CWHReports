@@ -131,15 +131,10 @@
                          <a href="StockDetailedReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">On Hand Stock Detailed Report</h6>
                         </a>
-                        <a href="StockPositionReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                        <a href="StockPositionReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Stock Position Report</h6>
                         </a>
-                          <a href="PIPreAndPostCount.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Summary Report</h6>
-                        </a>
-                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
-                        </a>
+                          
 
                     </div>
                 </div>
@@ -163,6 +158,24 @@
                 </div>
 
 
+                 <div class="col-sm-2 col-md-2 col-lg-2 ">
+                    <div class="list-group" style="border-color: #da532c; color: whitesmoke">
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-list"></span>  PI Reports</div>
+                         <a href="PIStyleColorCPO.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI (Style-Color-CPO) Report </h6>
+                        </a>
+
+                        <a href="PIPreAndPostCount.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Summary Report</h6>
+                        </a>
+                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
+                        </a>
+                    </div>
+                </div>
+
+
+                
 
                  
 

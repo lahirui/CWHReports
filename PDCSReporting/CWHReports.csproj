@@ -171,6 +171,7 @@
     <Content Include="LocationDisplay.aspx" />
     <Content Include="PalletDetails.aspx" />
     <Content Include="PIPreAndPostCount.aspx" />
+    <Content Include="PIStyleColorCPO.aspx" />
     <Content Include="Project_Readme.html" />
     <Content Include="ScannedReportCPOWise.aspx" />
     <Content Include="Scripts\i18n\af.js" />
@@ -2032,6 +2033,20 @@
       <DependentUpon>BoxMovementReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PIStyleColorCPODet.xsc">
+      <DependentUpon>PIStyleColorCPODet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIStyleColorCPODet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIStyleColorCPODet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PIStyleColorCPODet.xss">
+      <DependentUpon>PIStyleColorCPODet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2477,6 +2492,19 @@
       <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PIStyleColorCPO.aspx.cs">
+      <DependentUpon>PIStyleColorCPO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PIStyleColorCPO.aspx.designer.cs">
+      <DependentUpon>PIStyleColorCPO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PIStyleColorCPODet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIStyleColorCPODet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2747,6 +2775,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReportDesigns\BoxMovementReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportDesigns\PIStyleColorCPODetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

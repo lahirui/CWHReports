@@ -1801,5 +1801,36 @@ namespace PDCSReporting
             }
 
         }
+
+        public StockTakePalletDetailsDS getPIStyleColorCPODetails(string PIRef)              // Chaminda
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT PIs.PIReference,PIs.CreatedDate, Styles.Code AS Style, Colors.Code AS Color, CPOs.CPONumber AS CPO, Locations.Code AS Location, Pallets.Code AS Pallet, Boxes.BoxCode " +
+                                            "FROM Boxes INNER JOIN BoxCPOAllocationDetails INNER JOIN CPOs ON BoxCPOAllocationDetails.CPO = CPOs.CPONumber ON Boxes.Id = BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                            "Pallets INNER JOIN CartonHeaders ON Pallets.Id = CartonHeaders.PalletId INNER JOIN Locations ON Pallets.LocationId = Locations.Id ON Boxes.Id = CartonHeaders.BoxId " +
+                                            "RIGHT OUTER JOIN PIs INNER JOIN PIStyles ON PIs.Id = PIStyles.PIsId INNER JOIN Styles ON PIStyles.StyleId = Styles.Id INNER JOIN Colors ON PIStyles.ColorId = Colors.Id ON CPOs.CPONumber = PIStyles.CPO " +
+                                            "WHERE(PIs.PIReference = '" + PIRef + "') " +
+                                            "ORDER BY CPO, Location, Pallet, Boxes.BoxCode");
+
+
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = conn;
+
+                sda.SelectCommand = cmd;
+                using (StockTakePalletDetailsDS Customer = new StockTakePalletDetailsDS())
+                {
+                    sda.Fill(Customer, "StockTakePalletDetailsDS");
+                    conn.Close();
+                    return Customer;
+                }
+            }
+        }
+
+
     }
 }
