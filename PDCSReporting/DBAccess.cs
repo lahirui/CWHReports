@@ -281,7 +281,8 @@ namespace PDCSReporting
                                     "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
                                     "dbo.BoxCPOAllocationDetails INNER JOIN " +
                                     "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                                    "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND dbo.CartonDetails.Quantity>0 AND dbo.CartonHeaders.IsDeleted=0" +
+                                    "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND dbo.CartonDetails.Quantity>0 "+
+                                    "AND dbo.CartonHeaders.IsDeleted=0" +
                                     "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code,dbo.CartonHeaders.IsDeleted " +
                                     "ORDER BY dbo.Sizes.Code";
 
@@ -324,7 +325,8 @@ namespace PDCSReporting
                                "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
                                "dbo.BoxCPOAllocationDetails INNER JOIN " +
                                "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                               "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND (dbo.CartonDetails.Quantity>0) AND dbo.CartonHeaders.IsDeleted=0 " +
+                               "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND (dbo.CartonDetails.Quantity>0) "+
+                               "AND dbo.CartonHeaders.IsDeleted=0 " +
                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
                                "ORDER BY Size";
 
