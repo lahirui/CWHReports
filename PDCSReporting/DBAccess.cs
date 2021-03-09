@@ -272,18 +272,17 @@ namespace PDCSReporting
             //                     "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
             //                     "ORDER BY dbo.Sizes.Code";
 
-            newCmd.CommandText = "SELECT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity, dbo.CartonHeaders.IsDeleted AS Status " +
-                                    "FROM dbo.Products INNER JOIN " +
-                                    "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                    "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                    "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-                                    "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-                                    "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
-                                    "dbo.BoxCPOAllocationDetails INNER JOIN " +
-                                    "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                                    "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND dbo.CartonDetails.Quantity>0 "+
-                                    "AND dbo.CartonHeaders.IsDeleted=0" +
-                                    "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code,dbo.CartonHeaders.IsDeleted " +
+            newCmd.CommandText = "SELECT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity, dbo.CartonHeaders.IsDeleted AS Status "+
+                                    "FROM dbo.Products INNER JOIN "+
+                                    "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN "+
+                                    "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN "+
+                                    "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN "+
+                                    "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN "+
+                                    "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN "+
+                                    "dbo.BoxCPOAllocationDetails INNER JOIN "+
+                                    "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id "+
+                                    "WHERE(dbo.BoxCPOAllocationDetails.CPO = '"+ CPO +"') "+
+                                    "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code,dbo.CartonHeaders.IsDeleted "+
                                     "ORDER BY dbo.Sizes.Code";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
@@ -317,18 +316,17 @@ namespace PDCSReporting
             //                      "ORDER BY Size";
 
             newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                               "FROM dbo.Products INNER JOIN " +
-                               "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                               "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                               "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-                               "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-                               "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
-                               "dbo.BoxCPOAllocationDetails INNER JOIN " +
-                               "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
-                               "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') AND (dbo.CartonDetails.Quantity>0) "+
-                               "AND dbo.CartonHeaders.IsDeleted=0 " +
-                               "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
-                               "ORDER BY Size";
+                                  "FROM dbo.Products INNER JOIN " +
+                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
+                                  "dbo.CartonDetails ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
+                                  "dbo.CartonHeaders ON dbo.CartonDetails.BoxId = dbo.CartonHeaders.BoxId INNER JOIN " +
+                                  "dbo.BoxCPOAllocationDetails INNER JOIN " +
+                                  "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id " +
+                                  "WHERE (dbo.BoxCPOAllocationDetails.CPO = '" + CPO + "') " +
+                                  "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code " +
+                                  "ORDER BY Size";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
             DataTable dt = new DataTable();
