@@ -324,6 +324,8 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnBoxCreatedDate;
+            
             private global::System.Data.DataColumn columnStatus;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -401,6 +403,14 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BoxCreatedDateColumn {
+                get {
+                    return this.columnBoxCreatedDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn StatusColumn {
                 get {
                     return this.columnStatus;
@@ -444,7 +454,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ScannedDetailsCPOWiseDSRow AddScannedDetailsCPOWiseDSRow(string BoxCode, string Style, string Colour, string Size, int Quantity, bool Status) {
+            public ScannedDetailsCPOWiseDSRow AddScannedDetailsCPOWiseDSRow(string BoxCode, string Style, string Colour, string Size, int Quantity, System.DateTime BoxCreatedDate, bool Status) {
                 ScannedDetailsCPOWiseDSRow rowScannedDetailsCPOWiseDSRow = ((ScannedDetailsCPOWiseDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BoxCode,
@@ -452,6 +462,7 @@ namespace PDCSReporting {
                         Colour,
                         Size,
                         Quantity,
+                        BoxCreatedDate,
                         Status};
                 rowScannedDetailsCPOWiseDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScannedDetailsCPOWiseDSRow);
@@ -480,6 +491,7 @@ namespace PDCSReporting {
                 this.columnColour = base.Columns["Colour"];
                 this.columnSize = base.Columns["Size"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnBoxCreatedDate = base.Columns["BoxCreatedDate"];
                 this.columnStatus = base.Columns["Status"];
             }
             
@@ -496,6 +508,8 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnSize);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnBoxCreatedDate = new global::System.Data.DataColumn("BoxCreatedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoxCreatedDate);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_ScannedDetailsCPOWiseDS");
@@ -1025,6 +1039,23 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime BoxCreatedDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableScannedDetailsCPOWiseDS.BoxCreatedDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BoxCreatedDate\' in table \'ScannedDetailsCPOWiseDS\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableScannedDetailsCPOWiseDS.BoxCreatedDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Status {
                 get {
                     try {
@@ -1097,6 +1128,18 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableScannedDetailsCPOWiseDS.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBoxCreatedDateNull() {
+                return this.IsNull(this.tableScannedDetailsCPOWiseDS.BoxCreatedDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBoxCreatedDateNull() {
+                this[this.tableScannedDetailsCPOWiseDS.BoxCreatedDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

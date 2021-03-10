@@ -272,7 +272,7 @@ namespace PDCSReporting
             //                     "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colours.Code, dbo.Sizes.Code " +
             //                     "ORDER BY dbo.Sizes.Code";
 
-            newCmd.CommandText = "SELECT dbo.Boxes.BoxCode, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity, dbo.CartonHeaders.IsDeleted AS Status "+
+            newCmd.CommandText = "SELECT dbo.Boxes.BoxCode,(CAST(dbo.Boxes.CreatedDate AS DATE)) AS BoxCreatedDate, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity, dbo.CartonHeaders.IsDeleted AS Status " +
                                     "FROM dbo.Products INNER JOIN "+
                                     "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN "+
                                     "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN "+
@@ -282,8 +282,8 @@ namespace PDCSReporting
                                     "dbo.BoxCPOAllocationDetails INNER JOIN "+
                                     "dbo.Boxes ON dbo.BoxCPOAllocationDetails.BoxId = dbo.Boxes.Id ON dbo.CartonHeaders.BoxId = dbo.Boxes.Id "+
                                     "WHERE(dbo.BoxCPOAllocationDetails.CPO = '"+ CPO +"') "+
-                                    "GROUP BY dbo.Boxes.BoxCode, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code,dbo.CartonHeaders.IsDeleted "+
-                                    "ORDER BY dbo.Sizes.Code";
+                                    "GROUP BY dbo.Boxes.BoxCode,(CAST(dbo.Boxes.CreatedDate AS DATE)), dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code,dbo.CartonHeaders.IsDeleted " +
+                                    "ORDER BY dbo.Sizes.Code,(CAST(dbo.Boxes.CreatedDate AS DATE))";
 
             SqlDataAdapter da = new SqlDataAdapter(newCmd);
             DataTable dt = new DataTable();
