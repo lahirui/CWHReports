@@ -51,7 +51,7 @@
                 <%-- Status Reports --%>
                 <div class="col-sm-2 col-md-2 col-lg-2 ">
                     <div class="list-group" style="border-color: #da532c; color: whitesmoke">
-                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-home"></span> Central  Warehouse Reports</div>
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-home"></span> General Reports</div>
                         <a href="DailyScannedBoxes.aspx" class="list-group-item" style="border-top-color: #da532c; border-top-width: 3px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Daily Scanned Boxes Details</h6>
                         </a>
@@ -97,7 +97,7 @@
                         <a href="FactoryTransferDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Factory Transfer Details</h6>
                         </a>
-                         <a href="BoxMovementReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                         <a href="BoxMovementReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 1px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Box Movement Report</h6>
                         </a>
                          <a href="SingleScannedRFIDs.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
@@ -108,7 +108,7 @@
 
                 <div class="col-sm-2 col-md-2 col-lg-2 ">
                     <div class="list-group" style="border-color: #da532c; color: whitesmoke">
-                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-list"></span> Stock Reports</div>
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-list"></span> Stock Take Reports</div>
 
                          <a href="StockTakePalletDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Pallet Details For Stock Take</h6>
@@ -118,6 +118,20 @@
                         </a>
 
 
+                    </div>
+
+                    <div class="list-group" style="border-color: #da532c; color: whitesmoke">
+                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-briefcase"></span>  PI Count Reports</div>
+                         <a href="PIStyleColorCPO.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI (Style-Color-CPO) Report </h6>
+                        </a>
+
+                        <a href="PIPreAndPostCount.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Summary Report</h6>
+                        </a>
+                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
+                        </a>
                     </div>
                 </div>
 
@@ -155,30 +169,7 @@
                             <h6 class="list-group-item-heading" style="color: #da532c;">Location Display</h6>
                         </a>
                     </div>
-                </div>
-
-
-                 <div class="col-sm-2 col-md-2 col-lg-2 ">
-                    <div class="list-group" style="border-color: #da532c; color: whitesmoke">
-                        <div class="list-group-item h4" style="font-family: Georgia; font-weight: 500; color: whitesmoke; background-color: #da532c; border-width: 3px; border-color: #da532c;"><span class="fas fa-list"></span>  PI Reports</div>
-                         <a href="PIStyleColorCPO.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">PI (Style-Color-CPO) Report </h6>
-                        </a>
-
-                        <a href="PIPreAndPostCount.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Summary Report</h6>
-                        </a>
-                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
-                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
-                        </a>
-                    </div>
-                </div>
-
-
-                
-
-                 
-
+                </div>         
             </div>
         </div>
         <footer class="navbar navbar-fixed-bottom" style="background-color: whitesmoke;">
