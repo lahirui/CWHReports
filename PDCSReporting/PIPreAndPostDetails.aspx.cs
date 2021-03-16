@@ -59,7 +59,22 @@ namespace PDCSReporting
 
                 }
 
-                
+                string dateFrom = calFromDate.SelectedDate.ToString("dd-MMM-yyyy");
+                string dateTo = calToDate.SelectedDate.ToString("dd-MMM-yyyy");
+                DataSet dsPI = new DataSet();
+                dsPI = com.ReturnDataSet("SELECT  Id, PIReference FROM     PIs WHERE(IsDeleted = 0) AND(CAST(CreatedDate AS DATE) >= '" + dateFrom + "') AND(CAST(CreatedDate AS DATE) <= '" + dateTo + "') ORDER BY PIReference");
+                if (dsPI.Tables[0].Rows.Count > 0)
+                {
+                    ddlFromPI.DataSource = dsPI.Tables[0];
+                    ddlFromPI.DataTextField = "PIReference";
+                    ddlFromPI.DataValueField = "Id";
+                    ddlFromPI.DataBind();
+
+                    ddlToPI.DataSource = dsPI.Tables[0];
+                    ddlToPI.DataTextField = "PIReference";
+                    ddlToPI.DataValueField = "Id";
+                    ddlToPI.DataBind();
+                }
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
