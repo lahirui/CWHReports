@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StockReportDS" targetNamespace="http://tempuri.org/StockReportDS.xsd" xmlns:mstns="http://tempuri.org/StockReportDS.xsd" xmlns="http://tempuri.org/StockReportDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StockReportDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="StockReportDS" msprop:Generator_UserDSName="StockReportDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StockReportDS" msprop:Generator_TableClassName="StockReportDSDataTable" msprop:Generator_TableVarName="tableStockReportDS" msprop:Generator_TablePropName="_StockReportDS" msprop:Generator_RowDeletingName="StockReportDSRowDeleting" msprop:Generator_RowChangingName="StockReportDSRowChanging" msprop:Generator_RowEvHandlerName="StockReportDSRowChangeEventHandler" msprop:Generator_RowDeletedName="StockReportDSRowDeleted" msprop:Generator_UserTableName="StockReportDS" msprop:Generator_RowChangedName="StockReportDSRowChanged" msprop:Generator_RowEvArgName="StockReportDSRowChangeEvent" msprop:Generator_RowClassName="StockReportDSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Style" msprop:Generator_ColumnVarNameInTable="columnStyle" msprop:Generator_ColumnPropNameInRow="Style" msprop:Generator_ColumnPropNameInTable="StyleColumn" msprop:Generator_UserColumnName="Style" type="xs:string" minOccurs="0" />
+              <xs:element name="Colour" msprop:Generator_ColumnVarNameInTable="columnColour" msprop:Generator_ColumnPropNameInRow="Colour" msprop:Generator_ColumnPropNameInTable="ColourColumn" msprop:Generator_UserColumnName="Colour" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
+              <xs:element name="CPO" msprop:Generator_ColumnVarNameInTable="columnCPO" msprop:Generator_ColumnPropNameInRow="CPO" msprop:Generator_ColumnPropNameInTable="CPOColumn" msprop:Generator_UserColumnName="CPO" type="xs:string" minOccurs="0" />
+              <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:string" minOccurs="0" />
+              <xs:element name="Rack" msprop:Generator_ColumnVarNameInTable="columnRack" msprop:Generator_ColumnPropNameInRow="Rack" msprop:Generator_ColumnPropNameInTable="RackColumn" msprop:Generator_UserColumnName="Rack" type="xs:string" minOccurs="0" />
+              <xs:element name="WIPArea" msprop:Generator_ColumnVarNameInTable="columnWIPArea" msprop:Generator_ColumnPropNameInRow="WIPArea" msprop:Generator_ColumnPropNameInTable="WIPAreaColumn" msprop:Generator_UserColumnName="WIPArea" type="xs:string" minOccurs="0" />
+              <xs:element name="BarCode" msprop:Generator_ColumnVarNameInTable="columnBarCode" msprop:Generator_ColumnPropNameInRow="BarCode" msprop:Generator_ColumnPropNameInTable="BarCodeColumn" msprop:Generator_UserColumnName="BarCode" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:string" minOccurs="0" />
+              <xs:element name="SourceWarehouse" msprop:Generator_ColumnVarNameInTable="columnSourceWarehouse" msprop:Generator_ColumnPropNameInRow="SourceWarehouse" msprop:Generator_ColumnPropNameInTable="SourceWarehouseColumn" msprop:Generator_UserColumnName="SourceWarehouse" type="xs:string" minOccurs="0" />
+              <xs:element name="ReceivedInAoD" msprop:Generator_ColumnVarNameInTable="columnReceivedInAoD" msprop:Generator_ColumnPropNameInRow="ReceivedInAoD" msprop:Generator_ColumnPropNameInTable="ReceivedInAoDColumn" msprop:Generator_UserColumnName="ReceivedInAoD" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

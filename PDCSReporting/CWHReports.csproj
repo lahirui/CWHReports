@@ -241,6 +241,7 @@
     <Content Include="SingleScannedRFIDs.aspx" />
     <Content Include="StockDetailedReport.aspx" />
     <Content Include="StockPositionReport.aspx" />
+    <Content Include="StockReport.aspx" />
     <Content Include="StockSummaryReport.aspx" />
     <Content Include="StockTakePalletDetails.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
@@ -2206,6 +2207,17 @@
       <DependentUpon>StockPositionReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="StockReportDS.xsc">
+      <DependentUpon>StockReportDS.xsd</DependentUpon>
+    </Content>
+    <None Include="StockReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="StockReportDS.xss">
+      <DependentUpon>StockReportDS.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2590,6 +2602,18 @@
       <DependentUpon>StockPositionReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="StockReport.aspx.cs">
+      <DependentUpon>StockReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StockReport.aspx.designer.cs">
+      <DependentUpon>StockReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StockReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockReportDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="StockSummaryReport.aspx.cs">
       <DependentUpon>StockSummaryReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2782,6 +2806,9 @@
     <Content Include="ReportDesigns\PIStyleColorCPODetails.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\StockReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
