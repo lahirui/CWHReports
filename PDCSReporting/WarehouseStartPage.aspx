@@ -129,8 +129,11 @@
                         <a href="PIPreAndPostCount.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Summary Report</h6>
                         </a>
-                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                        <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
+                        </a>
+                         <a href="PIStatusReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Status Report</h6>
                         </a>
                     </div>
                 </div>

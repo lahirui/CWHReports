@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PIStatusDS" targetNamespace="http://tempuri.org/PIStatusDS.xsd" xmlns:mstns="http://tempuri.org/PIStatusDS.xsd" xmlns="http://tempuri.org/PIStatusDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PIStatusDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PIStatusDS" msprop:Generator_UserDSName="PIStatusDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PIStatusDs" msprop:Generator_TableClassName="PIStatusDsDataTable" msprop:Generator_TableVarName="tablePIStatusDs" msprop:Generator_TablePropName="PIStatusDs" msprop:Generator_RowDeletingName="PIStatusDsRowDeleting" msprop:Generator_RowChangingName="PIStatusDsRowChanging" msprop:Generator_RowEvHandlerName="PIStatusDsRowChangeEventHandler" msprop:Generator_RowDeletedName="PIStatusDsRowDeleted" msprop:Generator_UserTableName="PIStatusDs" msprop:Generator_RowChangedName="PIStatusDsRowChanged" msprop:Generator_RowEvArgName="PIStatusDsRowChangeEvent" msprop:Generator_RowClassName="PIStatusDsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PIReference" msprop:Generator_ColumnVarNameInTable="columnPIReference" msprop:Generator_ColumnPropNameInRow="PIReference" msprop:Generator_ColumnPropNameInTable="PIReferenceColumn" msprop:Generator_UserColumnName="PIReference" type="xs:string" minOccurs="0" />
+              <xs:element name="PILocation" msprop:Generator_ColumnVarNameInTable="columnPILocation" msprop:Generator_ColumnPropNameInRow="PILocation" msprop:Generator_ColumnPropNameInTable="PILocationColumn" msprop:Generator_UserColumnName="PILocation" type="xs:string" minOccurs="0" />
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" type="xs:string" minOccurs="0" />
+              <xs:element name="IsConfirmed" msprop:Generator_ColumnVarNameInTable="columnIsConfirmed" msprop:Generator_ColumnPropNameInRow="IsConfirmed" msprop:Generator_ColumnPropNameInTable="IsConfirmedColumn" msprop:Generator_UserColumnName="IsConfirmed" type="xs:string" minOccurs="0" />
+              <xs:element name="ConfirmedDate" msprop:Generator_ColumnVarNameInTable="columnConfirmedDate" msprop:Generator_ColumnPropNameInRow="ConfirmedDate" msprop:Generator_ColumnPropNameInTable="ConfirmedDateColumn" msprop:Generator_UserColumnName="ConfirmedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="IsVerified" msprop:Generator_ColumnVarNameInTable="columnIsVerified" msprop:Generator_ColumnPropNameInRow="IsVerified" msprop:Generator_ColumnPropNameInTable="IsVerifiedColumn" msprop:Generator_UserColumnName="IsVerified" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

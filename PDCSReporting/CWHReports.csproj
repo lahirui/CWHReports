@@ -171,6 +171,7 @@
     <Content Include="LocationDisplay.aspx" />
     <Content Include="PalletDetails.aspx" />
     <Content Include="PIPreAndPostCount.aspx" />
+    <Content Include="PIStatusReport.aspx" />
     <Content Include="PIStyleColorCPO.aspx" />
     <Content Include="Project_Readme.html" />
     <Content Include="ScannedReportCPOWise.aspx" />
@@ -2048,6 +2049,17 @@
       <DependentUpon>PIStyleColorCPODet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="PIStatusDS.xsc">
+      <DependentUpon>PIStatusDS.xsd</DependentUpon>
+    </Content>
+    <None Include="PIStatusDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIStatusDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PIStatusDS.xss">
+      <DependentUpon>PIStatusDS.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
     <Content Include="ScannedDetailsCPOWiseDS.xsc">
@@ -2504,6 +2516,18 @@
       <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PIStatusDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIStatusDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PIStatusReport.aspx.cs">
+      <DependentUpon>PIStatusReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PIStatusReport.aspx.designer.cs">
+      <DependentUpon>PIStatusReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PIStyleColorCPO.aspx.cs">
       <DependentUpon>PIStyleColorCPO.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2808,6 +2832,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\PIStatus.rdlc" />
     <EmbeddedResource Include="ReportDesigns\StockReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

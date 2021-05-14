@@ -1869,6 +1869,39 @@ namespace PDCSReporting
             }
         }
 
+        public DataTable getPIStatus(string RefId)  //Krishantha
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand newCmd = conn.CreateCommand();
+            newCmd.Connection = conn;
+            newCmd.CommandType = CommandType.Text;
+
+            newCmd.CommandText = "SELECT  dbo.PIs.PIReference, Locations_1.Code AS [PILocation], " +
+                                 "dbo.PIs.CreatedDate, dbo.Pallets.Code, Case  " +
+                                 "When dbo.PIPallets.IsConfirmed = 1 THEN 'Confirmed' " +
+                                 "When dbo.PIPallets.IsConfirmed = 0 THEN 'Open' " +
+                                 "End as IsConfirmed, dbo.PIPallets.ConfirmedDate, Case " +
+                                 "When dbo.PIPallets.IsVerified = 1 THEN 'Verified' " +
+                                 "When dbo.PIPallets.IsVerified = 0 THEN 'Open' End as IsVerified " +
+                                 "FROM dbo.PIs INNER JOIN " +
+                                 "dbo.PIPallets ON dbo.PIs.Id = dbo.PIPallets.PIReferenceId INNER JOIN " +
+                                 "dbo.Pallets ON dbo.PIPallets.PalletId = dbo.Pallets.Id INNER JOIN " +
+                                 "dbo.Locations AS Locations_1 ON dbo.PIPallets.LocationID = Locations_1.Id " +
+                                 "WHERE(dbo.PIs.id = '" + RefId + "') order by dbo.PIs.CreatedDate, " +
+                                 "dbo.Pallets.Code";
+
+            SqlDataAdapter da = new SqlDataAdapter(newCmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+
+
 
     }
 }
