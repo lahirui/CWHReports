@@ -201,12 +201,20 @@ namespace PDCSReporting
             string fromLocation = ddlFromLocation.SelectedItem.Text;
             string toLocation = ddlToLocation.SelectedItem.Text;
 
+            //ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            //ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/PIPreAndPostDetails.rdlc");
+            //PIPreAndPostDetailsDS output = dba.getPIPreAndPostDetails(dateFrom, dateTo, fromPI,toPI,fromPallet,toPallet,fromLocation,toLocation);
+            //ReportDataSource ds = new ReportDataSource("PIPreAndPostDetailsDS", output.Tables[0]);
+            //ReportViewer1.LocalReport.DataSources.Clear();
+            //ReportViewer1.LocalReport.DataSources.Add(ds);
+
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
-            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/PIPreAndPostDetails.rdlc");
-            PIPreAndPostDetailsDS output = dba.getPIPreAndPostDetails(dateFrom, dateTo, fromPI,toPI,fromPallet,toPallet,fromLocation,toLocation);
-            ReportDataSource ds = new ReportDataSource("PIPreAndPostDetailsDS", output.Tables[0]);
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportDesigns/PIPreAndPostDetailsNew.rdlc");
+            PIPreAndPostDetailsDSNew output = dba.getPIPreAndPostDetails(dateFrom, dateTo, fromPI, toPI, fromPallet, toPallet, fromLocation, toLocation);
+            ReportDataSource ds = new ReportDataSource("PIPreAndPostDetailsDSNew", output.Tables[0]);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(ds);
+
 
             ReportParameter fromDate = new ReportParameter("FromDate", dateFrom);
             this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { fromDate });

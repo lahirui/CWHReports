@@ -18,7 +18,7 @@ namespace PDCSReporting
             if (!this.IsPostBack)
             {
                 DataSet dsLocations = new DataSet();
-                dsLocations = com.ReturnDataSet("SELECT Id, Code FROM     Styles WHERE(IsDeleted = 0) ORDER BY Code");
+                dsLocations = com.ReturnDataSet("SELECT Id, Code FROM Styles WHERE(IsDeleted = 0) ORDER BY Code");
                 if (dsLocations.Tables[0].Rows.Count > 0)
                 {
                     ddlFromStyle.DataSource = dsLocations.Tables[0];
@@ -51,7 +51,7 @@ namespace PDCSReporting
                 }
 
                 DataSet dsPallets = new DataSet();
-                dsPallets = com.ReturnDataSet("SELECT Id, Code FROM     Pallets WHERE(IsDeleted = 0) ORDER BY Code");
+                dsPallets = com.ReturnDataSet("SELECT Id, Code FROM Pallets WHERE(IsDeleted = 0) and (code !='StockWriteOff') ORDER BY Code");
                 if (dsPallets.Tables[0].Rows.Count > 0)
                 {
                     ddlFromPallet.DataSource = dsPallets.Tables[0];

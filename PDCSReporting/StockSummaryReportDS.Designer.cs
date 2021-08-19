@@ -289,8 +289,6 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnQuantity;
             
-            private global::System.Data.DataColumn columnSourceFactory;
-            
             private global::System.Data.DataColumn columnBoxCount;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -368,14 +366,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SourceFactoryColumn {
-                get {
-                    return this.columnSourceFactory;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn BoxCountColumn {
                 get {
                     return this.columnBoxCount;
@@ -419,7 +409,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StockSummaryReportDSRow AddStockSummaryReportDSRow(string Style, string Colour, string CPO, string Size, int Quantity, string SourceFactory, int BoxCount) {
+            public StockSummaryReportDSRow AddStockSummaryReportDSRow(string Style, string Colour, string CPO, string Size, int Quantity, int BoxCount) {
                 StockSummaryReportDSRow rowStockSummaryReportDSRow = ((StockSummaryReportDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Style,
@@ -427,7 +417,6 @@ namespace PDCSReporting {
                         CPO,
                         Size,
                         Quantity,
-                        SourceFactory,
                         BoxCount};
                 rowStockSummaryReportDSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStockSummaryReportDSRow);
@@ -456,7 +445,6 @@ namespace PDCSReporting {
                 this.columnCPO = base.Columns["CPO"];
                 this.columnSize = base.Columns["Size"];
                 this.columnQuantity = base.Columns["Quantity"];
-                this.columnSourceFactory = base.Columns["SourceFactory"];
                 this.columnBoxCount = base.Columns["BoxCount"];
             }
             
@@ -473,8 +461,6 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnSize);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
-                this.columnSourceFactory = new global::System.Data.DataColumn("SourceFactory", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSourceFactory);
                 this.columnBoxCount = new global::System.Data.DataColumn("BoxCount", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBoxCount);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_StockSummaryReportDS");
@@ -701,22 +687,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SourceFactory {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockSummaryReportDS.SourceFactoryColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SourceFactory\' in table \'StockSummaryReportDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockSummaryReportDS.SourceFactoryColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int BoxCount {
                 get {
                     try {
@@ -789,18 +759,6 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableStockSummaryReportDS.QuantityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSourceFactoryNull() {
-                return this.IsNull(this.tableStockSummaryReportDS.SourceFactoryColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSourceFactoryNull() {
-                this[this.tableStockSummaryReportDS.SourceFactoryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

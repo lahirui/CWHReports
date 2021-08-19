@@ -6,28 +6,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>5.95852cm</Width>
+              <Width>6.64996cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.6017cm</Width>
+              <Width>4.32843cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.02917cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.32021cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.8175cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.881cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.85411cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>5.6115cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>4.12148cm</Width>
@@ -254,82 +248,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#7292cc</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>#da532c</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Source Warehouse</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#7292cc</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>#da532c</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox8">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Received in AOD</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#7292cc</Color>
@@ -610,72 +528,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Rack</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="SourceWarehouse">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!SourceWarehouse.Value</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>SourceWarehouse</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="ReceivedinAOD">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!ReceivedinAOD.Value</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>ReceivedinAOD</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -992,81 +844,6 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox6">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox6</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>Gold</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="ReceivedinAOD1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=COUNTDISTINCT(Fields!ReceivedinAOD.Value)</Value>
-                              <Style>
-                                <FontFamily>Georgia</FontFamily>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>#,0;(#,0)</Format>
-                                <Color>#4d4d4d</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>ReceivedinAOD1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#e5e5e5</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>Gold</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
                     <Textbox Name="BarCode1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -1155,8 +932,6 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -1176,7 +951,7 @@
         <Top>3.89467cm</Top>
         <Left>0.29867cm</Left>
         <Height>2.3715cm</Height>
-        <Width>35.87499cm</Width>
+        <Width>29.64775cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1239,9 +1014,9 @@
         </Paragraphs>
         <rd:DefaultName>ToStyle</rd:DefaultName>
         <Top>0.17639cm</Top>
-        <Left>13.96756cm</Left>
+        <Left>14.30623cm</Left>
         <Height>0.70583cm</Height>
-        <Width>8.67698cm</Width>
+        <Width>8.1985cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1519,9 +1294,9 @@
         </Paragraphs>
         <rd:DefaultName>ToRack</rd:DefaultName>
         <Top>1.05861cm</Top>
-        <Left>13.94639cm</Left>
+        <Left>14.30623cm</Left>
         <Height>0.70583cm</Height>
-        <Width>8.69814cm</Width>
+        <Width>8.1985cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -1554,9 +1329,9 @@
         </Paragraphs>
         <rd:DefaultName>ToPallet</rd:DefaultName>
         <Top>1.94083cm</Top>
-        <Left>13.96756cm</Left>
+        <Left>14.30623cm</Left>
         <Height>0.70583cm</Height>
-        <Width>8.67698cm</Width>
+        <Width>8.1985cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -1624,9 +1399,9 @@
         </Paragraphs>
         <rd:DefaultName>ToCPO</rd:DefaultName>
         <Top>2.78777cm</Top>
-        <Left>13.94639cm</Left>
+        <Left>14.30623cm</Left>
         <Height>0.70583cm</Height>
-        <Width>8.69814cm</Width>
+        <Width>8.1985cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>

@@ -21,11 +21,8 @@
               <xs:element name="CPO" msprop:Generator_ColumnVarNameInTable="columnCPO" msprop:Generator_ColumnPropNameInRow="CPO" msprop:Generator_ColumnPropNameInTable="CPOColumn" msprop:Generator_UserColumnName="CPO" type="xs:string" minOccurs="0" />
               <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:string" minOccurs="0" />
               <xs:element name="Rack" msprop:Generator_ColumnVarNameInTable="columnRack" msprop:Generator_ColumnPropNameInRow="Rack" msprop:Generator_ColumnPropNameInTable="RackColumn" msprop:Generator_UserColumnName="Rack" type="xs:string" minOccurs="0" />
-              <xs:element name="WIPArea" msprop:Generator_ColumnVarNameInTable="columnWIPArea" msprop:Generator_ColumnPropNameInRow="WIPArea" msprop:Generator_ColumnPropNameInTable="WIPAreaColumn" msprop:Generator_UserColumnName="WIPArea" type="xs:string" minOccurs="0" />
               <xs:element name="BarCode" msprop:Generator_ColumnVarNameInTable="columnBarCode" msprop:Generator_ColumnPropNameInRow="BarCode" msprop:Generator_ColumnPropNameInTable="BarCodeColumn" msprop:Generator_UserColumnName="BarCode" type="xs:string" minOccurs="0" />
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
-              <xs:element name="SourceWarehouse" msprop:Generator_ColumnVarNameInTable="columnSourceWarehouse" msprop:Generator_ColumnPropNameInRow="SourceWarehouse" msprop:Generator_ColumnPropNameInTable="SourceWarehouseColumn" msprop:Generator_UserColumnName="SourceWarehouse" type="xs:string" minOccurs="0" />
-              <xs:element name="ReceivedinAOD" msprop:Generator_ColumnVarNameInTable="columnReceivedinAOD" msprop:Generator_ColumnPropNameInRow="ReceivedinAOD" msprop:Generator_ColumnPropNameInTable="ReceivedinAODColumn" msprop:Generator_UserColumnName="ReceivedinAOD" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

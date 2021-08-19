@@ -143,6 +143,7 @@
     <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
     <Content Include="CartonWiseStockReport.aspx" />
+    <Content Include="ConsolidatedStockReport.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -160,11 +161,14 @@
     <Content Include="DailyScannedBoxesOldStock.aspx" />
     <Content Include="DailyScannedRFIDTags.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DefaultPalletAgingReport.aspx" />
     <Content Include="FactoryDAOD.aspx" />
     <Content Include="FactoryTransferDetails.aspx" />
     <Content Include="FactoryTransferSummary.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GoodsReceivedDetailes.aspx" />
+    <Content Include="GoodsReceivedDetailesStatus.aspx" />
+    <Content Include="GoodsReceivedDetailesStatus_NotReceived.aspx" />
     <Content Include="PIPreAndPostDetails.aspx" />
     <Content Include="GoodsReceivedSummary.aspx" />
     <Content Include="LocationDetails.aspx" />
@@ -172,8 +176,10 @@
     <Content Include="PalletDetails.aspx" />
     <Content Include="PIPreAndPostCount.aspx" />
     <Content Include="PIStatusReport.aspx" />
+    <Content Include="PIStatusSummary.aspx" />
     <Content Include="PIStyleColorCPO.aspx" />
     <Content Include="Project_Readme.html" />
+    <Content Include="RightoffpalletDetails.aspx" />
     <Content Include="ScannedReportCPOWise.aspx" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
@@ -245,6 +251,7 @@
     <Content Include="StockReport.aspx" />
     <Content Include="StockSummaryReport.aspx" />
     <Content Include="StockTakePalletDetails.aspx" />
+    <Content Include="StockTakePalletsToScan.aspx" />
     <Content Include="WarehouseStartPage.aspx" />
     <Content Include="fontawesome\css\all.css" />
     <Content Include="fontawesome\css\all.min.css" />
@@ -2052,6 +2059,61 @@
     <Content Include="PIStatusDS.xsc">
       <DependentUpon>PIStatusDS.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSets\PalletsToCountDS.xsc">
+      <DependentUpon>PalletsToCountDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="ConsolidatedStockReportDS.xsc">
+      <DependentUpon>ConsolidatedStockReportDS.xsd</DependentUpon>
+    </Content>
+    <None Include="ConsolidatedStockReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConsolidatedStockReportDS1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ConsolidatedStockReportDS.xss">
+      <DependentUpon>ConsolidatedStockReportDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\PalletsToCountDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PalletsToCountDS1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DataSets\PalletsToCountDS.xss">
+      <DependentUpon>PalletsToCountDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="PIPreAndPostDetailsDSNew.xsc">
+      <DependentUpon>PIPreAndPostDetailsDSNew.xsd</DependentUpon>
+    </Content>
+    <Content Include="GoodsReceivedStatusDS.xsc">
+      <DependentUpon>GoodsReceivedStatusDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="DefaultPalletAgingReportDS.xsc">
+      <DependentUpon>DefaultPalletAgingReportDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DefaultPalletAgingReportDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DefaultPalletAgingReportDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DefaultPalletAgingReportDS.xss">
+      <DependentUpon>DefaultPalletAgingReportDS.xsd</DependentUpon>
+    </Content>
+    <None Include="GoodsReceivedStatusDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoodsReceivedStatusDS1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="GoodsReceivedStatusDS.xss">
+      <DependentUpon>GoodsReceivedStatusDS.xsd</DependentUpon>
+    </Content>
+    <None Include="PIPreAndPostDetailsDSNew.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIPreAndPostDetailsDSNew1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PIPreAndPostDetailsDSNew.xss">
+      <DependentUpon>PIPreAndPostDetailsDSNew.xsd</DependentUpon>
+    </Content>
     <None Include="PIStatusDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>PIStatusDS.Designer.cs</LastGenOutput>
@@ -2059,6 +2121,17 @@
     </None>
     <Content Include="PIStatusDS.xss">
       <DependentUpon>PIStatusDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="PIStatusSummaryDS.xsc">
+      <DependentUpon>PIStatusSummaryDS.xsd</DependentUpon>
+    </Content>
+    <None Include="PIStatusSummaryDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PIStatusSummaryDS1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PIStatusSummaryDS.xss">
+      <DependentUpon>PIStatusSummaryDS.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PDCSReporting.pubxml" />
     <None Include="Properties\PublishProfiles\PDCS_DEMO.pubxml" />
@@ -2075,6 +2148,17 @@
     <Content Include="ScannedDetailsCPOWiseDS.xss">
       <DependentUpon>ScannedDetailsCPOWiseDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RightoffpalletDetailsDS.xsc">
+      <DependentUpon>RightoffpalletDetailsDS.xsd</DependentUpon>
+    </Content>
+    <None Include="RightoffpalletDetailsDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RightoffpalletDetailsDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="RightoffpalletDetailsDS.xss">
+      <DependentUpon>RightoffpalletDetailsDS.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\LoginBackground.jpg" />
@@ -2328,6 +2412,19 @@
     <Compile Include="Codes\Common.cs" />
     <Compile Include="Codes\GlobalVars.cs" />
     <Compile Include="Codes\Impersonation.cs" />
+    <Compile Include="ConsolidatedStockReport.aspx.cs">
+      <DependentUpon>ConsolidatedStockReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsolidatedStockReport.aspx.designer.cs">
+      <DependentUpon>ConsolidatedStockReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsolidatedStockReportDS.Designer.cs" />
+    <Compile Include="ConsolidatedStockReportDS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsolidatedStockReportDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DailyScannedBoxes.aspx.cs">
       <DependentUpon>DailyScannedBoxes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2361,6 +2458,7 @@
       <DependentUpon>DailyScannedRFIDTagsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="DataSets\PalletsToCountDS.Designer.cs" />
     <Compile Include="DBAccess.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Default.aspx.cs">
@@ -2369,6 +2467,18 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultPalletAgingReport.aspx.cs">
+      <DependentUpon>DefaultPalletAgingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultPalletAgingReport.aspx.designer.cs">
+      <DependentUpon>DefaultPalletAgingReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultPalletAgingReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultPalletAgingReportDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="FactoryDAOD.aspx.cs">
       <DependentUpon>FactoryDAOD.aspx</DependentUpon>
@@ -2430,6 +2540,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GoodsReceivedDetailesDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailesStatus.aspx.cs">
+      <DependentUpon>GoodsReceivedDetailesStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailesStatus.aspx.designer.cs">
+      <DependentUpon>GoodsReceivedDetailesStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailesStatus_NotReceived.aspx.cs">
+      <DependentUpon>GoodsReceivedDetailesStatus_NotReceived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodsReceivedDetailesStatus_NotReceived.aspx.designer.cs">
+      <DependentUpon>GoodsReceivedDetailesStatus_NotReceived.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsReceivedStatusDS.Designer.cs" />
+    <Compile Include="GoodsReceivedStatusDS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodsReceivedStatusDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="PIPreAndPostDetails.aspx.cs">
       <DependentUpon>PIPreAndPostDetails.aspx</DependentUpon>
@@ -2516,6 +2646,12 @@
       <DependentUpon>PIPreAndPostDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="PIPreAndPostDetailsDSNew.Designer.cs" />
+    <Compile Include="PIPreAndPostDetailsDSNew1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PIPreAndPostDetailsDSNew.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PIStatusDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2528,6 +2664,14 @@
     <Compile Include="PIStatusReport.aspx.designer.cs">
       <DependentUpon>PIStatusReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PIStatusSummary.aspx.cs">
+      <DependentUpon>PIStatusSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PIStatusSummary.aspx.designer.cs">
+      <DependentUpon>PIStatusSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PIStatusSummaryDS.Designer.cs" />
     <Compile Include="PIStyleColorCPO.aspx.cs">
       <DependentUpon>PIStyleColorCPO.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2540,6 +2684,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PIStyleColorCPODet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="RightoffpalletDetails.aspx.cs">
+      <DependentUpon>RightoffpalletDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RightoffpalletDetails.aspx.designer.cs">
+      <DependentUpon>RightoffpalletDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RightoffpalletDetailsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RightoffpalletDetailsDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="ScannedDetailsCPOWiseDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2663,6 +2819,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StockTakePalletDetailsDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="StockTakePalletsToScan.aspx.cs">
+      <DependentUpon>StockTakePalletsToScan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StockTakePalletsToScan.aspx.designer.cs">
+      <DependentUpon>StockTakePalletsToScan.aspx</DependentUpon>
     </Compile>
     <Compile Include="WarehouseStartPage.aspx.cs">
       <DependentUpon>WarehouseStartPage.aspx</DependentUpon>
@@ -2832,7 +2995,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\ConsolidatedStReport.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\DefaultPalletAgingReport.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\GoodsReceivedStatus.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\GoodsReceivedStatus_NotReceived.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\PalletsToCountReportDesign.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\PIPreAndPostDetailsNew.rdlc" />
     <EmbeddedResource Include="ReportDesigns\PIStatus.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\PIStatusSummary.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\RightOffPalletDetails.rdlc" />
     <EmbeddedResource Include="ReportDesigns\StockReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

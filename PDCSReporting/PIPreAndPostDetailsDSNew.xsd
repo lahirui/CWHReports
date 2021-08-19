@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PIPreAndPostDetailsDSNew" targetNamespace="http://tempuri.org/PIPreAndPostDetailsDSNew.xsd" xmlns:mstns="http://tempuri.org/PIPreAndPostDetailsDSNew.xsd" xmlns="http://tempuri.org/PIPreAndPostDetailsDSNew.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PIPreAndPostDetailsDSNew" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PIPreAndPostDetailsDSNew" msprop:Generator_UserDSName="PIPreAndPostDetailsDSNew">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PIPreAndPostDetailsDSNew" msprop:Generator_TableClassName="PIPreAndPostDetailsDSNewDataTable" msprop:Generator_TableVarName="tablePIPreAndPostDetailsDSNew" msprop:Generator_TablePropName="_PIPreAndPostDetailsDSNew" msprop:Generator_RowDeletingName="PIPreAndPostDetailsDSNewRowDeleting" msprop:Generator_RowChangingName="PIPreAndPostDetailsDSNewRowChanging" msprop:Generator_RowEvHandlerName="PIPreAndPostDetailsDSNewRowChangeEventHandler" msprop:Generator_RowDeletedName="PIPreAndPostDetailsDSNewRowDeleted" msprop:Generator_UserTableName="PIPreAndPostDetailsDSNew" msprop:Generator_RowChangedName="PIPreAndPostDetailsDSNewRowChanged" msprop:Generator_RowEvArgName="PIPreAndPostDetailsDSNewRowChangeEvent" msprop:Generator_RowClassName="PIPreAndPostDetailsDSNewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PIDate" msprop:Generator_ColumnVarNameInTable="columnPIDate" msprop:Generator_ColumnPropNameInRow="PIDate" msprop:Generator_ColumnPropNameInTable="PIDateColumn" msprop:Generator_UserColumnName="PIDate" type="xs:string" minOccurs="0" />
+              <xs:element name="Reference" msprop:Generator_ColumnVarNameInTable="columnReference" msprop:Generator_ColumnPropNameInRow="Reference" msprop:Generator_ColumnPropNameInTable="ReferenceColumn" msprop:Generator_UserColumnName="Reference" type="xs:string" minOccurs="0" />
+              <xs:element name="Style" msprop:Generator_ColumnVarNameInTable="columnStyle" msprop:Generator_ColumnPropNameInRow="Style" msprop:Generator_ColumnPropNameInTable="StyleColumn" msprop:Generator_UserColumnName="Style" type="xs:string" minOccurs="0" />
+              <xs:element name="Colour" msprop:Generator_ColumnVarNameInTable="columnColour" msprop:Generator_ColumnPropNameInRow="Colour" msprop:Generator_ColumnPropNameInTable="ColourColumn" msprop:Generator_UserColumnName="Colour" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" type="xs:string" minOccurs="0" />
+              <xs:element name="Pallet" msprop:Generator_ColumnVarNameInTable="columnPallet" msprop:Generator_ColumnPropNameInRow="Pallet" msprop:Generator_ColumnPropNameInTable="PalletColumn" msprop:Generator_UserColumnName="Pallet" type="xs:string" minOccurs="0" />
+              <xs:element name="BoxCode" msprop:Generator_ColumnVarNameInTable="columnBoxCode" msprop:Generator_ColumnPropNameInRow="BoxCode" msprop:Generator_ColumnPropNameInTable="BoxCodeColumn" msprop:Generator_UserColumnName="BoxCode" type="xs:string" minOccurs="0" />
+              <xs:element name="CPO" msprop:Generator_ColumnVarNameInTable="columnCPO" msprop:Generator_ColumnPropNameInRow="CPO" msprop:Generator_ColumnPropNameInTable="CPOColumn" msprop:Generator_UserColumnName="CPO" type="xs:string" minOccurs="0" />
+              <xs:element name="PRE" msprop:Generator_ColumnVarNameInTable="columnPRE" msprop:Generator_ColumnPropNameInRow="PRE" msprop:Generator_ColumnPropNameInTable="PREColumn" msprop:Generator_UserColumnName="PRE" type="xs:string" minOccurs="0" />
+              <xs:element name="POST" msprop:Generator_ColumnVarNameInTable="columnPOST" msprop:Generator_ColumnPropNameInRow="POST" msprop:Generator_ColumnPropNameInTable="POSTColumn" msprop:Generator_UserColumnName="POST" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -76,6 +76,12 @@
                          <a href="GoodsReceivedDetailes.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Goods Received Details</h6>
                         </a>
+                        <a href="GoodsReceivedDetailesStatus.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Goods Received Status - Received</h6>
+                        </a>
+                        <a href="GoodsReceivedDetailesStatus_NotReceived.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Goods Received Status - Not Received</h6>
+                        </a>
                          <a href="ShipmentSummary.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Shipment Summary</h6>
                         </a>
@@ -116,8 +122,6 @@
                          <a href="CartonWiseStockReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">Carton Wise Stock Report</h6>
                         </a>
-
-
                     </div>
 
                     <div class="list-group" style="border-color: #da532c; color: whitesmoke">
@@ -132,8 +136,14 @@
                         <a href="PIPreAndPostDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">PI Pre & Post Counts Detailed Report</h6>
                         </a>
-                         <a href="PIStatusReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                        <a href="PIStatusReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">PI Status Report</h6>
+                        </a>
+                         <a href="PIStatusSummary.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">PI Status Summary</h6>
+                        </a>
+                        <a href="StockTakePalletsToScan.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Pallets Remaining to Scan</h6>
                         </a>
                     </div>
                 </div>
@@ -151,6 +161,17 @@
 
                         <a href="StockReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
                             <h6 class="list-group-item-heading" style="color: #da532c;">On Hand Stock Report</h6>
+                        </a>
+
+                        <a href="ConsolidatedStockReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">Consolidated Stock Report</h6>
+                        </a>
+                        <a href="DefaultPalletAgingReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">DP Aging Report</h6>
+                        </a>
+
+                        <a href="RightoffpalletDetails.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-width: 1px; border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">
+                            <h6 class="list-group-item-heading" style="color: #da532c;">RightOff Box Detail Report</h6>
                         </a>
 
                         <a href="StockPositionReport.aspx" class="list-group-item" style="border-top-width: 1px; border-bottom-color: #da532c; border-bottom-width: 3px;  border-right-color: #da532c; border-right-width: 3px; border-left-color: #da532c; border-left-width: 3px;">

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RightoffpalletDetailsDS" targetNamespace="http://tempuri.org/RightoffpalletDetailsDS.xsd" xmlns:mstns="http://tempuri.org/RightoffpalletDetailsDS.xsd" xmlns="http://tempuri.org/RightoffpalletDetailsDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RightoffpalletDetailsDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="RightoffpalletDetailsDS" msprop:Generator_UserDSName="RightoffpalletDetailsDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PIReference" msprop:Generator_ColumnVarNameInTable="columnPIReference" msprop:Generator_ColumnPropNameInRow="PIReference" msprop:Generator_ColumnPropNameInTable="PIReferenceColumn" msprop:Generator_UserColumnName="PIReference" type="xs:string" minOccurs="0" />
+              <xs:element name="PreviousPallet" msprop:Generator_ColumnVarNameInTable="columnPreviousPallet" msprop:Generator_ColumnPropNameInRow="PreviousPallet" msprop:Generator_ColumnPropNameInTable="PreviousPalletColumn" msprop:Generator_UserColumnName="PreviousPallet" type="xs:string" minOccurs="0" />
+              <xs:element name="PreviousLocation" msprop:Generator_ColumnVarNameInTable="columnPreviousLocation" msprop:Generator_ColumnPropNameInRow="PreviousLocation" msprop:Generator_ColumnPropNameInTable="PreviousLocationColumn" msprop:Generator_UserColumnName="PreviousLocation" type="xs:string" minOccurs="0" />
+              <xs:element name="ConfirmedDate" msprop:Generator_ColumnVarNameInTable="columnConfirmedDate" msprop:Generator_ColumnPropNameInRow="ConfirmedDate" msprop:Generator_ColumnPropNameInTable="ConfirmedDateColumn" msprop:Generator_UserColumnName="ConfirmedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="CurrentPallet" msprop:Generator_ColumnVarNameInTable="columnCurrentPallet" msprop:Generator_ColumnPropNameInRow="CurrentPallet" msprop:Generator_ColumnPropNameInTable="CurrentPalletColumn" msprop:Generator_UserColumnName="CurrentPallet" type="xs:string" minOccurs="0" />
+              <xs:element name="StyleName" msprop:Generator_ColumnVarNameInTable="columnStyleName" msprop:Generator_ColumnPropNameInRow="StyleName" msprop:Generator_ColumnPropNameInTable="StyleNameColumn" msprop:Generator_UserColumnName="StyleName" type="xs:string" minOccurs="0" />
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" type="xs:string" minOccurs="0" />
+              <xs:element name="Size" msprop:Generator_ColumnVarNameInTable="columnSize" msprop:Generator_ColumnPropNameInRow="Size" msprop:Generator_ColumnPropNameInTable="SizeColumn" msprop:Generator_UserColumnName="Size" type="xs:string" minOccurs="0" />
+              <xs:element name="BoxCode" msprop:Generator_ColumnVarNameInTable="columnBoxCode" msprop:Generator_ColumnPropNameInRow="BoxCode" msprop:Generator_ColumnPropNameInTable="BoxCodeColumn" msprop:Generator_UserColumnName="BoxCode" type="xs:string" minOccurs="0" />
+              <xs:element name="BoxQuantity" msprop:Generator_ColumnVarNameInTable="columnBoxQuantity" msprop:Generator_ColumnPropNameInRow="BoxQuantity" msprop:Generator_ColumnPropNameInTable="BoxQuantityColumn" msprop:Generator_UserColumnName="BoxQuantity" type="xs:string" minOccurs="0" />
+              <xs:element name="NoOfDates" msprop:Generator_ColumnVarNameInTable="columnNoOfDates" msprop:Generator_ColumnPropNameInRow="NoOfDates" msprop:Generator_ColumnPropNameInTable="NoOfDatesColumn" msprop:Generator_UserColumnName="NoOfDates" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -289,14 +289,6 @@ namespace PDCSReporting {
             
             private global::System.Data.DataColumn columnFactory;
             
-            private global::System.Data.DataColumn columnLocation;
-            
-            private global::System.Data.DataColumn columnPallet;
-            
-            private global::System.Data.DataColumn columnMPO;
-            
-            private global::System.Data.DataColumn columnCPO;
-            
             private global::System.Data.DataColumn columnBoxCode;
             
             private global::System.Data.DataColumn columnQuantity;
@@ -376,38 +368,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LocationColumn {
-                get {
-                    return this.columnLocation;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PalletColumn {
-                get {
-                    return this.columnPallet;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MPOColumn {
-                get {
-                    return this.columnMPO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CPOColumn {
-                get {
-                    return this.columnCPO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn BoxCodeColumn {
                 get {
                     return this.columnBoxCode;
@@ -459,7 +419,7 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StockPositionReportDSRow AddStockPositionReportDSRow(string Style, string Season, string Colour, string Size, string Factory, string Location, string Pallet, string MPO, string CPO, string BoxCode, int Quantity) {
+            public StockPositionReportDSRow AddStockPositionReportDSRow(string Style, string Season, string Colour, string Size, string Factory, string BoxCode, int Quantity) {
                 StockPositionReportDSRow rowStockPositionReportDSRow = ((StockPositionReportDSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Style,
@@ -467,10 +427,6 @@ namespace PDCSReporting {
                         Colour,
                         Size,
                         Factory,
-                        Location,
-                        Pallet,
-                        MPO,
-                        CPO,
                         BoxCode,
                         Quantity};
                 rowStockPositionReportDSRow.ItemArray = columnValuesArray;
@@ -500,10 +456,6 @@ namespace PDCSReporting {
                 this.columnColour = base.Columns["Colour"];
                 this.columnSize = base.Columns["Size"];
                 this.columnFactory = base.Columns["Factory"];
-                this.columnLocation = base.Columns["Location"];
-                this.columnPallet = base.Columns["Pallet"];
-                this.columnMPO = base.Columns["MPO"];
-                this.columnCPO = base.Columns["CPO"];
                 this.columnBoxCode = base.Columns["BoxCode"];
                 this.columnQuantity = base.Columns["Quantity"];
             }
@@ -521,14 +473,6 @@ namespace PDCSReporting {
                 base.Columns.Add(this.columnSize);
                 this.columnFactory = new global::System.Data.DataColumn("Factory", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFactory);
-                this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocation);
-                this.columnPallet = new global::System.Data.DataColumn("Pallet", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPallet);
-                this.columnMPO = new global::System.Data.DataColumn("MPO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMPO);
-                this.columnCPO = new global::System.Data.DataColumn("CPO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCPO);
                 this.columnBoxCode = new global::System.Data.DataColumn("BoxCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBoxCode);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
@@ -757,70 +701,6 @@ namespace PDCSReporting {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Location {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockPositionReportDS.LocationColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'StockPositionReportDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockPositionReportDS.LocationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Pallet {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockPositionReportDS.PalletColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Pallet\' in table \'StockPositionReportDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockPositionReportDS.PalletColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MPO {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockPositionReportDS.MPOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MPO\' in table \'StockPositionReportDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockPositionReportDS.MPOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CPO {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockPositionReportDS.CPOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CPO\' in table \'StockPositionReportDS\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockPositionReportDS.CPOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string BoxCode {
                 get {
                     try {
@@ -909,54 +789,6 @@ namespace PDCSReporting {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFactoryNull() {
                 this[this.tableStockPositionReportDS.FactoryColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLocationNull() {
-                return this.IsNull(this.tableStockPositionReportDS.LocationColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLocationNull() {
-                this[this.tableStockPositionReportDS.LocationColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPalletNull() {
-                return this.IsNull(this.tableStockPositionReportDS.PalletColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPalletNull() {
-                this[this.tableStockPositionReportDS.PalletColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMPONull() {
-                return this.IsNull(this.tableStockPositionReportDS.MPOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMPONull() {
-                this[this.tableStockPositionReportDS.MPOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCPONull() {
-                return this.IsNull(this.tableStockPositionReportDS.CPOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCPONull() {
-                this[this.tableStockPositionReportDS.CPOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
