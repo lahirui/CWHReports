@@ -28,7 +28,7 @@ namespace PDCSReporting
                
 
                 DataSet dsFactory = new DataSet();
-                dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM     AODs ORDER BY SourceWarehouse");
+                dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM AODs ORDER BY SourceWarehouse");
                 if (dsFactory.Tables[0].Rows.Count > 0)
                 {
                     ddlFromFactory.DataSource = dsFactory.Tables[0];
@@ -44,7 +44,8 @@ namespace PDCSReporting
                 }
 
                 DataSet dsAOD = new DataSet();
-                dsAOD = com.ReturnDataSet("SELECT DISTINCT AODNumber FROM     AODs ORDER BY AODNumber");
+                dsAOD = com.ReturnDataSet("SELECT AODNumber FROM AODs WHERE(DstinationWarehouse NOT LIKE 'SHIPMENT') " +
+                                          " AND(CAST(EffectiveDate AS date) > '29/may/2022') ORDER BY AODNumber ");
                 if (dsAOD.Tables[0].Rows.Count > 0)
                 {
                     ddlFromAOD.DataSource = dsAOD.Tables[0];
@@ -59,7 +60,7 @@ namespace PDCSReporting
                 }
 
                 DataSet dsCPO = new DataSet();
-                dsCPO = com.ReturnDataSet("SELECT DISTINCT CPO FROM     BoxCPOAllocationDetails ORDER BY CPO");
+                dsCPO = com.ReturnDataSet("SELECT CPO FROM BoxCPOAllocationDetails WHERE(CAST(AllocatedDate AS date) > '28/dec/2021') GROUP BY CPO ORDER BY CPO ");
                 if (dsCPO.Tables[0].Rows.Count > 0)
                 {
                     ddlFromCPO.DataSource = dsCPO.Tables[0];
@@ -145,6 +146,7 @@ namespace PDCSReporting
 
         protected void ddlToCPO_DataBound(object sender, EventArgs e)
         {
+            ddlFromCPO.SelectedIndex = 1;
             ddlToCPO.SelectedIndex = ddlFromCPO.Items.Count - 1;
         }
 

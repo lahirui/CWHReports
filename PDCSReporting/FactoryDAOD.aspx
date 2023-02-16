@@ -84,10 +84,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">From Style:</label>
+                                            <label class="control-label col-md-4" for="cpo" style="font-family: Georgia">AOD Number:</label>
                                             <div class="col-md-8">
                                                 <asp:DropDownList ID="AODNumberDropDownList" Style="width: 300px" runat="server" AppendDataBoundItems="true" CssClass="form-control" DataSourceID="AODsSqlDataSource" DataTextField="AODNumber" DataValueField="Id" OnSelectedIndexChanged="AODNumberDropDownList_SelectedIndexChanged"></asp:DropDownList>
-                                                <asp:SqlDataSource runat="server" ID="AODsSqlDataSource" ConnectionString='<%$ ConnectionStrings:ConString %>' SelectCommand="SELECT [AODNumber], [Id] FROM [AODs] WHERE ([IsDeleted] = @IsDeleted) ORDER BY [AODNumber]">
+                                                <asp:SqlDataSource runat="server" ID="AODsSqlDataSource" ConnectionString='<%$ ConnectionStrings:ConString %>' SelectCommand="SELECT [AODNumber], [Id] FROM [AODs] WHERE ([IsDeleted] = @IsDeleted) AND (dbo.AODs.TransferredDate > '2022-01-01') ORDER BY [AODNumber]">
                                                     <SelectParameters>
                                                         <asp:Parameter DefaultValue="False" Name="IsDeleted" Type="Boolean"></asp:Parameter>
                                                     </SelectParameters>

@@ -42,7 +42,20 @@ namespace PDCSReporting
             {
                 destination = "N/A";
             }
-            
+
+            string AxTRN = dba.getAXTrNumber(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
+            if (AxTRN == "")
+            {
+                AxTRN = "N/A";
+            }
+
+            int BoxCount = dba.getAODBoxCount(Convert.ToInt32(AODNumberDropDownList.SelectedItem.Value));
+            if (BoxCount == 0)
+            {
+                BoxCount = 0;
+
+            }
+
 
             ReportParameter AODNop = new ReportParameter("AODNumber", AODNumberDropDownList.SelectedItem.Text);
             this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { AODNop });
@@ -52,6 +65,14 @@ namespace PDCSReporting
 
             ReportParameter Destinationp = new ReportParameter("Destination", destination);
             this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { Destinationp });
+
+            ReportParameter AXTRNNop = new ReportParameter("AXTRNNo", AxTRN);
+            this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { AXTRNNop });
+
+            ReportParameter ReBoxCount = new ReportParameter("BCount", Convert.ToString(BoxCount));
+            this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { ReBoxCount });
+
+
         }
 
         protected void AODNumberDropDownList_SelectedIndexChanged(object sender, EventArgs e)

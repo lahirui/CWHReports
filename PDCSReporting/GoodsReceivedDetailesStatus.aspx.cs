@@ -25,10 +25,10 @@ namespace PDCSReporting
                 txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
                 txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
 
-               
 
+                
                 DataSet dsFactory = new DataSet();
-                dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM     AODs ORDER BY SourceWarehouse");
+                dsFactory = com.ReturnDataSet("SELECT DISTINCT SourceWarehouse FROM AODs ORDER BY SourceWarehouse");
                 if (dsFactory.Tables[0].Rows.Count > 0)
                 {
                     ddlFromFactory.DataSource = dsFactory.Tables[0];
@@ -44,7 +44,8 @@ namespace PDCSReporting
                 }
 
                 DataSet dsAOD = new DataSet();
-                dsAOD = com.ReturnDataSet("SELECT DISTINCT AODNumber FROM     AODs ORDER BY AODNumber");
+                dsAOD = com.ReturnDataSet("SELECT AODNumber FROM AODs WHERE(DstinationWarehouse NOT LIKE 'SHIPMENT') " +
+                                          " AND(CAST(EffectiveDate AS date) > '29/may/2022') ORDER BY AODNumber ");
                 if (dsAOD.Tables[0].Rows.Count > 0)
                 {
                     ddlFromAOD.DataSource = dsAOD.Tables[0];
@@ -59,7 +60,7 @@ namespace PDCSReporting
                 }
 
                 DataSet dsCPO = new DataSet();
-                dsCPO = com.ReturnDataSet("SELECT DISTINCT CPO FROM     BoxCPOAllocationDetails ORDER BY CPO");
+                dsCPO = com.ReturnDataSet("SELECT CPO FROM BoxCPOAllocationDetails WHERE(CAST(AllocatedDate AS date) > '28/dec/2021') GROUP BY CPO ORDER BY CPO");
                 if (dsCPO.Tables[0].Rows.Count > 0)
                 {
                     ddlFromCPO.DataSource = dsCPO.Tables[0];
@@ -72,14 +73,17 @@ namespace PDCSReporting
                     ddlToCPO.DataTextField = "CPO";
                     ddlToCPO.DataBind();
 
+                    
+
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                
             }
         }
 
         protected void lbFromDate_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             if (calFromDate.Visible)
             {
                 calFromDate.Visible = false;
@@ -100,14 +104,14 @@ namespace PDCSReporting
 
         protected void calFromDate_SelectionChanged(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtFromDate.Value = calFromDate.SelectedDate.ToString("dd/MMM/yyyy");
             calFromDate.Visible = false;
         }
 
         protected void lbToDate_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             if (calToDate.Visible)
             {
                 calToDate.Visible = false;
@@ -128,7 +132,7 @@ namespace PDCSReporting
 
         protected void calToDate_SelectionChanged(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "LoadSelect2();", true);
             txtToDate.Value = calToDate.SelectedDate.ToString("dd/MMM/yyyy");
             calToDate.Visible = false;
         }
@@ -145,6 +149,7 @@ namespace PDCSReporting
 
         protected void ddlToCPO_DataBound(object sender, EventArgs e)
         {
+            ddlFromCPO.SelectedIndex = 1;
             ddlToCPO.SelectedIndex = ddlFromCPO.Items.Count - 1;
         }
 
@@ -155,10 +160,10 @@ namespace PDCSReporting
             string dateTo = calToDate.SelectedDate.ToString("dd-MMM-yyyy");
             string fromFactory = ddlFromFactory.SelectedItem.Text;
             string toFactory = ddlToFactory.SelectedItem.Text;
-            string fromAOD = ddlFromAOD.SelectedItem.Text;
-            string toAOD = ddlToAOD.SelectedItem.Text;
-            string fromCPO = ddlFromCPO.SelectedItem.Text;
-            string toCPO = ddlToCPO.SelectedItem.Text;
+            string fromAOD = "XXXX";// ddlFromAOD.SelectedItem.Text;
+            string toAOD = "XXXX";// ddlToAOD.SelectedItem.Text;
+            string fromCPO = "XXXX";// ddlFromCPO.SelectedItem.Text;
+            string toCPO = "XXXX";// ddlToCPO.SelectedItem.Text;
             DataSet dsFac = new DataSet();
             dsFac = com.ReturnDataSet("SELECT TOP (200) ParamValue FROM     Configurations WHERE(ParamName = N'FactoryName')");
             if (dsFac.Tables[0].Rows.Count > 0)

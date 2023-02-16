@@ -143,6 +143,7 @@
     <Content Include="AODUnavailableQuantities.aspx" />
     <Content Include="BSScannedBoxDetails.aspx" />
     <Content Include="CartonWiseStockReport.aspx" />
+    <Content Include="CodeChange.aspx" />
     <Content Include="ConsolidatedStockReport.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -2065,6 +2066,17 @@
     <Content Include="ConsolidatedStockReportDS.xsc">
       <DependentUpon>ConsolidatedStockReportDS.xsd</DependentUpon>
     </Content>
+    <Content Include="CodeChangeDS.xsc">
+      <DependentUpon>CodeChangeDS.xsd</DependentUpon>
+    </Content>
+    <None Include="CodeChangeDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CodeChangeDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="CodeChangeDS.xss">
+      <DependentUpon>CodeChangeDS.xsd</DependentUpon>
+    </Content>
     <None Include="ConsolidatedStockReportDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ConsolidatedStockReportDS1.Designer.cs</LastGenOutput>
@@ -2408,6 +2420,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CartonWiseStockReportDS.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CodeChange.aspx.cs">
+      <DependentUpon>CodeChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CodeChange.aspx.designer.cs">
+      <DependentUpon>CodeChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CodeChangeDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeChangeDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Codes\Common.cs" />
     <Compile Include="Codes\GlobalVars.cs" />
@@ -2995,6 +3019,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReportDesigns\CodeChangeReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\ConsolidatedStReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\DefaultPalletAgingReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\GoodsReceivedStatus.rdlc" />

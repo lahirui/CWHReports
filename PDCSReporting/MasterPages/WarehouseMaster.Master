@@ -83,8 +83,11 @@
                             <li><a tabindex="-1" href="../FactoryTransferSummary.aspx">Factory Transfer Summary</a></li>
                             <li><a tabindex="-1" href="../FactoryTransferDetails.aspx">Factory Transfer Details</a></li>
                             <li><a tabindex="-1" href="../BoxMovementReport.aspx">Box Movement Report</a></li>
+                            
                             <li> <hr /></li>
-                          <li><a tabindex="-1" href="../SingleScannedRFIDs.aspx">Scanned RFIDs Details - (Single Scan)</a></li>
+                            <li><a tabindex="-1" href="../SingleScannedRFIDs.aspx">Scanned RFIDs Details - (Single Scan)</a></li>
+                            <li> <hr /></li>
+                            <li><a tabindex="-1" href="../CodeChange.aspx.aspx">Code Change Tracker</a></li>
                         </ul>
                     </li>
 
@@ -128,6 +131,7 @@
                             <li><a tabindex="-1" href="../PIStatusReport.aspx">PI Status Reprot</a></li>
                             <hr />
                             <li><a tabindex="-1" href="../StockTakePalletsToScan.aspx">Pallets Remaining to Scan</a></li>
+
                         </ul>
                     </li>
 

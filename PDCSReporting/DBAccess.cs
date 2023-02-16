@@ -601,48 +601,51 @@ namespace PDCSReporting
 
         public GoodsReceivedDetailesDS getGoodsReceivedDetails(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO, string factoryName)
         {
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
-            //                                                  "dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE(dbo.CartonWips.TransactionType = 1) AND(dbo.CartonWips.WIPArea = 2) AND(dbo.CartonWips.Quantity > 0) " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
-            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
+            
+            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD,dbo.Boxes.BoxCode AS CartonNumber, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, " +
+            //                                                  "dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.Colors INNER JOIN " +
+            //                                                  "dbo.Sizes INNER JOIN " +
+            //                                                  "dbo.Styles INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
+            //                                                  "dbo.AODs INNER JOIN " +
+            //                                                  "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
+            //                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
+            //                                "WHERE(dbo.AODs.DstinationWarehouse = N'" + factoryName + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
             //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
+            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
             //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-            //                                "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
-            //                                "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
+            //                                "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.Boxes.BoxCode, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, " +
+            //                                                  "dbo.Colors.Code, dbo.Sizes.Code " +
+            //                                "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.Boxes.BoxCode, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, " +
+            //                                                  "dbo.Colors.Code, dbo.Sizes.Code");
+
             SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD,dbo.Boxes.BoxCode AS CartonNumber, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, " +
-                                                              "dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                                            "FROM     dbo.Colors INNER JOIN " +
-                                                              "dbo.Sizes INNER JOIN " +
-                                                              "dbo.Styles INNER JOIN " +
-                                                              "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
-                                                              "dbo.AODs INNER JOIN " +
-                                                              "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
-                                                              "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
-                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
+                                            "dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM  dbo.Colors INNER JOIN dbo.Sizes INNER JOIN dbo.Styles INNER JOIN " +
+                                            "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
+                                            "dbo.AODs INNER JOIN " +
+                                            "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+                                            "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                            "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
+                                            "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
                                             "WHERE(dbo.AODs.DstinationWarehouse = N'" + factoryName + "') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
-                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
                                             "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
-                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.Boxes.BoxCode, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, " +
                                                               "dbo.Colors.Code, dbo.Sizes.Code " +
                                             "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.Boxes.BoxCode, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, " +
                                                               "dbo.Colors.Code, dbo.Sizes.Code");
 
+
+            
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -743,40 +746,44 @@ namespace PDCSReporting
         }
         public GoodsReceivedSummaryDS getGoodsReceivedSummary(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO, string factoryName)
         {
+            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date,  dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(DISTINCT dbo.Boxes.BoxCode) AS NumberOfCartons,  SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.Colors INNER JOIN " +
+            //                                                  "dbo.Sizes INNER JOIN " +
+            //                                                  "dbo.Styles INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
+            //                                                  "dbo.AODs INNER JOIN " +
+            //                                                  "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
+            //                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
+            //                                "WHERE(dbo.AODs.DstinationWarehouse = N'" + factoryName + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
+            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
+            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
+            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+            //                                "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
+            //                                "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO");
+
             SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date,  dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(DISTINCT dbo.Boxes.BoxCode) AS NumberOfCartons,  SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                                            "FROM     dbo.Colors INNER JOIN " +
-                                                              "dbo.Sizes INNER JOIN " +
-                                                              "dbo.Styles INNER JOIN " +
-                                                              "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
-                                                              "dbo.AODs INNER JOIN " +
-                                                              "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
-                                                              "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
-                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
+                                            "FROM     dbo.Colors INNER JOIN dbo.Sizes INNER JOIN dbo.Styles INNER JOIN " +
+                                           "dbo.Products ON dbo.Styles.Id = dbo.Products.StyleId ON dbo.Sizes.Id = dbo.Products.SizeId INNER JOIN " +
+                                           "dbo.AODs INNER JOIN " +
+                                           "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+                                           "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                           "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                           "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId ON dbo.Colors.Id = dbo.Products.ColorId INNER JOIN " +
+                                           "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id " +
                                             "WHERE(dbo.AODs.DstinationWarehouse = N'" + factoryName + "') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
-                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
                                             "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
-                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
                                             "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO");
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(*) AS NumberOfCartons, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE(dbo.CartonWips.TransactionType = 1) AND(dbo.CartonWips.WIPArea = 2) AND(dbo.CartonWips.Quantity > 0)  " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-            //                                "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
-            //                                "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
+
+
+
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -795,97 +802,52 @@ namespace PDCSReporting
         public ShipmentDetailsDS getShipmentDetails(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO, string factoryName)
         {
 
+            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code AS MPO, " +
+            //                                                  "dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.AODs INNER JOIN " +
+            //                                                  "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
+            //                                "WHERE(dbo.AODs.DstinationWarehouse = 'SHIPMENT') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
+            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
+            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+            //                                "AND(dbo.AODs.SourceWarehouse = '" + factoryName + "') " +
+            //                                "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code, " +
+            //                                                  "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
+            //                                "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code, " +
+            //                                                  "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
+
+
             SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code AS MPO, " +
-                                                              "dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                                            "FROM     dbo.AODs INNER JOIN " +
-                                                              "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
-                                                              "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
-                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
-                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
-                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
+                                            "dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                            "FROM     dbo.AODs INNER JOIN  dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+                                            "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                            "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                            "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                            "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                            "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                            "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                            "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                            "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
                                             "WHERE(dbo.AODs.DstinationWarehouse = 'SHIPMENT') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
                                             "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
-                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
-                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
                                             "AND(dbo.AODs.SourceWarehouse = '" + factoryName + "') " +
                                             "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code, " +
-                                                              "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
+                                            "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
                                             "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.ProdOrders.Code, " +
-                                                              "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
+                                            "dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
 
 
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, UPPER(dbo.AODs.LorryNumber)AS LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
-            //                                                  "(dbo.Boxes.BoxCode) AS CartonNumber, dbo.CartonDetails.Quantity AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE " +
-            //                                "(dbo.CartonWips.TransactionType = 10) " +
-            //                                "AND(dbo.CartonWips.WIPArea = 3) " +
-            //                                "AND(dbo.CartonWips.Quantity < 0) " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
-            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
-            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
-            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-            //                                "AND(dbo.AODs.LorryNumber IS NOT NULL) " +
-            //                                "AND (dbo.AODs.LorryNumber <> N'00') " +
-            //                                "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode, dbo.CartonDetails.Quantity " +
-            //                                "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode, dbo.CartonDetails.Quantity");
 
-
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
-            //                                                  "dbo.Boxes.BoxCode AS CartonNumber, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE(dbo.CartonWips.TransactionType IN(8, 10)) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0) " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
-            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
-            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
-            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + fromCPO + "') " +
-            //                                "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode " +
-            //                                "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode");
-
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, UPPER(dbo.AODs.LorryNumber) AS LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, " +
-            //                                                  "dbo.Boxes.BoxCode AS CartonNumber, dbo.CartonDetails.Quantity AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-            //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE(dbo.CartonWips.TransactionType =10) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0) " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "')AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) <= '" + toDate + "') " +
-            //                                "AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') " +
-            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
-            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-            //                                "AND (dbo.AODs.LorryNumber IS NOT NULL) "+
-            //                                "GROUP BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode,dbo.CartonDetails.Quantity " +
-            //                                "ORDER BY(CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO, dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.Boxes.BoxCode,dbo.CartonDetails.Quantity");
 
 
             cmd.CommandTimeout = 0;
@@ -905,43 +867,46 @@ namespace PDCSReporting
 
         public ShipmentSummaryDS getShipmentSummary(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO, string factoryName)
         {
-            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date,  dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, COUNT(DISTINCT dbo.Boxes.BoxCode) AS NumberOfCartons, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
-                                            "FROM     dbo.AODs INNER JOIN " +
-                                                              "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
-                                                              "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
-                                                              "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-                                                              "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
-                                                              "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
-                                                              "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
-                                                              "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-                                                              "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
-                                                              "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
-                                            "WHERE(dbo.AODs.DstinationWarehouse = N'SHIPMENT') " +
-                                            "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
-                                            "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
-                                            "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
-                                            "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-                                            "AND(dbo.AODs.SourceWarehouse = N'" + factoryName + "') " +
-                                            "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
-                                            "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO");
-
-
-            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.CartonWips.EffectiveDate AS DATE)) AS Date, UPPER(dbo.AODs.LorryNumber) AS LorryNumber, dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO,COUNT(*) AS NumberOfCartons, ABS(SUM(dbo.CartonDetails.Quantity)) AS Quantity " +
-            //                                "FROM     dbo.Products INNER JOIN " +
-            //                                                  "dbo.CartonWips INNER JOIN " +
-            //                                                  "dbo.AODBoxDetails ON dbo.CartonWips.BoxId = dbo.AODBoxDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
-            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.CartonWips.BoxId = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
-            //                                                  "dbo.CartonDetails ON dbo.CartonWips.BoxId = dbo.CartonDetails.BoxId ON dbo.Products.Id = dbo.CartonDetails.ProductId INNER JOIN " +
-            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id INNER JOIN " +
-            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date,  dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, COUNT(DISTINCT dbo.Boxes.BoxCode) AS NumberOfCartons, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+            //                                "FROM     dbo.AODs INNER JOIN " +
+            //                                                  "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+            //                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+            //                                                  "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+            //                                                  "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+            //                                                  "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
             //                                                  "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
-            //                                                  "dbo.Boxes ON dbo.CartonWips.BoxId = dbo.Boxes.Id " +
-            //                                "WHERE(dbo.CartonWips.TransactionType =10) AND(dbo.CartonWips.WIPArea = 3) AND(dbo.CartonWips.Quantity < 0)  " +
-            //                                "AND(CAST(dbo.CartonWips.EffectiveDate AS DATE) >= '" + fromDate + "') AND(CAST(dbo.CartonWips.EffectiveDate AS DATE)<= '" + toDate + "') AND(dbo.AODs.SourceWarehouse BETWEEN '" + fromFactory + "' AND '" + toFactory + "') AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
-            //                                "AND (dbo.AODs.LorryNumber IS NOT NULL) AND (dbo.AODs.LorryNumber <> N'00')  " +
-            //                                "GROUP BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
-            //                                "ORDER BY (CAST(dbo.CartonWips.EffectiveDate AS DATE)), dbo.AODs.LorryNumber, SourceFactory, AOD, dbo.BoxCPOAllocationDetails.CPO");
+            //                                                  "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+            //                                                  "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
+            //                                "WHERE(dbo.AODs.DstinationWarehouse = N'SHIPMENT') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
+            //                                "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
+            //                                "AND(dbo.AODs.AODNumber BETWEEN '" + fromAOD + "' AND '" + toAOD + "') " +
+            //                                "AND(dbo.BoxCPOAllocationDetails.CPO BETWEEN '" + fromCPO + "' AND '" + toCPO + "') " +
+            //                                "AND(dbo.AODs.SourceWarehouse = N'" + factoryName + "') " +
+            //                                "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
+            //                                "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO");
+
+            SqlCommand cmd = new SqlCommand("SELECT (CAST(dbo.AODs.TransferredDate AS DATE)) AS Date,  dbo.AODs.SourceWarehouse AS SourceFactory, dbo.AODs.AODNumber AS AOD, dbo.BoxCPOAllocationDetails.CPO, COUNT(DISTINCT dbo.Boxes.BoxCode) AS NumberOfCartons, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
+                                           "FROM     dbo.AODs INNER JOIN " +
+                                           "dbo.AODBoxDetails ON dbo.AODs.Id = dbo.AODBoxDetails.AODId INNER JOIN " +
+                                           "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
+                                           "dbo.BoxCPOAllocationDetails ON dbo.Boxes.Id = dbo.BoxCPOAllocationDetails.BoxId INNER JOIN " +
+                                           "dbo.CartonDetails ON dbo.Boxes.Id = dbo.CartonDetails.BoxId INNER JOIN " +
+                                           "dbo.ProdOrders ON dbo.CartonDetails.ProdOrderId = dbo.ProdOrders.Id INNER JOIN " +
+                                           "dbo.Products ON dbo.CartonDetails.ProductId = dbo.Products.Id INNER JOIN " +
+                                           "dbo.Styles ON dbo.Products.StyleId = dbo.Styles.Id INNER JOIN " +
+                                           "dbo.Sizes ON dbo.Products.SizeId = dbo.Sizes.Id INNER JOIN " +
+                                           "dbo.Colors ON dbo.Products.ColorId = dbo.Colors.Id " +
+                                           "WHERE(dbo.AODs.DstinationWarehouse = N'SHIPMENT') " +
+                                           "AND(CAST(dbo.AODs.TransferredDate AS DATE) >= '" + fromDate + "') " +
+                                           "AND(CAST(dbo.AODs.TransferredDate AS DATE) <= '" + toDate + "') " +
+                                           "AND(dbo.AODs.SourceWarehouse = N'" + factoryName + "') " +
+                                           "GROUP BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO " +
+                                           "ORDER BY(CAST(dbo.AODs.TransferredDate AS DATE)), dbo.AODs.SourceWarehouse, dbo.AODs.AODNumber, dbo.BoxCPOAllocationDetails.CPO");
+
+
+
             cmd.CommandTimeout = 0;
             using (SqlDataAdapter sda = new SqlDataAdapter())
             {
@@ -1168,7 +1133,7 @@ namespace PDCSReporting
             //                     "ORDER BY Colour, Size";
 
             newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, dbo.ProdOrders.Code AS MPO, dbo.BoxCPOAllocationDetails.CPO, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, " +
-                                                 "SUM(dbo.CartonDetails.Quantity)AS Quantity " +
+                                                 "SUM(dbo.CartonDetails.Quantity)AS Quantity , dbo.AODs.TransferredDate " +
                                 "FROM     dbo.AODBoxDetails INNER JOIN " +
                                                  "dbo.Boxes ON dbo.AODBoxDetails.BoxId = dbo.Boxes.Id INNER JOIN " +
                                                  "dbo.AODs ON dbo.AODBoxDetails.AODId = dbo.AODs.Id INNER JOIN " +
@@ -1182,8 +1147,8 @@ namespace PDCSReporting
                                 //"WHERE(dbo.AODBoxDetails.AODId = " + AODId + ") AND(dbo.CartonDetails.TransactionType <> 8 OR " +
                                 //                 "dbo.CartonDetails.TransactionType <> 10) AND(dbo.CartonDetails.Quantity > 0) " +
                                 "WHERE (dbo.AODBoxDetails.AODId = " + AODId + ") " +
-                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO " +
-                                "ORDER BY Colour, Size";
+                                "GROUP BY dbo.Styles.Code, dbo.Colors.Code, dbo.Sizes.Code, dbo.ProdOrders.Code, dbo.BoxCPOAllocationDetails.CPO, " +
+                                " dbo.AODs.TransferredDate ORDER BY Colour, Size";
 
             //newCmd.CommandText = "SELECT DISTINCT dbo.Styles.Code AS Style, dbo.Colors.Code AS Colour, dbo.Sizes.Code AS Size, COUNT(DISTINCT dbo.Boxes.Id) AS NoOfBoxes, SUM(dbo.CartonDetails.Quantity) AS Quantity " +
             //                     "FROM dbo.AODBoxDetails INNER JOIN " +
@@ -1220,6 +1185,39 @@ namespace PDCSReporting
             conn.Close();
             return AODNumber;
         }
+
+        public string getAXTrNumber(int Aodid)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand com = new SqlCommand("SELECT AxJournalNo FROM AxAoDTrnDetails WHERE (AODId =  '" + Aodid + "')  group by AxJournalNo", conn);
+            string AxTrn = Convert.ToString(com.ExecuteScalar());
+            conn.Close();
+            return AxTrn;
+        }
+
+        public int getAODBoxCount(int Aodid)
+        {
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            SqlCommand com = new SqlCommand("SELECT Count(*) FROM  AODBoxDetails WHERE(AODId =  '" + Aodid + "')", conn);
+            int BCount = Convert.ToInt16(com.ExecuteScalar());
+            conn.Close();
+            return BCount;
+        }
+
+
+
+
+
+
+
 
         public string getDestination(int AODId)
         {
@@ -1459,6 +1457,33 @@ namespace PDCSReporting
             conn.Close();
             return dt;
         }
+
+
+        public DataTable getCodeChangeReDetails(string FoDate, string ToDate)
+        {
+
+
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
+
+            //SqlCommand cmd = new SqlCommand("Select * from CodeChangeView where " +
+            //                                " TranDate  >= '" + FoDate + "'  and " +
+            //                                " TranDate <= '" + ToDate + "'", conn);
+
+            SqlCommand cmd = new SqlCommand("Select * from CodeChangeView", conn);
+
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+
+
+
 
         public FactoryTransferDetailsDS getFactoryTransferDetails(string fromDate, string toDate, string fromFactory, string toFactory, string fromAOD, string toAOD, string fromCPO, string toCPO, string factoryName)
         {

@@ -42,7 +42,8 @@ namespace PDCSReporting
                 }
 
                 DataSet dsAOD = new DataSet();
-                dsAOD = com.ReturnDataSet("SELECT DISTINCT AODNumber FROM     AODs ORDER BY AODNumber");
+                dsAOD = com.ReturnDataSet("SELECT AODNumber FROM AODs WHERE(DstinationWarehouse NOT LIKE 'SHIPMENT') " +
+                                          " AND(CAST(EffectiveDate AS date) > '29/may/2022') ORDER BY AODNumber ");
                 if (dsAOD.Tables[0].Rows.Count > 0)
                 {
                     ddlFromAOD.DataSource = dsAOD.Tables[0];
@@ -57,7 +58,7 @@ namespace PDCSReporting
                 }
 
                 DataSet dsCPO = new DataSet();
-                dsCPO = com.ReturnDataSet("SELECT DISTINCT CPO FROM     BoxCPOAllocationDetails ORDER BY CPO");
+                dsCPO = com.ReturnDataSet("SELECT CPO FROM BoxCPOAllocationDetails WHERE(CAST(AllocatedDate AS date) > '28/may/2022') GROUP BY CPO ORDER BY CPO ");
                 if (dsCPO.Tables[0].Rows.Count > 0)
                 {
                     ddlFromCPO.DataSource = dsCPO.Tables[0];
@@ -151,10 +152,10 @@ namespace PDCSReporting
             string dateTo = calToDate.SelectedDate.ToString("dd-MMM-yyyy");
             string fromFactory = ddlFromFactory.SelectedItem.Text;
             string toFactory = ddlToFactory.SelectedItem.Text;
-            string fromAOD = ddlFromAOD.SelectedItem.Text;
-            string toAOD = ddlToAOD.SelectedItem.Text;
-            string fromCPO = ddlFromCPO.SelectedItem.Text;
-            string toCPO = ddlToCPO.SelectedItem.Text;
+            string fromAOD = "XXXXX";// ddlFromAOD.SelectedItem.Text;
+            string toAOD = "XXXXX";//ddlToAOD.SelectedItem.Text;
+            string fromCPO = "XXXXX";// ddlFromCPO.SelectedItem.Text;
+            string toCPO = "XXXXX";// ddlToCPO.SelectedItem.Text;
             DataSet dsFac = new DataSet();
             dsFac = com.ReturnDataSet("SELECT TOP (200) ParamValue FROM     Configurations WHERE(ParamName = N'FactoryName')");
             if (dsFac.Tables[0].Rows.Count > 0)

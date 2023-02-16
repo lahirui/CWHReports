@@ -77,7 +77,7 @@
                                     <label class="control-label col-sm-1 col-md-1 col-lg-1" for="cpo" style="font-family: Georgia">CPO:</label>
                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                         <asp:DropDownList ID="CPODropDownList" runat="server" AutoPostBack="true" AppendDataBoundItems="true" CssClass="form-control" OnSelectedIndexChanged="CPODropDownList_SelectedIndexChanged" DataSourceID="CPODetailsDataSource" DataTextField="CPO" DataValueField="CPO"></asp:DropDownList>
-                                        <asp:SqlDataSource runat="server" ID="CPODetailsDataSource" ConnectionString='<%$ ConnectionStrings:ConString %>' SelectCommand="SELECT DISTINCT [CPO] FROM [BoxCPOAllocationDetails] ORDER BY [CPO]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource runat="server" ID="CPODetailsDataSource" ConnectionString='<%$ ConnectionStrings:ConString %>' SelectCommand="SELECT DISTINCT [CPO] FROM [BoxCPODetailsbyDate]  ORDER BY [CPO]"></asp:SqlDataSource>
                                     </div>
                                 </div>
 <%--                                <div class="form-group">
